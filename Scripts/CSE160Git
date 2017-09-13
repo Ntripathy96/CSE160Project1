@@ -1,0 +1,127 @@
+Last login: Wed Sep 13 14:42:00 on ttys003
+Joses-MacBook-Pro-5:~ JoseHerrera$ ls
+AgenaRisk		Movies			bin
+AndroidStudioProjects	Music			cbtool
+Applications		Netica			config.log
+Desktop			PaladinTemp		eclipse
+Destkop			Pictures		logs
+Documents		Public			nltk_data
+Downloads		VirtualBox VMs		postgresql_96.app.zip
+Library			Wine Files		result
+Joses-MacBook-Pro-5:~ JoseHerrera$ cd Desktop
+Joses-MacBook-Pro-5:Desktop JoseHerrera$ ls
+C62o--6VsAA8soI.jpg
+CSE
+CSE 100
+CSE 160
+CSE160-Project-Skeleton-Code
+Crack The Code
+CyberSecurity
+DAWo_xbVwAA4cp7.jpg-large.jpeg
+Docker
+ECON 100
+ECON 6A
+ENG 65
+Fall 2015
+Fall 2016
+Info
+Poker
+Portfolio
+Reu
+Screen Shot 2017-05-27 at 11.09.54 PM.png
+Screen Shot 2017-05-27 at 11.09.59 PM.png
+Screen Shot 2017-07-18 at 1.35.35 PM.png
+Screen Shot 2017-08-01 at 12.57.36 PM.png
+Screen Shot 2017-09-02 at 2.08.26 AM.png
+Screen Shot 2017-09-12 at 12.20.35 PM.png
+Spring 2016
+Spring 2017
+UNIX
+~$-8_Lab_6.docx
+~$-C4_Lab_3_JoseHerrera.docx
+~$Essay3.docx
+~$FIND.docx
+~$Weekly_1.pptx
+~$b4_Level_of_Understanding.docx
+~$droLab2.docx
+~$eklyResponse4.docx
+~$eklyResponseOutline.docx
+~$malativeEssay.docx
+~$reFridayReport#1.docx
+~$rrera, Jose_Assignment 1_Econ10_10082016.docx
+~$rrera, Jose_Assignment 6_Econ 010_12062016.docx
+~$rsonalStatement.docx
+~$rticipation Activites 4.1_4.2.docx
+~$rticipation Activity Lab 6.docx
+~$rticipationActivityLab11.docx
+~$rticipationActivityLab_12.docx
+~$say1Prompts.docx
+~$seHerrera_Lab_2_Part_1.docx
+~$sessmentLab11.docx
+~$sessmentQuestions.docx
+~$ssay 2.docx
+~$throLab1.docx
+~$throLab2.docx
+~$tivities Zybooks.docx
+~$uant 1.docx
+~$uant#1.docx
+~$uedoCode.docx
+~$verLetter.docx
+~$verLetterJoseH.docx
+Joses-MacBook-Pro-5:Desktop JoseHerrera$ ls CSE160
+ls: CSE160: No such file or directory
+Joses-MacBook-Pro-5:Desktop JoseHerrera$ cd CSE160
+Joses-MacBook-Pro-5:CSE160 JoseHerrera$ make micaz sim
+Makefile:10: /Makefile.include: No such file or directory
+make: *** No rule to make target `/Makefile.include'.  Stop.
+Joses-MacBook-Pro-5:CSE160 JoseHerrera$ ls
+CommandMsg.py	NodeC.nc	dataStructures	noise		topo
+Makefile	README.md	includes	packet.py
+Node.nc		TestSim.py	lib		pingTest.py
+Joses-MacBook-Pro-5:CSE160 JoseHerrera$ ls
+CommandMsg.py	NodeC.nc	dataStructures	noise		topo
+Makefile	README.md	includes	packet.py
+Node.nc		TestSim.py	lib		pingTest.py
+Joses-MacBook-Pro-5:CSE160 JoseHerrera$ git add -A
+Joses-MacBook-Pro-5:CSE160 JoseHerrera$ git commit -m "firstCommit9/13/17"
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'JoseHerrera@Joses-MacBook-Pro-5.(none)')
+Joses-MacBook-Pro-5:CSE160 JoseHerrera$ git config --global user.email "jherrera52@ucmerced.edu"
+Joses-MacBook-Pro-5:CSE160 JoseHerrera$ git config --global user.name "JoseH1497"
+Joses-MacBook-Pro-5:CSE160 JoseHerrera$ git commit -m "firstCommit9/13/17"
+[master d13df0b] firstCommit9/13/17
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+ create mode 100644 .vscode/settings.json
+Joses-MacBook-Pro-5:CSE160 JoseHerrera$ git push
+Counting objects: 5, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (5/5), 436 bytes | 0 bytes/s, done.
+Total 5 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/JoseH1497/CSE160.git
+   466b36b..d13df0b  master -> master
+Joses-MacBook-Pro-5:CSE160 JoseHerrera$ git add -A
+Joses-MacBook-Pro-5:CSE160 JoseHerrera$ git commit -m "2ndCommit9/13/17"
+[master 77b6180] 2ndCommit9/13/17
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Joses-MacBook-Pro-5:CSE160 JoseHerrera$ git push
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 296 bytes | 0 bytes/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/JoseH1497/CSE160.git
+   d13df0b..77b6180  master -> master
+Joses-MacBook-Pro-5:CSE160 JoseHerrera$ 

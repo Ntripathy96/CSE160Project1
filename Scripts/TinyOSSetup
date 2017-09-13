@@ -1,0 +1,1859 @@
+Last login: Tue Sep 12 12:44:13 on console
+Joses-MacBook-Pro-5:~ JoseHerrera$ make micaz sim
+make: *** No rule to make target `micaz'.  Stop.
+Joses-MacBook-Pro-5:~ JoseHerrera$ cd /opt/tinyos-main
+-bash: cd: /opt/tinyos-main: No such file or directory
+Joses-MacBook-Pro-5:~ JoseHerrera$ ls
+AgenaRisk		Music			cbtool
+AndroidStudioProjects	Netica			config.log
+Applications		PaladinTemp		eclipse
+Desktop			Pictures		logs
+Documents		Public			nltk_data
+Downloads		VirtualBox VMs		postgresql_96.app.zip
+Library			Wine Files		result
+Movies			bin
+Joses-MacBook-Pro-5:~ JoseHerrera$ cd Desktop
+Joses-MacBook-Pro-5:Desktop JoseHerrera$ cd Docker
+Joses-MacBook-Pro-5:Docker JoseHerrera$ ls
+Dockerfile		app.py			requirements.txt
+Joses-MacBook-Pro-5:Docker JoseHerrera$ cd /opt/tinyos-main
+-bash: cd: /opt/tinyos-main: No such file or directory
+Joses-MacBook-Pro-5:Docker JoseHerrera$ docker run -ti 
+"docker run" requires at least 1 argument(s).
+See 'docker run --help'.
+
+Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Run a command in a new container
+Joses-MacBook-Pro-5:Docker JoseHerrera$ ls
+Dockerfile		app.py			requirements.txt
+Joses-MacBook-Pro-5:Docker JoseHerrera$ Docker images
+REPOSITORY                       TAG                 IMAGE ID            CREATED             SIZE
+jherrera52/get-started           part1               0ddb342cfc89        13 days ago         194MB
+friendlyhello                    latest              0ddb342cfc89        13 days ago         194MB
+ucmercedandeslab/tinyos_debian   latest              27ef0e8eadab        2 weeks ago         4GB
+python                           2.7-slim            451c85955bc2        7 weeks ago         182MB
+hello-world                      latest              1815c82652c0        3 months ago        1.84kB
+Joses-MacBook-Pro-5:Docker JoseHerrera$ docker run -ti tinyos_debian:latest
+Unable to find image 'tinyos_debian:latest' locally
+docker: Error response from daemon: repository tinyos_debian not found: does not exist or no pull access.
+See 'docker run --help'.
+Joses-MacBook-Pro-5:Docker JoseHerrera$ docker run -ti tinyos_debian::latest
+docker: invalid reference format.
+See 'docker run --help'.
+Joses-MacBook-Pro-5:Docker JoseHerrera$ docker run -ti ucmercedandeslab/tinyos_debian
+root@c1f4d7f7d7b4:/# ls
+bin   dev  home  lib64	mnt  proc  run	 srv  tmp  var
+boot  etc  lib	 media	opt  root  sbin  sys  usr
+root@c1f4d7f7d7b4:/# cd /opt/tinyos-main
+root@c1f4d7f7d7b4:/opt/tinyos-main# cd /apps/Blink/
+bash: cd: /apps/Blink/: No such file or directory
+root@c1f4d7f7d7b4:/opt/tinyos-main# cd /apps/Blink 
+bash: cd: /apps/Blink: No such file or directory
+root@c1f4d7f7d7b4:/opt/tinyos-main# cd apps/Blink
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink# make micaz sim
+[INFO] placing object files in simbuild/micaz
+[INFO] writing XML schema to app.xml
+[INFO] compiling BlinkAppC to object file sim.o
+nescc -c -shared -fPIC -o simbuild/micaz/sim.o -g -O0 -gcc=gcc -Wnesc-all -fnesc-include=tos -fnesc-scheduler=TinySchedulerC,TinySchedulerC.TaskBasic,TaskBasic,TaskBasic,runTask,postTask -fnesc-cfile=simbuild/micaz/app.c -fnesc-separator=__ -DTOSSIM -fnesc-nido-tosnodes=1000 -fnesc-simulate -fnesc-nido-motenumber=sim_node\(\) -fnesc-gcc=gcc -I/opt/tinyos-main/tos/lib/tossim -I/opt/tinyos-main/tos/platforms/micaz/sim -I/opt/tinyos-main/tos/platforms/micaz -I/opt/tinyos-main/tos/platforms/mica/sim -I/opt/tinyos-main/tos/platforms/mica -I/opt/tinyos-main/tos/platforms/micaz/chips/cc2420/sim -I/opt/tinyos-main/tos/platforms/micaz/chips/cc2420 -I/opt/tinyos-main/tos/chips/cc2420/sim -I/opt/tinyos-main/tos/chips/cc2420 -I/opt/tinyos-main/tos/chips/cc2420/alarm -I/opt/tinyos-main/tos/chips/cc2420/control/sim -I/opt/tinyos-main/tos/chips/cc2420/control -I/opt/tinyos-main/tos/chips/cc2420/csma/sim -I/opt/tinyos-main/tos/chips/cc2420/csma -I/opt/tinyos-main/tos/chips/cc2420/interfaces/sim -I/opt/tinyos-main/tos/chips/cc2420/interfaces -I/opt/tinyos-main/tos/chips/cc2420/link/sim -I/opt/tinyos-main/tos/chips/cc2420/link -I/opt/tinyos-main/tos/chips/cc2420/lowpan/sim -I/opt/tinyos-main/tos/chips/cc2420/lowpan -I/opt/tinyos-main/tos/chips/cc2420/lpl -I/opt/tinyos-main/tos/chips/cc2420/packet/sim -I/opt/tinyos-main/tos/chips/cc2420/packet -I/opt/tinyos-main/tos/chips/cc2420/receive/sim -I/opt/tinyos-main/tos/chips/cc2420/receive -I/opt/tinyos-main/tos/chips/cc2420/spi -I/opt/tinyos-main/tos/chips/cc2420/transmit -I/opt/tinyos-main/tos/chips/cc2420/unique/sim -I/opt/tinyos-main/tos/chips/cc2420/unique -I/opt/tinyos-main/tos/platforms/mica2/chips/at45db -I/opt/tinyos-main/tos/platforms/mica/chips/at45db -I/opt/tinyos-main/tos/chips/at45db -I/opt/tinyos-main/tos/chips/atm128/sim -I/opt/tinyos-main/tos/chips/atm128 -I/opt/tinyos-main/tos/chips/atm128/adc -I/opt/tinyos-main/tos/chips/atm128/pins/sim -I/opt/tinyos-main/tos/chips/atm128/pins -I/opt/tinyos-main/tos/chips/atm128/spi/sim -I/opt/tinyos-main/tos/chips/atm128/spi -I/opt/tinyos-main/tos/chips/atm128/timer/sim -I/opt/tinyos-main/tos/chips/atm128/timer -I/opt/tinyos-main/tos/lib/power -I/opt/tinyos-main/tos/lib/timer -I/opt/tinyos-main/tos/lib/serial -fnesc-no-debug -DPLATFORM_MICAZ -Wall -Wshadow -finline-limit=100000 -I/opt/tinyos-main/tos/system -I/opt/tinyos-main/tos/types -I/opt/tinyos-main/tos/interfaces -DIDENT_APPNAME=\"BlinkAppC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"c1f4d7f7d7b4\" -DIDENT_USERHASH=0xd9f18d68L -DIDENT_TIMESTAMP=0x59b998e6L -DIDENT_UIDHASH=0x6affb975L -Wno-nesc-data-race BlinkAppC.nc   -fnesc-dump=components -fnesc-dump=variables -fnesc-dump=constants -fnesc-dump=typedefs -fnesc-dump=interfacedefs -fnesc-dump=tags -fnesc-dumpfile=app.xml
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c: In function 'makeNoiseModel':
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c:440:78: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+     dbg("Insert", "Setting history %i to be %i\n", (int)i, (int)noiseData[node_id].key[i]);
+                                                                              ^
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c: In function 'sim_noise_gen':
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c:307:7: warning: variable 'noiseIndex' set but not used [-Wunused-but-set-variable]
+   int noiseIndex = 0;
+       ^
+[INFO] compiling Python support and C libraries into pytossim.o, tossim.o, and c-support.o
+g++ -c  -shared -fPIC -o simbuild/micaz/pytossim.o -g -O0 -DIDENT_APPNAME=\"BlinkAppC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"c1f4d7f7d7b4\" -DIDENT_USERHASH=0xd9f18d68L -DIDENT_TIMESTAMP=0x59b998e6L -DIDENT_UIDHASH=0x6affb975L  /opt/tinyos-main/tos/lib/tossim/tossim_wrap.cxx -I/usr/include/python2.7 -I/opt/tinyos-main/tos/lib/tossim -DHAVE_CONFIG_H
+g++ -c  -shared -fPIC -o simbuild/micaz/tossim.o -g -O0 -DIDENT_APPNAME=\"BlinkAppC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"c1f4d7f7d7b4\" -DIDENT_USERHASH=0xd9f18d68L -DIDENT_TIMESTAMP=0x59b998e6L -DIDENT_UIDHASH=0x6affb975L  /opt/tinyos-main/tos/lib/tossim/tossim.c -I/usr/include/python2.7 -I/opt/tinyos-main/tos/lib/tossim
+g++ -c  -shared -fPIC -o simbuild/micaz/c-support.o -g -O0 -DIDENT_APPNAME=\"BlinkAppC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"c1f4d7f7d7b4\" -DIDENT_USERHASH=0xd9f18d68L -DIDENT_TIMESTAMP=0x59b998e6L -DIDENT_UIDHASH=0x6affb975L  /opt/tinyos-main/tos/lib/tossim/hashtable.c -I/usr/include/python2.7 -I/opt/tinyos-main/tos/lib/tossim
+[INFO] linking into shared object ./_TOSSIMmodule.so
+g++ -shared -fPIC  simbuild/micaz/pytossim.o simbuild/micaz/sim.o simbuild/micaz/tossim.o simbuild/micaz/c-support.o  -lstdc++ -o _TOSSIMmodule.so
+[INFO] copying Python script interface TOSSIM.py from lib/tossim to local directory
+ 
+[INFO] *** Successfully built micaz TOSSIM library.
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink# ls
+BlinkAppC.nc  Makefile	  TOSSIM.py	    app.xml
+BlinkC.nc     README.txt  _TOSSIMmodule.so  simbuild
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink# cd ..
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps# cd ..
+root@c1f4d7f7d7b4:/opt/tinyos-main# ls
+Makefile.include  apps	      licenses		 support
+README.md	  deprecated  packaging		 tools
+README.tinyos	  doc	      release-notes.txt  tos
+root@c1f4d7f7d7b4:/opt/tinyos-main# cd ..
+root@c1f4d7f7d7b4:/opt# ls
+Samr21-Tinyos-Port  tinyos-main
+root@c1f4d7f7d7b4:/opt# cd ..
+root@c1f4d7f7d7b4:/# ls
+bin   dev  home  lib64	mnt  proc  run	 srv  tmp  var
+boot  etc  lib	 media	opt  root  sbin  sys  usr
+root@c1f4d7f7d7b4:/# cd opt
+root@c1f4d7f7d7b4:/opt# ls
+Samr21-Tinyos-Port  tinyos-main
+root@c1f4d7f7d7b4:/opt# ls
+Samr21-Tinyos-Port  tinyos-main
+root@c1f4d7f7d7b4:/opt# cd tinyos-main
+root@c1f4d7f7d7b4:/opt/tinyos-main# ls
+Makefile.include  apps	      licenses		 support
+README.md	  deprecated  packaging		 tools
+README.tinyos	  doc	      release-notes.txt  tos
+root@c1f4d7f7d7b4:/opt/tinyos-main# cd apps
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps# ls
+AntiTheft	 MViz			  PPPSniffer	    UDPEcho
+BaseStation	 Makefile		  Powerup	    btest1
+BaseStation15.4  MemTest		  PppRouter	    btest2
+Blink		 MultihopOscilloscope	  RadioCountToLeds  tests
+CoapBlip	 MultihopOscilloscopeLqi  RadioSenseToLeds  tutorials
+CoapPpp		 Null			  Sense
+FastSend	 Oscilloscope		  TCPEcho
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps# cd tests
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/tests# ls
+LinkBench	   TestFtsp		TestSerial	     deluge
+NxFloat		   TestLed		TestSerialBandwidth  eyesIFX
+RadioStress	   TestLocalTime	TestSerialPrintf     mica2
+TestAM		   TestLpl		TestSimComm	     msp430
+TestAMOnOff	   TestMultihopLqi	TestSimTimers	     mts300
+TestAMService	   TestNetwork		TestSleep	     mts400
+TestAdc		   TestNetworkLpl	TestSrp		     rfxlink
+TestAlarm	   TestOscilloscopeLQI	TestTimerSync	     sam3
+TestBroadcast	   TestPowerManager	TestTrickleTimer     storage
+TestDhv		   TestPowerup		TestTymo	     telosb
+TestDip		   TestPrintf		arbiters	     tkn154
+TestDissemination  TestRPL		blip		     ucmini
+TestEui		   TestScheduler	cc2420		     z1
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/tests# cd ..
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps# cd..
+bash: cd..: command not found
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps# cd ..
+root@c1f4d7f7d7b4:/opt/tinyos-main# ls
+Makefile.include  apps	      licenses		 support
+README.md	  deprecated  packaging		 tools
+README.tinyos	  doc	      release-notes.txt  tos
+root@c1f4d7f7d7b4:/opt/tinyos-main# cd apps
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps# cd blink
+bash: cd: blink: No such file or directory
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps# ls
+AntiTheft	 MViz			  PPPSniffer	    UDPEcho
+BaseStation	 Makefile		  Powerup	    btest1
+BaseStation15.4  MemTest		  PppRouter	    btest2
+Blink		 MultihopOscilloscope	  RadioCountToLeds  tests
+CoapBlip	 MultihopOscilloscopeLqi  RadioSenseToLeds  tutorials
+CoapPpp		 Null			  Sense
+FastSend	 Oscilloscope		  TCPEcho
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps# cd Blink
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink# ls
+BlinkAppC.nc  Makefile	  TOSSIM.py	    app.xml
+BlinkC.nc     README.txt  _TOSSIMmodule.so  simbuild
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink# Python3 TOSSIM.py
+bash: Python3: command not found
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink# cat TOSSIM.py    
+# This file was automatically generated by SWIG (http://www.swig.org).
+# Version 1.3.33
+#
+# Don't modify this file, modify the SWIG interface instead.
+# This file is compatible with both classic and new-style classes.
+
+import _TOSSIM
+import new
+new_instancemethod = new.instancemethod
+try:
+    _swig_property = property
+except NameError:
+    pass # Python < 2.2 doesn't have 'property'.
+def _swig_setattr_nondynamic(self,class_type,name,value,static=1):
+    if (name == "thisown"): return self.this.own(value)
+    if (name == "this"):
+        if type(value).__name__ == 'PySwigObject':
+            self.__dict__[name] = value
+            return
+    method = class_type.__swig_setmethods__.get(name,None)
+    if method: return method(self,value)
+    if (not static) or hasattr(self,name):
+        self.__dict__[name] = value
+    else:
+        raise AttributeError("You cannot add attributes to %s" % self)
+
+def _swig_setattr(self,class_type,name,value):
+    return _swig_setattr_nondynamic(self,class_type,name,value,0)
+
+def _swig_getattr(self,class_type,name):
+    if (name == "thisown"): return self.this.own()
+    method = class_type.__swig_getmethods__.get(name,None)
+    if method: return method(self)
+    raise AttributeError,name
+
+def _swig_repr(self):
+    try: strthis = "proxy of " + self.this.__repr__()
+    except: strthis = ""
+    return "<%s.%s; %s >" % (self.__class__.__module__, self.__class__.__name__, strthis,)
+
+import types
+try:
+    _object = types.ObjectType
+    _newclass = 1
+except AttributeError:
+    class _object : pass
+    _newclass = 0
+del types
+
+
+class MAC(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MAC, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, MAC, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _TOSSIM.new_MAC(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _TOSSIM.delete_MAC
+    __del__ = lambda self : None;
+    def initHigh(*args): return _TOSSIM.MAC_initHigh(*args)
+    def initLow(*args): return _TOSSIM.MAC_initLow(*args)
+    def high(*args): return _TOSSIM.MAC_high(*args)
+    def low(*args): return _TOSSIM.MAC_low(*args)
+    def symbolsPerSec(*args): return _TOSSIM.MAC_symbolsPerSec(*args)
+    def bitsPerSymbol(*args): return _TOSSIM.MAC_bitsPerSymbol(*args)
+    def preambleLength(*args): return _TOSSIM.MAC_preambleLength(*args)
+    def exponentBase(*args): return _TOSSIM.MAC_exponentBase(*args)
+    def maxIterations(*args): return _TOSSIM.MAC_maxIterations(*args)
+    def minFreeSamples(*args): return _TOSSIM.MAC_minFreeSamples(*args)
+    def rxtxDelay(*args): return _TOSSIM.MAC_rxtxDelay(*args)
+    def ackTime(*args): return _TOSSIM.MAC_ackTime(*args)
+    def setInitHigh(*args): return _TOSSIM.MAC_setInitHigh(*args)
+    def setInitLow(*args): return _TOSSIM.MAC_setInitLow(*args)
+    def setHigh(*args): return _TOSSIM.MAC_setHigh(*args)
+    def setLow(*args): return _TOSSIM.MAC_setLow(*args)
+    def setSymbolsPerSec(*args): return _TOSSIM.MAC_setSymbolsPerSec(*args)
+    def setBitsBerSymbol(*args): return _TOSSIM.MAC_setBitsBerSymbol(*args)
+    def setPreambleLength(*args): return _TOSSIM.MAC_setPreambleLength(*args)
+    def setExponentBase(*args): return _TOSSIM.MAC_setExponentBase(*args)
+    def setMaxIterations(*args): return _TOSSIM.MAC_setMaxIterations(*args)
+    def setMinFreeSamples(*args): return _TOSSIM.MAC_setMinFreeSamples(*args)
+    def setRxtxDelay(*args): return _TOSSIM.MAC_setRxtxDelay(*args)
+    def setAckTime(*args): return _TOSSIM.MAC_setAckTime(*args)
+MAC_swigregister = _TOSSIM.MAC_swigregister
+MAC_swigregister(MAC)
+
+class Radio(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Radio, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Radio, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _TOSSIM.new_Radio(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _TOSSIM.delete_Radio
+    __del__ = lambda self : None;
+    def add(*args): return _TOSSIM.Radio_add(*args)
+    def gain(*args): return _TOSSIM.Radio_gain(*args)
+    def connected(*args): return _TOSSIM.Radio_connected(*args)
+    def remove(*args): return _TOSSIM.Radio_remove(*args)
+    def setNoise(*args): return _TOSSIM.Radio_setNoise(*args)
+    def setSensitivity(*args): return _TOSSIM.Radio_setSensitivity(*args)
+Radio_swigregister = _TOSSIM.Radio_swigregister
+Radio_swigregister(Radio)
+
+class Packet(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Packet, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Packet, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _TOSSIM.new_Packet(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _TOSSIM.delete_Packet
+    __del__ = lambda self : None;
+    def setSource(*args): return _TOSSIM.Packet_setSource(*args)
+    def source(*args): return _TOSSIM.Packet_source(*args)
+    def setDestination(*args): return _TOSSIM.Packet_setDestination(*args)
+    def destination(*args): return _TOSSIM.Packet_destination(*args)
+    def setLength(*args): return _TOSSIM.Packet_setLength(*args)
+    def length(*args): return _TOSSIM.Packet_length(*args)
+    def setType(*args): return _TOSSIM.Packet_setType(*args)
+    def type(*args): return _TOSSIM.Packet_type(*args)
+    def data(*args): return _TOSSIM.Packet_data(*args)
+    def setData(*args): return _TOSSIM.Packet_setData(*args)
+    def maxLength(*args): return _TOSSIM.Packet_maxLength(*args)
+    def setStrength(*args): return _TOSSIM.Packet_setStrength(*args)
+    def deliver(*args): return _TOSSIM.Packet_deliver(*args)
+    def deliverNow(*args): return _TOSSIM.Packet_deliverNow(*args)
+    def setDsn(*args): return _TOSSIM.Packet_setDsn(*args)
+    def dsn(*args): return _TOSSIM.Packet_dsn(*args)
+Packet_swigregister = _TOSSIM.Packet_swigregister
+Packet_swigregister(Packet)
+
+class variable_string_t(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, variable_string_t, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, variable_string_t, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["type"] = _TOSSIM.variable_string_t_type_set
+    __swig_getmethods__["type"] = _TOSSIM.variable_string_t_type_get
+    if _newclass:type = _swig_property(_TOSSIM.variable_string_t_type_get, _TOSSIM.variable_string_t_type_set)
+    __swig_setmethods__["ptr"] = _TOSSIM.variable_string_t_ptr_set
+    __swig_getmethods__["ptr"] = _TOSSIM.variable_string_t_ptr_get
+    if _newclass:ptr = _swig_property(_TOSSIM.variable_string_t_ptr_get, _TOSSIM.variable_string_t_ptr_set)
+    __swig_setmethods__["len"] = _TOSSIM.variable_string_t_len_set
+    __swig_getmethods__["len"] = _TOSSIM.variable_string_t_len_get
+    if _newclass:len = _swig_property(_TOSSIM.variable_string_t_len_get, _TOSSIM.variable_string_t_len_set)
+    __swig_setmethods__["isArray"] = _TOSSIM.variable_string_t_isArray_set
+    __swig_getmethods__["isArray"] = _TOSSIM.variable_string_t_isArray_get
+    if _newclass:isArray = _swig_property(_TOSSIM.variable_string_t_isArray_get, _TOSSIM.variable_string_t_isArray_set)
+    def __init__(self, *args): 
+        this = _TOSSIM.new_variable_string_t(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _TOSSIM.delete_variable_string_t
+    __del__ = lambda self : None;
+variable_string_t_swigregister = _TOSSIM.variable_string_t_swigregister
+variable_string_t_swigregister(variable_string_t)
+
+class nesc_app_t(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, nesc_app_t, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, nesc_app_t, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["numVariables"] = _TOSSIM.nesc_app_t_numVariables_set
+    __swig_getmethods__["numVariables"] = _TOSSIM.nesc_app_t_numVariables_get
+    if _newclass:numVariables = _swig_property(_TOSSIM.nesc_app_t_numVariables_get, _TOSSIM.nesc_app_t_numVariables_set)
+    __swig_setmethods__["variableNames"] = _TOSSIM.nesc_app_t_variableNames_set
+    __swig_getmethods__["variableNames"] = _TOSSIM.nesc_app_t_variableNames_get
+    if _newclass:variableNames = _swig_property(_TOSSIM.nesc_app_t_variableNames_get, _TOSSIM.nesc_app_t_variableNames_set)
+    __swig_setmethods__["variableTypes"] = _TOSSIM.nesc_app_t_variableTypes_set
+    __swig_getmethods__["variableTypes"] = _TOSSIM.nesc_app_t_variableTypes_get
+    if _newclass:variableTypes = _swig_property(_TOSSIM.nesc_app_t_variableTypes_get, _TOSSIM.nesc_app_t_variableTypes_set)
+    __swig_setmethods__["variableArray"] = _TOSSIM.nesc_app_t_variableArray_set
+    __swig_getmethods__["variableArray"] = _TOSSIM.nesc_app_t_variableArray_get
+    if _newclass:variableArray = _swig_property(_TOSSIM.nesc_app_t_variableArray_get, _TOSSIM.nesc_app_t_variableArray_set)
+    def __init__(self, *args): 
+        this = _TOSSIM.new_nesc_app_t(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _TOSSIM.delete_nesc_app_t
+    __del__ = lambda self : None;
+nesc_app_t_swigregister = _TOSSIM.nesc_app_t_swigregister
+nesc_app_t_swigregister(nesc_app_t)
+
+class Variable(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Variable, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Variable, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _TOSSIM.new_Variable(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _TOSSIM.delete_Variable
+    __del__ = lambda self : None;
+    def getData(*args): return _TOSSIM.Variable_getData(*args)
+Variable_swigregister = _TOSSIM.Variable_swigregister
+Variable_swigregister(Variable)
+
+class Mote(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Mote, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Mote, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _TOSSIM.new_Mote(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _TOSSIM.delete_Mote
+    __del__ = lambda self : None;
+    def id(*args): return _TOSSIM.Mote_id(*args)
+    def euid(*args): return _TOSSIM.Mote_euid(*args)
+    def setEuid(*args): return _TOSSIM.Mote_setEuid(*args)
+    def bootTime(*args): return _TOSSIM.Mote_bootTime(*args)
+    def bootAtTime(*args): return _TOSSIM.Mote_bootAtTime(*args)
+    def isOn(*args): return _TOSSIM.Mote_isOn(*args)
+    def turnOff(*args): return _TOSSIM.Mote_turnOff(*args)
+    def turnOn(*args): return _TOSSIM.Mote_turnOn(*args)
+    def getVariable(*args): return _TOSSIM.Mote_getVariable(*args)
+    def addNoiseTraceReading(*args): return _TOSSIM.Mote_addNoiseTraceReading(*args)
+    def createNoiseModel(*args): return _TOSSIM.Mote_createNoiseModel(*args)
+    def generateNoise(*args): return _TOSSIM.Mote_generateNoise(*args)
+Mote_swigregister = _TOSSIM.Mote_swigregister
+Mote_swigregister(Mote)
+
+class Tossim(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Tossim, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Tossim, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _TOSSIM.new_Tossim(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _TOSSIM.delete_Tossim
+    __del__ = lambda self : None;
+    def init(*args): return _TOSSIM.Tossim_init(*args)
+    def time(*args): return _TOSSIM.Tossim_time(*args)
+    def ticksPerSecond(*args): return _TOSSIM.Tossim_ticksPerSecond(*args)
+    def setTime(*args): return _TOSSIM.Tossim_setTime(*args)
+    def timeStr(*args): return _TOSSIM.Tossim_timeStr(*args)
+    def currentNode(*args): return _TOSSIM.Tossim_currentNode(*args)
+    def getNode(*args): return _TOSSIM.Tossim_getNode(*args)
+    def setCurrentNode(*args): return _TOSSIM.Tossim_setCurrentNode(*args)
+    def addChannel(*args): return _TOSSIM.Tossim_addChannel(*args)
+    def removeChannel(*args): return _TOSSIM.Tossim_removeChannel(*args)
+    def randomSeed(*args): return _TOSSIM.Tossim_randomSeed(*args)
+    def runNextEvent(*args): return _TOSSIM.Tossim_runNextEvent(*args)
+    def mac(*args): return _TOSSIM.Tossim_mac(*args)
+    def radio(*args): return _TOSSIM.Tossim_radio(*args)
+    def newPacket(*args): return _TOSSIM.Tossim_newPacket(*args)
+Tossim_swigregister = _TOSSIM.Tossim_swigregister
+Tossim_swigregister(Tossim)
+
+
+
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink# ls
+BlinkAppC.nc  Makefile	  TOSSIM.py	    app.xml
+BlinkC.nc     README.txt  _TOSSIMmodule.so  simbuild
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink# ls
+BlinkAppC.nc  Makefile	  TOSSIM.py	    app.xml
+BlinkC.nc     README.txt  _TOSSIMmodule.so  simbuild
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink# cd simbuild
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/simbuild# ls
+micaz
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/simbuild# cd micaz
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/simbuild/micaz# ls
+app.c  c-support.o  pytossim.o	sim.o  tossim.o
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/simbuild/micaz# cd ..
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/simbuild# cd ..
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink# ls
+BlinkAppC.nc  Makefile	  TOSSIM.py	    app.xml
+BlinkC.nc     README.txt  _TOSSIMmodule.so  simbuild
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink# mkdir GitHubFolder
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink# ls
+BlinkAppC.nc  GitHubFolder  README.txt	_TOSSIMmodule.so  simbuild
+BlinkC.nc     Makefile	    TOSSIM.py	app.xml
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink# cd GitHubFolder
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder# git pullhttps://github.com/UCMAndesLab/CSE160-Project-Skeleton-Code.git^C
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder# git pull https://github.com/UCMAndesLab/CSE160-Project-Skeleton-Code.git
+warning: no common commits
+remote: Counting objects: 202, done.
+remote: Total 202 (delta 0), reused 0 (delta 0), pack-reused 202
+Receiving objects: 100% (202/202), 39.93 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (94/94), done.
+From https://github.com/UCMAndesLab/CSE160-Project-Skeleton-Code
+ * branch            HEAD       -> FETCH_HEAD
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'root@c1f4d7f7d7b4.(none)')
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder# git pull https://github.com/UCMAndesLab/CSE160-Project-Skeleton-Code.git
+From https://github.com/UCMAndesLab/CSE160-Project-Skeleton-Code
+ * branch            HEAD       -> FETCH_HEAD
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'root@c1f4d7f7d7b4.(none)')
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder# git clone https://github.com/UCMAndesLab/CSE160-Project-Skeleton-Code.git
+Cloning into 'CSE160-Project-Skeleton-Code'...
+remote: Counting objects: 202, done.
+remote: Total 202 (delta 0), reused 0 (delta 0), pack-reused 202
+Receiving objects: 100% (202/202), 39.93 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (94/94), done.
+Checking connectivity... done.
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder# ls
+CSE160-Project-Skeleton-Code
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder# cd CSE160-Project-Skeleton-Code
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# ls
+CommandMsg.py  Node.nc	 README.md   dataStructures  lib    packet.py	 topo
+Makefile       NodeC.nc  TestSim.py  includes	     noise  pingTest.py
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# Python TestSim.py
+bash: Python: command not found
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# python TestSim.py
+Traceback (most recent call last):
+  File "TestSim.py", line 7, in <module>
+    from TOSSIM import *
+ImportError: No module named TOSSIM
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# ls
+CommandMsg.py  Node.nc	 README.md   dataStructures  lib    packet.py	 topo
+Makefile       NodeC.nc  TestSim.py  includes	     noise  pingTest.py
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# python TestSim.py
+Traceback (most recent call last):
+  File "TestSim.py", line 7, in <module>
+    from TOSSIM import *
+ImportError: No module named TOSSIM
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# make micaz sim
+[INFO] placing object files in simbuild/micaz
+[INFO] writing XML schema to app.xml
+[INFO] compiling NodeC to object file sim.o
+nescc -c -shared -fPIC -o simbuild/micaz/sim.o -g -O0 -gcc=gcc -Wnesc-all -fnesc-include=tos -fnesc-scheduler=TinySchedulerC,TinySchedulerC.TaskBasic,TaskBasic,TaskBasic,runTask,postTask -fnesc-cfile=simbuild/micaz/app.c -fnesc-separator=__ -DTOSSIM -fnesc-nido-tosnodes=1000 -fnesc-simulate -fnesc-nido-motenumber=sim_node\(\) -fnesc-gcc=gcc -I/opt/tinyos-main/tos/lib/tossim -I/opt/tinyos-main/tos/platforms/micaz/sim -I/opt/tinyos-main/tos/platforms/micaz -I/opt/tinyos-main/tos/platforms/mica/sim -I/opt/tinyos-main/tos/platforms/mica -I/opt/tinyos-main/tos/platforms/micaz/chips/cc2420/sim -I/opt/tinyos-main/tos/platforms/micaz/chips/cc2420 -I/opt/tinyos-main/tos/chips/cc2420/sim -I/opt/tinyos-main/tos/chips/cc2420 -I/opt/tinyos-main/tos/chips/cc2420/alarm -I/opt/tinyos-main/tos/chips/cc2420/control/sim -I/opt/tinyos-main/tos/chips/cc2420/control -I/opt/tinyos-main/tos/chips/cc2420/csma/sim -I/opt/tinyos-main/tos/chips/cc2420/csma -I/opt/tinyos-main/tos/chips/cc2420/interfaces/sim -I/opt/tinyos-main/tos/chips/cc2420/interfaces -I/opt/tinyos-main/tos/chips/cc2420/link/sim -I/opt/tinyos-main/tos/chips/cc2420/link -I/opt/tinyos-main/tos/chips/cc2420/lowpan/sim -I/opt/tinyos-main/tos/chips/cc2420/lowpan -I/opt/tinyos-main/tos/chips/cc2420/lpl -I/opt/tinyos-main/tos/chips/cc2420/packet/sim -I/opt/tinyos-main/tos/chips/cc2420/packet -I/opt/tinyos-main/tos/chips/cc2420/receive/sim -I/opt/tinyos-main/tos/chips/cc2420/receive -I/opt/tinyos-main/tos/chips/cc2420/spi -I/opt/tinyos-main/tos/chips/cc2420/transmit -I/opt/tinyos-main/tos/chips/cc2420/unique/sim -I/opt/tinyos-main/tos/chips/cc2420/unique -I/opt/tinyos-main/tos/platforms/mica2/chips/at45db -I/opt/tinyos-main/tos/platforms/mica/chips/at45db -I/opt/tinyos-main/tos/chips/at45db -I/opt/tinyos-main/tos/chips/atm128/sim -I/opt/tinyos-main/tos/chips/atm128 -I/opt/tinyos-main/tos/chips/atm128/adc -I/opt/tinyos-main/tos/chips/atm128/pins/sim -I/opt/tinyos-main/tos/chips/atm128/pins -I/opt/tinyos-main/tos/chips/atm128/spi/sim -I/opt/tinyos-main/tos/chips/atm128/spi -I/opt/tinyos-main/tos/chips/atm128/timer/sim -I/opt/tinyos-main/tos/chips/atm128/timer -I/opt/tinyos-main/tos/lib/power -I/opt/tinyos-main/tos/lib/timer -I/opt/tinyos-main/tos/lib/serial -fnesc-no-debug -DPLATFORM_MICAZ -Wall -Wshadow -finline-limit=100000 -I/opt/tinyos-main/tos/system -I/opt/tinyos-main/tos/types -I/opt/tinyos-main/tos/interfaces -DTOSH_DATA_LENGTH=28 -IdataStructures -IdataStructures/interfaces/ -IdataStructures/modules -Ilib/interfaces -Ilib/modules -DIDENT_APPNAME=\"NodeC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"c1f4d7f7d7b4\" -DIDENT_USERHASH=0xd9f18d68L -DIDENT_TIMESTAMP=0x59b99fa2L -DIDENT_UIDHASH=0xeac9907cL -Wno-nesc-data-race NodeC.nc   -fnesc-dump=components -fnesc-dump=variables -fnesc-dump=constants -fnesc-dump=typedefs -fnesc-dump=interfacedefs -fnesc-dump=tags -fnesc-dumpfile=app.xml
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c: In function 'makeNoiseModel':
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c:440:78: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+     dbg("Insert", "Setting history %i to be %i\n", (int)i, (int)noiseData[node_id].key[i]);
+                                                                              ^
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c: In function 'sim_noise_gen':
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c:307:7: warning: variable 'noiseIndex' set but not used [-Wunused-but-set-variable]
+   int noiseIndex = 0;
+       ^
+[INFO] compiling Python support and C libraries into pytossim.o, tossim.o, and c-support.o
+g++ -c  -shared -fPIC -o simbuild/micaz/pytossim.o -g -O0 -DTOSH_DATA_LENGTH=28 -IdataStructures -IdataStructures/interfaces/ -IdataStructures/modules -Ilib/interfaces -Ilib/modules -DIDENT_APPNAME=\"NodeC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"c1f4d7f7d7b4\" -DIDENT_USERHASH=0xd9f18d68L -DIDENT_TIMESTAMP=0x59b99fa2L -DIDENT_UIDHASH=0xeac9907cL  /opt/tinyos-main/tos/lib/tossim/tossim_wrap.cxx -I/usr/include/python2.7 -I/opt/tinyos-main/tos/lib/tossim -DHAVE_CONFIG_H
+g++ -c  -shared -fPIC -o simbuild/micaz/tossim.o -g -O0 -DTOSH_DATA_LENGTH=28 -IdataStructures -IdataStructures/interfaces/ -IdataStructures/modules -Ilib/interfaces -Ilib/modules -DIDENT_APPNAME=\"NodeC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"c1f4d7f7d7b4\" -DIDENT_USERHASH=0xd9f18d68L -DIDENT_TIMESTAMP=0x59b99fa2L -DIDENT_UIDHASH=0xeac9907cL  /opt/tinyos-main/tos/lib/tossim/tossim.c -I/usr/include/python2.7 -I/opt/tinyos-main/tos/lib/tossim
+g++ -c  -shared -fPIC -o simbuild/micaz/c-support.o -g -O0 -DTOSH_DATA_LENGTH=28 -IdataStructures -IdataStructures/interfaces/ -IdataStructures/modules -Ilib/interfaces -Ilib/modules -DIDENT_APPNAME=\"NodeC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"c1f4d7f7d7b4\" -DIDENT_USERHASH=0xd9f18d68L -DIDENT_TIMESTAMP=0x59b99fa2L -DIDENT_UIDHASH=0xeac9907cL  /opt/tinyos-main/tos/lib/tossim/hashtable.c -I/usr/include/python2.7 -I/opt/tinyos-main/tos/lib/tossim
+[INFO] linking into shared object ./_TOSSIMmodule.so
+g++ -shared -fPIC  simbuild/micaz/pytossim.o simbuild/micaz/sim.o simbuild/micaz/tossim.o simbuild/micaz/c-support.o  -lstdc++ -o _TOSSIMmodule.so
+[INFO] copying Python script interface TOSSIM.py from lib/tossim to local directory
+ 
+[INFO] *** Successfully built micaz TOSSIM library.
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# python TestSim.py
+Creating Topo!
+Number of Motes 19
+  1   2   -54.0
+  2   3   -54.0
+  3   4   -54.0
+  4   5   -54.0
+  5   6   -54.0
+  6   7   -54.0
+  7   8   -54.0
+  8   9   -54.0
+  9   10   -54.0
+  10   11   -54.0
+  11   12   -54.0
+  12   13   -54.0
+  13   14   -54.0
+  14   15   -54.0
+  15   16   -54.0
+  16   17   -54.0
+  17   18   -54.0
+  18   19   -54.0
+  2   1   -54.0
+  3   2   -54.0
+  4   3   -54.0
+  5   4   -54.0
+  6   5   -54.0
+  7   6   -54.0
+  8   7   -54.0
+  9   8   -54.0
+  10   9   -54.0
+  11   10   -54.0
+  12   11   -54.0
+  13   12   -54.0
+  14   13   -54.0
+  15   14   -54.0
+  16   15   -54.0
+  17   16   -54.0
+  18   17   -54.0
+  19   18   -54.0
+Creating noise model for  1
+Creating noise model for  2
+Creating noise model for  3
+Creating noise model for  4
+Creating noise model for  5
+Creating noise model for  6
+Creating noise model for  7
+Creating noise model for  8
+Creating noise model for  9
+Creating noise model for  10
+Creating noise model for  11
+Creating noise model for  12
+Creating noise model for  13
+Creating noise model for  14
+Creating noise model for  15
+Creating noise model for  16
+Creating noise model for  17
+Creating noise model for  18
+Creating noise model for  19
+Adding Channel command
+Adding Channel general
+0:0:0.000000133 DEBUG (1): Booted
+0:0:0.000000143 DEBUG (1): Radio On
+0:0:0.000000266 DEBUG (2): Booted
+0:0:0.000000276 DEBUG (2): Radio On
+0:0:0.000000399 DEBUG (3): Booted
+0:0:0.000000409 DEBUG (3): Radio On
+0:0:0.000000533 DEBUG (4): Booted
+0:0:0.000000543 DEBUG (4): Radio On
+0:0:0.000000666 DEBUG (5): Booted
+0:0:0.000000676 DEBUG (5): Radio On
+0:0:0.000000799 DEBUG (6): Booted
+0:0:0.000000809 DEBUG (6): Radio On
+0:0:0.000000933 DEBUG (7): Booted
+0:0:0.000000943 DEBUG (7): Radio On
+0:0:0.000001066 DEBUG (8): Booted
+0:0:0.000001076 DEBUG (8): Radio On
+0:0:0.000001199 DEBUG (9): Booted
+0:0:0.000001209 DEBUG (9): Radio On
+0:0:0.000001333 DEBUG (10): Booted
+0:0:0.000001343 DEBUG (10): Radio On
+0:0:0.000001466 DEBUG (11): Booted
+0:0:0.000001476 DEBUG (11): Radio On
+0:0:0.000001599 DEBUG (12): Booted
+0:0:0.000001609 DEBUG (12): Radio On
+0:0:0.000001732 DEBUG (13): Booted
+0:0:0.000001742 DEBUG (13): Radio On
+0:0:0.000001866 DEBUG (14): Booted
+0:0:0.000001876 DEBUG (14): Radio On
+0:0:0.000001999 DEBUG (15): Booted
+0:0:0.000002009 DEBUG (15): Radio On
+0:0:0.000002132 DEBUG (16): Booted
+0:0:0.000002142 DEBUG (16): Radio On
+0:0:0.000002266 DEBUG (17): Booted
+0:0:0.000002276 DEBUG (17): Radio On
+0:0:0.000002399 DEBUG (18): Booted
+0:0:0.000002409 DEBUG (18): Radio On
+0:0:0.000002532 DEBUG (19): Booted
+0:0:0.000002542 DEBUG (19): Radio On
+0:1:57.945314110 DEBUG (1): A Command has been Issued.
+0:1:57.945314110 DEBUG (1): Command Type: Ping
+0:1:57.945314110 DEBUG (1): PING EVENT 
+0:1:57.967712504 DEBUG (2): Packet Received
+0:1:57.967712504 DEBUG (2): Package Payload: Hello, World
+0:2:56.992189243 DEBUG (1): A Command has been Issued.
+0:2:56.992189243 DEBUG (1): Command Type: Ping
+0:2:56.992189243 DEBUG (1): PING EVENT 
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# ls
+CommandMsg.py	Node.nc    TOSSIM.py   _TOSSIMmodule.so  includes  packet.py	topo
+CommandMsg.pyc	NodeC.nc   TOSSIM.pyc  app.xml		 lib	   pingTest.py
+Makefile	README.md  TestSim.py  dataStructures	 noise	   simbuild
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# python Node.nc
+  File "Node.nc", line 1
+    /*
+    ^
+SyntaxError: invalid syntax
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# ls
+CommandMsg.py	Node.nc    TOSSIM.py   _TOSSIMmodule.so  includes  packet.py	topo
+CommandMsg.pyc	NodeC.nc   TOSSIM.pyc  app.xml		 lib	   pingTest.py
+Makefile	README.md  TestSim.py  dataStructures	 noise	   simbuild
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# cd ..
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder# ls
+CSE160-Project-Skeleton-Code
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder# cd CSE160-Project-Skeleton-Code
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# ls
+CommandMsg.py	Node.nc    TOSSIM.py   _TOSSIMmodule.so  includes  packet.py	topo
+CommandMsg.pyc	NodeC.nc   TOSSIM.pyc  app.xml		 lib	   pingTest.py
+Makefile	README.md  TestSim.py  dataStructures	 noise	   simbuild
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# python TestSim.py
+Creating Topo!
+Number of Motes 19
+  1   2   -54.0
+  2   3   -54.0
+  3   4   -54.0
+  4   5   -54.0
+  5   6   -54.0
+  6   7   -54.0
+  7   8   -54.0
+  8   9   -54.0
+  9   10   -54.0
+  10   11   -54.0
+  11   12   -54.0
+  12   13   -54.0
+  13   14   -54.0
+  14   15   -54.0
+  15   16   -54.0
+  16   17   -54.0
+  17   18   -54.0
+  18   19   -54.0
+  2   1   -54.0
+  3   2   -54.0
+  4   3   -54.0
+  5   4   -54.0
+  6   5   -54.0
+  7   6   -54.0
+  8   7   -54.0
+  9   8   -54.0
+  10   9   -54.0
+  11   10   -54.0
+  12   11   -54.0
+  13   12   -54.0
+  14   13   -54.0
+  15   14   -54.0
+  16   15   -54.0
+  17   16   -54.0
+  18   17   -54.0
+  19   18   -54.0
+Creating noise model for  1
+Creating noise model for  2
+Creating noise model for  3
+Creating noise model for  4
+Creating noise model for  5
+Creating noise model for  6
+Creating noise model for  7
+Creating noise model for  8
+Creating noise model for  9
+Creating noise model for  10
+Creating noise model for  11
+Creating noise model for  12
+Creating noise model for  13
+Creating noise model for  14
+Creating noise model for  15
+Creating noise model for  16
+Creating noise model for  17
+Creating noise model for  18
+Creating noise model for  19
+Adding Channel command
+Adding Channel general
+0:0:0.000000133 DEBUG (1): Booted
+0:0:0.000000143 DEBUG (1): Radio On
+0:0:0.000000266 DEBUG (2): Booted
+0:0:0.000000276 DEBUG (2): Radio On
+0:0:0.000000399 DEBUG (3): Booted
+0:0:0.000000409 DEBUG (3): Radio On
+0:0:0.000000533 DEBUG (4): Booted
+0:0:0.000000543 DEBUG (4): Radio On
+0:0:0.000000666 DEBUG (5): Booted
+0:0:0.000000676 DEBUG (5): Radio On
+0:0:0.000000799 DEBUG (6): Booted
+0:0:0.000000809 DEBUG (6): Radio On
+0:0:0.000000933 DEBUG (7): Booted
+0:0:0.000000943 DEBUG (7): Radio On
+0:0:0.000001066 DEBUG (8): Booted
+0:0:0.000001076 DEBUG (8): Radio On
+0:0:0.000001199 DEBUG (9): Booted
+0:0:0.000001209 DEBUG (9): Radio On
+0:0:0.000001333 DEBUG (10): Booted
+0:0:0.000001343 DEBUG (10): Radio On
+0:0:0.000001466 DEBUG (11): Booted
+0:0:0.000001476 DEBUG (11): Radio On
+0:0:0.000001599 DEBUG (12): Booted
+0:0:0.000001609 DEBUG (12): Radio On
+0:0:0.000001732 DEBUG (13): Booted
+0:0:0.000001742 DEBUG (13): Radio On
+0:0:0.000001866 DEBUG (14): Booted
+0:0:0.000001876 DEBUG (14): Radio On
+0:0:0.000001999 DEBUG (15): Booted
+0:0:0.000002009 DEBUG (15): Radio On
+0:0:0.000002132 DEBUG (16): Booted
+0:0:0.000002142 DEBUG (16): Radio On
+0:0:0.000002266 DEBUG (17): Booted
+0:0:0.000002276 DEBUG (17): Radio On
+0:0:0.000002399 DEBUG (18): Booted
+0:0:0.000002409 DEBUG (18): Radio On
+0:0:0.000002532 DEBUG (19): Booted
+0:0:0.000002542 DEBUG (19): Radio On
+0:1:57.945314110 DEBUG (1): A Command has been Issued.
+0:1:57.945314110 DEBUG (1): Command Type: Ping
+0:1:57.945314110 DEBUG (1): PING EVENT 
+0:1:57.965637321 DEBUG (2): Packet Received
+0:1:57.965637321 DEBUG (2): Package Payload: Hello, World
+0:2:56.992189243 DEBUG (1): A Command has been Issued.
+0:2:56.992189243 DEBUG (1): Command Type: Ping
+0:2:56.992189243 DEBUG (1): PING EVENT 
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# python TestSim.py
+Creating Topo!
+Number of Motes 19
+  1   2   -54.0
+  2   3   -54.0
+  3   4   -54.0
+  4   5   -54.0
+  5   6   -54.0
+  6   7   -54.0
+  7   8   -54.0
+  8   9   -54.0
+  9   10   -54.0
+  10   11   -54.0
+  11   12   -54.0
+  12   13   -54.0
+  13   14   -54.0
+  14   15   -54.0
+  15   16   -54.0
+  16   17   -54.0
+  17   18   -54.0
+  18   19   -54.0
+  2   1   -54.0
+  3   2   -54.0
+  4   3   -54.0
+  5   4   -54.0
+  6   5   -54.0
+  7   6   -54.0
+  8   7   -54.0
+  9   8   -54.0
+  10   9   -54.0
+  11   10   -54.0
+  12   11   -54.0
+  13   12   -54.0
+  14   13   -54.0
+  15   14   -54.0
+  16   15   -54.0
+  17   16   -54.0
+  18   17   -54.0
+  19   18   -54.0
+Creating noise model for  1
+Creating noise model for  2
+Creating noise model for  3
+Creating noise model for  4
+Creating noise model for  5
+Creating noise model for  6
+Creating noise model for  7
+Creating noise model for  8
+Creating noise model for  9
+Creating noise model for  10
+Creating noise model for  11
+Creating noise model for  12
+Creating noise model for  13
+Creating noise model for  14
+Creating noise model for  15
+Creating noise model for  16
+Creating noise model for  17
+Creating noise model for  18
+Creating noise model for  19
+Adding Channel command
+Adding Channel general
+0:0:0.000000133 DEBUG (1): Booted
+0:0:0.000000143 DEBUG (1): Radio On
+0:0:0.000000266 DEBUG (2): Booted
+0:0:0.000000276 DEBUG (2): Radio On
+0:0:0.000000399 DEBUG (3): Booted
+0:0:0.000000409 DEBUG (3): Radio On
+0:0:0.000000533 DEBUG (4): Booted
+0:0:0.000000543 DEBUG (4): Radio On
+0:0:0.000000666 DEBUG (5): Booted
+0:0:0.000000676 DEBUG (5): Radio On
+0:0:0.000000799 DEBUG (6): Booted
+0:0:0.000000809 DEBUG (6): Radio On
+0:0:0.000000933 DEBUG (7): Booted
+0:0:0.000000943 DEBUG (7): Radio On
+0:0:0.000001066 DEBUG (8): Booted
+0:0:0.000001076 DEBUG (8): Radio On
+0:0:0.000001199 DEBUG (9): Booted
+0:0:0.000001209 DEBUG (9): Radio On
+0:0:0.000001333 DEBUG (10): Booted
+0:0:0.000001343 DEBUG (10): Radio On
+0:0:0.000001466 DEBUG (11): Booted
+0:0:0.000001476 DEBUG (11): Radio On
+0:0:0.000001599 DEBUG (12): Booted
+0:0:0.000001609 DEBUG (12): Radio On
+0:0:0.000001732 DEBUG (13): Booted
+0:0:0.000001742 DEBUG (13): Radio On
+0:0:0.000001866 DEBUG (14): Booted
+0:0:0.000001876 DEBUG (14): Radio On
+0:0:0.000001999 DEBUG (15): Booted
+0:0:0.000002009 DEBUG (15): Radio On
+0:0:0.000002132 DEBUG (16): Booted
+0:0:0.000002142 DEBUG (16): Radio On
+0:0:0.000002266 DEBUG (17): Booted
+0:0:0.000002276 DEBUG (17): Radio On
+0:0:0.000002399 DEBUG (18): Booted
+0:0:0.000002409 DEBUG (18): Radio On
+0:0:0.000002532 DEBUG (19): Booted
+0:0:0.000002542 DEBUG (19): Radio On
+0:1:57.945314110 DEBUG (1): A Command has been Issued.
+0:1:57.945314110 DEBUG (1): Command Type: Ping
+0:1:57.945314110 DEBUG (1): PING EVENT 
+0:1:57.965561028 DEBUG (2): Packet Received
+0:1:57.965561028 DEBUG (2): Package Payload: Hello, World
+0:2:56.992189243 DEBUG (1): A Command has been Issued.
+0:2:56.992189243 DEBUG (1): Command Type: Ping
+0:2:56.992189243 DEBUG (1): PING EVENT 
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# ls
+CommandMsg.py	Node.nc    TOSSIM.py   _TOSSIMmodule.so  includes  packet.py	topo
+CommandMsg.pyc	NodeC.nc   TOSSIM.pyc  app.xml		 lib	   pingTest.py
+Makefile	README.md  TestSim.py  dataStructures	 noise	   simbuild
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# cat TestSim.py
+#ANDES Lab - University of California, Merced
+#Author: UCM ANDES Lab
+#$Author: abeltran2 $
+#$LastChangedDate: 2014-08-31 16:06:26 -0700 (Sun, 31 Aug 2014) $
+#! /usr/bin/python
+import sys
+from TOSSIM import *
+from CommandMsg import *
+
+class TestSim:
+    # COMMAND TYPES
+    CMD_PING = 0
+    CMD_NEIGHBOR_DUMP = 1
+    CMD_ROUTE_DUMP=3
+
+    # CHANNELS - see includes/channels.h
+    COMMAND_CHANNEL="command";
+    GENERAL_CHANNEL="general";
+
+    # Project 1
+    NEIGHBOR_CHANNEL="neighbor";
+    FLOODING_CHANNEL="flooding";
+
+    # Project 2
+    ROUTING_CHANNEL="routing";
+
+    # Project 3
+    TRANSPORT_CHANNEL="transport";
+
+    # Personal Debuggin Channels for some of the additional models implemented.
+    HASHMAP_CHANNEL="hashmap";
+
+    # Initialize Vars
+    numMote=0
+
+    def __init__(self):
+        self.t = Tossim([])
+        self.r = self.t.radio()
+
+        #Create a Command Packet
+        self.msg = CommandMsg()
+        self.pkt = self.t.newPacket()
+        self.pkt.setType(self.msg.get_amType())
+
+    # Load a topo file and use it.
+    def loadTopo(self, topoFile):
+        print 'Creating Topo!'
+        # Read topology file.
+        topoFile = 'topo/'+topoFile
+        f = open(topoFile, "r")
+        self.numMote = int(f.readline());
+        print 'Number of Motes', self.numMote
+        for line in f:
+            s = line.split()
+            if s:
+                print " ", s[0], " ", s[1], " ", s[2];
+                self.r.add(int(s[0]), int(s[1]), float(s[2]))
+
+    # Load a noise file and apply it.
+    def loadNoise(self, noiseFile):
+        if self.numMote == 0:
+            print "Create a topo first"
+            return;
+
+        # Get and Create a Noise Model
+        noiseFile = 'noise/'+noiseFile;
+        noise = open(noiseFile, "r")
+        for line in noise:
+            str1 = line.strip()
+            if str1:
+                val = int(str1)
+            for i in range(1, self.numMote+1):
+                self.t.getNode(i).addNoiseTraceReading(val)
+
+        for i in range(1, self.numMote+1):
+            print "Creating noise model for ",i;
+            self.t.getNode(i).createNoiseModel()
+
+    def bootNode(self, nodeID):
+        if self.numMote == 0:
+            print "Create a topo first"
+            return;
+        self.t.getNode(nodeID).bootAtTime(1333*nodeID);
+
+    def bootAll(self):
+        i=0;
+        for i in range(1, self.numMote+1):
+            self.bootNode(i);
+
+    def moteOff(self, nodeID):
+        self.t.getNode(nodeID).turnOff();
+
+    def moteOn(self, nodeID):
+        self.t.getNode(nodeID).turnOn();
+
+    def run(self, ticks):
+        for i in range(ticks):
+            self.t.runNextEvent()
+
+    # Rough run time. tickPerSecond does not work.
+    def runTime(self, amount):
+        self.run(amount*1000)
+
+    # Generic Command
+    def sendCMD(self, ID, dest, payloadStr):
+        self.msg.set_dest(dest);
+        self.msg.set_id(ID);
+        self.msg.setString_payload(payloadStr)
+
+        self.pkt.setData(self.msg.data)
+        self.pkt.setDestination(dest)
+        self.pkt.deliver(dest, self.t.time()+5)
+
+    def ping(self, source, dest, msg):
+        self.sendCMD(self.CMD_PING, source, "{0}{1}".format(chr(dest),msg));
+
+    def neighborDMP(self, destination):
+        self.sendCMD(self.CMD_NEIGHBOR_DUMP, destination, "neighbor command");
+
+    def routeDMP(self, destination):
+        self.sendCMD(self.CMD_ROUTE_DUMP, destination, "routing command");
+
+    def addChannel(self, channelName, out=sys.stdout):
+        print 'Adding Channel', channelName;
+        self.t.addChannel(channelName, out);
+
+def main():
+    s = TestSim();
+    s.runTime(10);
+    s.loadTopo("long_line.topo");
+    s.loadNoise("no_noise.txt");
+    s.bootAll();
+    s.addChannel(s.COMMAND_CHANNEL);
+    s.addChannel(s.GENERAL_CHANNEL);
+
+    s.runTime(20);
+    s.ping(1, 2, "Hello, World");
+    s.runTime(10);
+    s.ping(1, 3, "Hi!");
+    s.runTime(20);
+
+if __name__ == '__main__':
+    main()
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# nano TestSim.py
+bash: nano: command not found
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# python TestSim.py
+Creating Topo!
+Number of Motes 19
+  1   2   -54.0
+  2   3   -54.0
+  3   4   -54.0
+  4   5   -54.0
+  5   6   -54.0
+  6   7   -54.0
+  7   8   -54.0
+  8   9   -54.0
+  9   10   -54.0
+  10   11   -54.0
+  11   12   -54.0
+  12   13   -54.0
+  13   14   -54.0
+  14   15   -54.0
+  15   16   -54.0
+  16   17   -54.0
+  17   18   -54.0
+  18   19   -54.0
+  2   1   -54.0
+  3   2   -54.0
+  4   3   -54.0
+  5   4   -54.0
+  6   5   -54.0
+  7   6   -54.0
+  8   7   -54.0
+  9   8   -54.0
+  10   9   -54.0
+  11   10   -54.0
+  12   11   -54.0
+  13   12   -54.0
+  14   13   -54.0
+  15   14   -54.0
+  16   15   -54.0
+  17   16   -54.0
+  18   17   -54.0
+  19   18   -54.0
+Creating noise model for  1
+Creating noise model for  2
+Creating noise model for  3
+Creating noise model for  4
+Creating noise model for  5
+Creating noise model for  6
+Creating noise model for  7
+Creating noise model for  8
+Creating noise model for  9
+Creating noise model for  10
+Creating noise model for  11
+Creating noise model for  12
+Creating noise model for  13
+Creating noise model for  14
+Creating noise model for  15
+Creating noise model for  16
+Creating noise model for  17
+Creating noise model for  18
+Creating noise model for  19
+Adding Channel command
+Adding Channel general
+0:0:0.000000133 DEBUG (1): Booted
+0:0:0.000000143 DEBUG (1): Radio On
+0:0:0.000000266 DEBUG (2): Booted
+0:0:0.000000276 DEBUG (2): Radio On
+0:0:0.000000399 DEBUG (3): Booted
+0:0:0.000000409 DEBUG (3): Radio On
+0:0:0.000000533 DEBUG (4): Booted
+0:0:0.000000543 DEBUG (4): Radio On
+0:0:0.000000666 DEBUG (5): Booted
+0:0:0.000000676 DEBUG (5): Radio On
+0:0:0.000000799 DEBUG (6): Booted
+0:0:0.000000809 DEBUG (6): Radio On
+0:0:0.000000933 DEBUG (7): Booted
+0:0:0.000000943 DEBUG (7): Radio On
+0:0:0.000001066 DEBUG (8): Booted
+0:0:0.000001076 DEBUG (8): Radio On
+0:0:0.000001199 DEBUG (9): Booted
+0:0:0.000001209 DEBUG (9): Radio On
+0:0:0.000001333 DEBUG (10): Booted
+0:0:0.000001343 DEBUG (10): Radio On
+0:0:0.000001466 DEBUG (11): Booted
+0:0:0.000001476 DEBUG (11): Radio On
+0:0:0.000001599 DEBUG (12): Booted
+0:0:0.000001609 DEBUG (12): Radio On
+0:0:0.000001732 DEBUG (13): Booted
+0:0:0.000001742 DEBUG (13): Radio On
+0:0:0.000001866 DEBUG (14): Booted
+0:0:0.000001876 DEBUG (14): Radio On
+0:0:0.000001999 DEBUG (15): Booted
+0:0:0.000002009 DEBUG (15): Radio On
+0:0:0.000002132 DEBUG (16): Booted
+0:0:0.000002142 DEBUG (16): Radio On
+0:0:0.000002266 DEBUG (17): Booted
+0:0:0.000002276 DEBUG (17): Radio On
+0:0:0.000002399 DEBUG (18): Booted
+0:0:0.000002409 DEBUG (18): Radio On
+0:0:0.000002532 DEBUG (19): Booted
+0:0:0.000002542 DEBUG (19): Radio On
+0:1:57.945314110 DEBUG (1): A Command has been Issued.
+0:1:57.945314110 DEBUG (1): Command Type: Ping
+0:1:57.945314110 DEBUG (1): PING EVENT 
+0:1:57.967117415 DEBUG (2): Packet Received
+0:1:57.967117415 DEBUG (2): Package Payload: Hello, World
+0:2:56.992189243 DEBUG (1): A Command has been Issued.
+0:2:56.992189243 DEBUG (1): Command Type: Ping
+0:2:56.992189243 DEBUG (1): PING EVENT 
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# cat TestSim.py
+#ANDES Lab - University of California, Merced
+#Author: UCM ANDES Lab
+#$Author: abeltran2 $
+#$LastChangedDate: 2014-08-31 16:06:26 -0700 (Sun, 31 Aug 2014) $
+#! /usr/bin/python
+import sys
+from TOSSIM import *
+from CommandMsg import *
+
+class TestSim:
+    # COMMAND TYPES
+    CMD_PING = 0
+    CMD_NEIGHBOR_DUMP = 1
+    CMD_ROUTE_DUMP=3
+
+    # CHANNELS - see includes/channels.h
+    COMMAND_CHANNEL="command";
+    GENERAL_CHANNEL="general";
+
+    # Project 1
+    NEIGHBOR_CHANNEL="neighbor";
+    FLOODING_CHANNEL="flooding";
+
+    # Project 2
+    ROUTING_CHANNEL="routing";
+
+    # Project 3
+    TRANSPORT_CHANNEL="transport";
+
+    # Personal Debuggin Channels for some of the additional models implemented.
+    HASHMAP_CHANNEL="hashmap";
+
+    # Initialize Vars
+    numMote=0
+
+    def __init__(self):
+        self.t = Tossim([])
+        self.r = self.t.radio()
+
+        #Create a Command Packet
+        self.msg = CommandMsg()
+        self.pkt = self.t.newPacket()
+        self.pkt.setType(self.msg.get_amType())
+
+    # Load a topo file and use it.
+    def loadTopo(self, topoFile):
+        print 'Creating Topo!'
+        # Read topology file.
+        topoFile = 'topo/'+topoFile
+        f = open(topoFile, "r")
+        self.numMote = int(f.readline());
+        print 'Number of Motes', self.numMote
+        for line in f:
+            s = line.split()
+            if s:
+                print " ", s[0], " ", s[1], " ", s[2];
+                self.r.add(int(s[0]), int(s[1]), float(s[2]))
+
+    # Load a noise file and apply it.
+    def loadNoise(self, noiseFile):
+        if self.numMote == 0:
+            print "Create a topo first"
+            return;
+
+        # Get and Create a Noise Model
+        noiseFile = 'noise/'+noiseFile;
+        noise = open(noiseFile, "r")
+        for line in noise:
+            str1 = line.strip()
+            if str1:
+                val = int(str1)
+            for i in range(1, self.numMote+1):
+                self.t.getNode(i).addNoiseTraceReading(val)
+
+        for i in range(1, self.numMote+1):
+            print "Creating noise model for ",i;
+            self.t.getNode(i).createNoiseModel()
+
+    def bootNode(self, nodeID):
+        if self.numMote == 0:
+            print "Create a topo first"
+            return;
+        self.t.getNode(nodeID).bootAtTime(1333*nodeID);
+
+    def bootAll(self):
+        i=0;
+        for i in range(1, self.numMote+1):
+            self.bootNode(i);
+
+    def moteOff(self, nodeID):
+        self.t.getNode(nodeID).turnOff();
+
+    def moteOn(self, nodeID):
+        self.t.getNode(nodeID).turnOn();
+
+    def run(self, ticks):
+        for i in range(ticks):
+            self.t.runNextEvent()
+
+    # Rough run time. tickPerSecond does not work.
+    def runTime(self, amount):
+        self.run(amount*1000)
+
+    # Generic Command
+    def sendCMD(self, ID, dest, payloadStr):
+        self.msg.set_dest(dest);
+        self.msg.set_id(ID);
+        self.msg.setString_payload(payloadStr)
+
+        self.pkt.setData(self.msg.data)
+        self.pkt.setDestination(dest)
+        self.pkt.deliver(dest, self.t.time()+5)
+
+    def ping(self, source, dest, msg):
+        self.sendCMD(self.CMD_PING, source, "{0}{1}".format(chr(dest),msg));
+
+    def neighborDMP(self, destination):
+        self.sendCMD(self.CMD_NEIGHBOR_DUMP, destination, "neighbor command");
+
+    def routeDMP(self, destination):
+        self.sendCMD(self.CMD_ROUTE_DUMP, destination, "routing command");
+
+    def addChannel(self, channelName, out=sys.stdout):
+        print 'Adding Channel', channelName;
+        self.t.addChannel(channelName, out);
+
+def main():
+    s = TestSim();
+    s.runTime(10);
+    s.loadTopo("long_line.topo");
+    s.loadNoise("no_noise.txt");
+    s.bootAll();
+    s.addChannel(s.COMMAND_CHANNEL);
+    s.addChannel(s.GENERAL_CHANNEL);
+
+    s.runTime(20);
+    s.ping(1, 2, "Hello, World");
+    s.runTime(10);
+    s.ping(1, 3, "Hi!");
+    s.runTime(20);
+
+if __name__ == '__main__':
+    main()
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# Vi TestSim.Py
+bash: Vi: command not found
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# Vimm TestSim.Py
+bash: Vimm: command not found
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# Vim TestSim.Py
+bash: Vim: command not found
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# vim TestSim.Py
+bash: vim: command not found
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# idle open TestSim.py
+bash: idle: command not found
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# vim TestSim.py
+bash: vim: command not found
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# vi TestSim.py
+bash: vi: command not found
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# Vi TestSim.py
+bash: Vi: command not found
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# Vim TestSim.py
+bash: Vim: command not found
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# idle open TestSim.py
+bash: idle: command not found
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# idle TestSim.py
+bash: idle: command not found
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# pip install idle
+Downloading/unpacking idle
+^[[A^[[B  Could not find any downloads that satisfy the requirement idle
+Cleaning up...
+No distributions at all found for idle
+Storing debug log for failure in /root/.pip/pip.log
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# nano TestSim.py
+bash: nano: command not found
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# pip3 install nano
+Downloading/unpacking nano
+  Downloading nano-0.9.4-py2.py3-none-any.whl (52kB): 52kB downloaded
+Installing collected packages: nano
+*** Error compiling '/tmp/pip-build-br8oyapj/nano/nano/blog/management/commands/migrate_tagging_to_taggit.py'...
+  File "/tmp/pip-build-br8oyapj/nano/nano/blog/management/commands/migrate_tagging_to_taggit.py", line 10
+    print "Missing tag-library, aborting: %s" % e
+                                            ^
+SyntaxError: Missing parentheses in call to 'print'
+
+Successfully installed nano
+Cleaning up...
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# nano TestSim.py
+bash: nano: command not found
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# pip install nano
+Downloading/unpacking nano
+  Downloading nano-0.9.4-py2.py3-none-any.whl (52kB): 52kB downloaded
+Installing collected packages: nano
+Successfully installed nano
+Cleaning up...
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# nano TestSim.py
+bash: nano: command not found
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# pip3 install idle
+Downloading/unpacking idle
+  Could not find any downloads that satisfy the requirement idle
+Cleaning up...
+No distributions at all found for idle
+Storing debug log for failure in /root/.pip/pip.log
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# ls
+CommandMsg.py	Node.nc    TOSSIM.py   _TOSSIMmodule.so  includes  packet.py	topo
+CommandMsg.pyc	NodeC.nc   TOSSIM.pyc  app.xml		 lib	   pingTest.py
+Makefile	README.md  TestSim.py  dataStructures	 noise	   simbuild
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160-Project-Skeleton-Code# cd ..
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder# cd ..
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink# ls
+BlinkAppC.nc  GitHubFolder  README.txt	_TOSSIMmodule.so  simbuild
+BlinkC.nc     Makefile	    TOSSIM.py	app.xml
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink# mkdir GitHubFolder
+mkdir: cannot create directory 'GitHubFolder': File exists
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink# cd GitHubFolder
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder# git clone git@github.com:JoseH1497/CSE160.git
+Cloning into 'CSE160'...
+^C
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder# ls
+CSE160-Project-Skeleton-Code
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder# git clone git@github.com:JoseH1497/CSE160.git
+Cloning into 'CSE160'...
+ssh: connect to host github.com port 22: Connection refused
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder# git clone https://github.com/JoseH1497/CSE160.git
+Cloning into 'CSE160'...
+remote: Counting objects: 202, done.
+remote: Compressing objects: 100% (104/104), done.
+remote: Total 202 (delta 97), reused 202 (delta 97), pack-reused 0
+Receiving objects: 100% (202/202), 38.36 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (97/97), done.
+Checking connectivity... done.
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder# ls
+CSE160	CSE160-Project-Skeleton-Code
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder# cd CSE160
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160# make micaz sim
+[INFO] placing object files in simbuild/micaz
+[INFO] writing XML schema to app.xml
+[INFO] compiling NodeC to object file sim.o
+nescc -c -shared -fPIC -o simbuild/micaz/sim.o -g -O0 -gcc=gcc -Wnesc-all -fnesc-include=tos -fnesc-scheduler=TinySchedulerC,TinySchedulerC.TaskBasic,TaskBasic,TaskBasic,runTask,postTask -fnesc-cfile=simbuild/micaz/app.c -fnesc-separator=__ -DTOSSIM -fnesc-nido-tosnodes=1000 -fnesc-simulate -fnesc-nido-motenumber=sim_node\(\) -fnesc-gcc=gcc -I/opt/tinyos-main/tos/lib/tossim -I/opt/tinyos-main/tos/platforms/micaz/sim -I/opt/tinyos-main/tos/platforms/micaz -I/opt/tinyos-main/tos/platforms/mica/sim -I/opt/tinyos-main/tos/platforms/mica -I/opt/tinyos-main/tos/platforms/micaz/chips/cc2420/sim -I/opt/tinyos-main/tos/platforms/micaz/chips/cc2420 -I/opt/tinyos-main/tos/chips/cc2420/sim -I/opt/tinyos-main/tos/chips/cc2420 -I/opt/tinyos-main/tos/chips/cc2420/alarm -I/opt/tinyos-main/tos/chips/cc2420/control/sim -I/opt/tinyos-main/tos/chips/cc2420/control -I/opt/tinyos-main/tos/chips/cc2420/csma/sim -I/opt/tinyos-main/tos/chips/cc2420/csma -I/opt/tinyos-main/tos/chips/cc2420/interfaces/sim -I/opt/tinyos-main/tos/chips/cc2420/interfaces -I/opt/tinyos-main/tos/chips/cc2420/link/sim -I/opt/tinyos-main/tos/chips/cc2420/link -I/opt/tinyos-main/tos/chips/cc2420/lowpan/sim -I/opt/tinyos-main/tos/chips/cc2420/lowpan -I/opt/tinyos-main/tos/chips/cc2420/lpl -I/opt/tinyos-main/tos/chips/cc2420/packet/sim -I/opt/tinyos-main/tos/chips/cc2420/packet -I/opt/tinyos-main/tos/chips/cc2420/receive/sim -I/opt/tinyos-main/tos/chips/cc2420/receive -I/opt/tinyos-main/tos/chips/cc2420/spi -I/opt/tinyos-main/tos/chips/cc2420/transmit -I/opt/tinyos-main/tos/chips/cc2420/unique/sim -I/opt/tinyos-main/tos/chips/cc2420/unique -I/opt/tinyos-main/tos/platforms/mica2/chips/at45db -I/opt/tinyos-main/tos/platforms/mica/chips/at45db -I/opt/tinyos-main/tos/chips/at45db -I/opt/tinyos-main/tos/chips/atm128/sim -I/opt/tinyos-main/tos/chips/atm128 -I/opt/tinyos-main/tos/chips/atm128/adc -I/opt/tinyos-main/tos/chips/atm128/pins/sim -I/opt/tinyos-main/tos/chips/atm128/pins -I/opt/tinyos-main/tos/chips/atm128/spi/sim -I/opt/tinyos-main/tos/chips/atm128/spi -I/opt/tinyos-main/tos/chips/atm128/timer/sim -I/opt/tinyos-main/tos/chips/atm128/timer -I/opt/tinyos-main/tos/lib/power -I/opt/tinyos-main/tos/lib/timer -I/opt/tinyos-main/tos/lib/serial -fnesc-no-debug -DPLATFORM_MICAZ -Wall -Wshadow -finline-limit=100000 -I/opt/tinyos-main/tos/system -I/opt/tinyos-main/tos/types -I/opt/tinyos-main/tos/interfaces -DTOSH_DATA_LENGTH=28 -IdataStructures -IdataStructures/interfaces/ -IdataStructures/modules -Ilib/interfaces -Ilib/modules -DIDENT_APPNAME=\"NodeC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"c1f4d7f7d7b4\" -DIDENT_USERHASH=0xd9f18d68L -DIDENT_TIMESTAMP=0x59b9a7fdL -DIDENT_UIDHASH=0x64ddd25dL -Wno-nesc-data-race NodeC.nc   -fnesc-dump=components -fnesc-dump=variables -fnesc-dump=constants -fnesc-dump=typedefs -fnesc-dump=interfacedefs -fnesc-dump=tags -fnesc-dumpfile=app.xml
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c: In function 'makeNoiseModel':
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c:440:78: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+     dbg("Insert", "Setting history %i to be %i\n", (int)i, (int)noiseData[node_id].key[i]);
+                                                                              ^
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c: In function 'sim_noise_gen':
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c:307:7: warning: variable 'noiseIndex' set but not used [-Wunused-but-set-variable]
+   int noiseIndex = 0;
+       ^
+[INFO] compiling Python support and C libraries into pytossim.o, tossim.o, and c-support.o
+g++ -c  -shared -fPIC -o simbuild/micaz/pytossim.o -g -O0 -DTOSH_DATA_LENGTH=28 -IdataStructures -IdataStructures/interfaces/ -IdataStructures/modules -Ilib/interfaces -Ilib/modules -DIDENT_APPNAME=\"NodeC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"c1f4d7f7d7b4\" -DIDENT_USERHASH=0xd9f18d68L -DIDENT_TIMESTAMP=0x59b9a7fdL -DIDENT_UIDHASH=0x64ddd25dL  /opt/tinyos-main/tos/lib/tossim/tossim_wrap.cxx -I/usr/include/python2.7 -I/opt/tinyos-main/tos/lib/tossim -DHAVE_CONFIG_H
+g++ -c  -shared -fPIC -o simbuild/micaz/tossim.o -g -O0 -DTOSH_DATA_LENGTH=28 -IdataStructures -IdataStructures/interfaces/ -IdataStructures/modules -Ilib/interfaces -Ilib/modules -DIDENT_APPNAME=\"NodeC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"c1f4d7f7d7b4\" -DIDENT_USERHASH=0xd9f18d68L -DIDENT_TIMESTAMP=0x59b9a7fdL -DIDENT_UIDHASH=0x64ddd25dL  /opt/tinyos-main/tos/lib/tossim/tossim.c -I/usr/include/python2.7 -I/opt/tinyos-main/tos/lib/tossim
+g++ -c  -shared -fPIC -o simbuild/micaz/c-support.o -g -O0 -DTOSH_DATA_LENGTH=28 -IdataStructures -IdataStructures/interfaces/ -IdataStructures/modules -Ilib/interfaces -Ilib/modules -DIDENT_APPNAME=\"NodeC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"c1f4d7f7d7b4\" -DIDENT_USERHASH=0xd9f18d68L -DIDENT_TIMESTAMP=0x59b9a7fdL -DIDENT_UIDHASH=0x64ddd25dL  /opt/tinyos-main/tos/lib/tossim/hashtable.c -I/usr/include/python2.7 -I/opt/tinyos-main/tos/lib/tossim
+[INFO] linking into shared object ./_TOSSIMmodule.so
+g++ -shared -fPIC  simbuild/micaz/pytossim.o simbuild/micaz/sim.o simbuild/micaz/tossim.o simbuild/micaz/c-support.o  -lstdc++ -o _TOSSIMmodule.so
+[INFO] copying Python script interface TOSSIM.py from lib/tossim to local directory
+ 
+[INFO] *** Successfully built micaz TOSSIM library.
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160# python TestSim.py
+Creating Topo!
+Number of Motes 19
+  1   2   -54.0
+  2   3   -54.0
+  3   4   -54.0
+  4   5   -54.0
+  5   6   -54.0
+  6   7   -54.0
+  7   8   -54.0
+  8   9   -54.0
+  9   10   -54.0
+  10   11   -54.0
+  11   12   -54.0
+  12   13   -54.0
+  13   14   -54.0
+  14   15   -54.0
+  15   16   -54.0
+  16   17   -54.0
+  17   18   -54.0
+  18   19   -54.0
+  2   1   -54.0
+  3   2   -54.0
+  4   3   -54.0
+  5   4   -54.0
+  6   5   -54.0
+  7   6   -54.0
+  8   7   -54.0
+  9   8   -54.0
+  10   9   -54.0
+  11   10   -54.0
+  12   11   -54.0
+  13   12   -54.0
+  14   13   -54.0
+  15   14   -54.0
+  16   15   -54.0
+  17   16   -54.0
+  18   17   -54.0
+  19   18   -54.0
+Creating noise model for  1
+Creating noise model for  2
+Creating noise model for  3
+Creating noise model for  4
+Creating noise model for  5
+Creating noise model for  6
+Creating noise model for  7
+Creating noise model for  8
+Creating noise model for  9
+Creating noise model for  10
+Creating noise model for  11
+Creating noise model for  12
+Creating noise model for  13
+Creating noise model for  14
+Creating noise model for  15
+Creating noise model for  16
+Creating noise model for  17
+Creating noise model for  18
+Creating noise model for  19
+Adding Channel command
+Adding Channel general
+0:0:0.000000133 DEBUG (1): Booted
+0:0:0.000000143 DEBUG (1): Radio On
+0:0:0.000000266 DEBUG (2): Booted
+0:0:0.000000276 DEBUG (2): Radio On
+0:0:0.000000399 DEBUG (3): Booted
+0:0:0.000000409 DEBUG (3): Radio On
+0:0:0.000000533 DEBUG (4): Booted
+0:0:0.000000543 DEBUG (4): Radio On
+0:0:0.000000666 DEBUG (5): Booted
+0:0:0.000000676 DEBUG (5): Radio On
+0:0:0.000000799 DEBUG (6): Booted
+0:0:0.000000809 DEBUG (6): Radio On
+0:0:0.000000933 DEBUG (7): Booted
+0:0:0.000000943 DEBUG (7): Radio On
+0:0:0.000001066 DEBUG (8): Booted
+0:0:0.000001076 DEBUG (8): Radio On
+0:0:0.000001199 DEBUG (9): Booted
+0:0:0.000001209 DEBUG (9): Radio On
+0:0:0.000001333 DEBUG (10): Booted
+0:0:0.000001343 DEBUG (10): Radio On
+0:0:0.000001466 DEBUG (11): Booted
+0:0:0.000001476 DEBUG (11): Radio On
+0:0:0.000001599 DEBUG (12): Booted
+0:0:0.000001609 DEBUG (12): Radio On
+0:0:0.000001732 DEBUG (13): Booted
+0:0:0.000001742 DEBUG (13): Radio On
+0:0:0.000001866 DEBUG (14): Booted
+0:0:0.000001876 DEBUG (14): Radio On
+0:0:0.000001999 DEBUG (15): Booted
+0:0:0.000002009 DEBUG (15): Radio On
+0:0:0.000002132 DEBUG (16): Booted
+0:0:0.000002142 DEBUG (16): Radio On
+0:0:0.000002266 DEBUG (17): Booted
+0:0:0.000002276 DEBUG (17): Radio On
+0:0:0.000002399 DEBUG (18): Booted
+0:0:0.000002409 DEBUG (18): Radio On
+0:0:0.000002532 DEBUG (19): Booted
+0:0:0.000002542 DEBUG (19): Radio On
+0:1:57.945314110 DEBUG (1): A Command has been Issued.
+0:1:57.945314110 DEBUG (1): Command Type: Ping
+0:1:57.945314110 DEBUG (1): PING EVENT 
+0:1:57.969726653 DEBUG (2): Packet Received
+0:1:57.969726653 DEBUG (2): Package Payload: Hello, World
+0:2:56.992189243 DEBUG (1): A Command has been Issued.
+0:2:56.992189243 DEBUG (1): Command Type: Ping
+0:2:56.992189243 DEBUG (1): PING EVENT 
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160# python TestSim.py
+Creating Topo!
+Number of Motes 19
+  1   2   -54.0
+  2   3   -54.0
+  3   4   -54.0
+  4   5   -54.0
+  5   6   -54.0
+  6   7   -54.0
+  7   8   -54.0
+  8   9   -54.0
+  9   10   -54.0
+  10   11   -54.0
+  11   12   -54.0
+  12   13   -54.0
+  13   14   -54.0
+  14   15   -54.0
+  15   16   -54.0
+  16   17   -54.0
+  17   18   -54.0
+  18   19   -54.0
+  2   1   -54.0
+  3   2   -54.0
+  4   3   -54.0
+  5   4   -54.0
+  6   5   -54.0
+  7   6   -54.0
+  8   7   -54.0
+  9   8   -54.0
+  10   9   -54.0
+  11   10   -54.0
+  12   11   -54.0
+  13   12   -54.0
+  14   13   -54.0
+  15   14   -54.0
+  16   15   -54.0
+  17   16   -54.0
+  18   17   -54.0
+  19   18   -54.0
+Creating noise model for  1
+Creating noise model for  2
+Creating noise model for  3
+Creating noise model for  4
+Creating noise model for  5
+Creating noise model for  6
+Creating noise model for  7
+Creating noise model for  8
+Creating noise model for  9
+Creating noise model for  10
+Creating noise model for  11
+Creating noise model for  12
+Creating noise model for  13
+Creating noise model for  14
+Creating noise model for  15
+Creating noise model for  16
+Creating noise model for  17
+Creating noise model for  18
+Creating noise model for  19
+Adding Channel command
+Adding Channel general
+0:0:0.000000133 DEBUG (1): Booted
+0:0:0.000000143 DEBUG (1): Radio On
+0:0:0.000000266 DEBUG (2): Booted
+0:0:0.000000276 DEBUG (2): Radio On
+0:0:0.000000399 DEBUG (3): Booted
+0:0:0.000000409 DEBUG (3): Radio On
+0:0:0.000000533 DEBUG (4): Booted
+0:0:0.000000543 DEBUG (4): Radio On
+0:0:0.000000666 DEBUG (5): Booted
+0:0:0.000000676 DEBUG (5): Radio On
+0:0:0.000000799 DEBUG (6): Booted
+0:0:0.000000809 DEBUG (6): Radio On
+0:0:0.000000933 DEBUG (7): Booted
+0:0:0.000000943 DEBUG (7): Radio On
+0:0:0.000001066 DEBUG (8): Booted
+0:0:0.000001076 DEBUG (8): Radio On
+0:0:0.000001199 DEBUG (9): Booted
+0:0:0.000001209 DEBUG (9): Radio On
+0:0:0.000001333 DEBUG (10): Booted
+0:0:0.000001343 DEBUG (10): Radio On
+0:0:0.000001466 DEBUG (11): Booted
+0:0:0.000001476 DEBUG (11): Radio On
+0:0:0.000001599 DEBUG (12): Booted
+0:0:0.000001609 DEBUG (12): Radio On
+0:0:0.000001732 DEBUG (13): Booted
+0:0:0.000001742 DEBUG (13): Radio On
+0:0:0.000001866 DEBUG (14): Booted
+0:0:0.000001876 DEBUG (14): Radio On
+0:0:0.000001999 DEBUG (15): Booted
+0:0:0.000002009 DEBUG (15): Radio On
+0:0:0.000002132 DEBUG (16): Booted
+0:0:0.000002142 DEBUG (16): Radio On
+0:0:0.000002266 DEBUG (17): Booted
+0:0:0.000002276 DEBUG (17): Radio On
+0:0:0.000002399 DEBUG (18): Booted
+0:0:0.000002409 DEBUG (18): Radio On
+0:0:0.000002532 DEBUG (19): Booted
+0:0:0.000002542 DEBUG (19): Radio On
+0:1:57.945314110 DEBUG (1): A Command has been Issued.
+0:1:57.945314110 DEBUG (1): Command Type: Ping
+0:1:57.945314110 DEBUG (1): PING EVENT 
+0:1:57.966644395 DEBUG (2): Packet Received
+0:1:57.966644395 DEBUG (2): Package Payload: Hello, World
+0:2:56.992189243 DEBUG (1): A Command has been Issued.
+0:2:56.992189243 DEBUG (1): Command Type: Ping
+0:2:56.992189243 DEBUG (1): PING EVENT 
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160# python TestSim.py
+Creating Topo!
+Number of Motes 19
+  1   2   -54.0
+  2   3   -54.0
+  3   4   -54.0
+  4   5   -54.0
+  5   6   -54.0
+  6   7   -54.0
+  7   8   -54.0
+  8   9   -54.0
+  9   10   -54.0
+  10   11   -54.0
+  11   12   -54.0
+  12   13   -54.0
+  13   14   -54.0
+  14   15   -54.0
+  15   16   -54.0
+  16   17   -54.0
+  17   18   -54.0
+  18   19   -54.0
+  2   1   -54.0
+  3   2   -54.0
+  4   3   -54.0
+  5   4   -54.0
+  6   5   -54.0
+  7   6   -54.0
+  8   7   -54.0
+  9   8   -54.0
+  10   9   -54.0
+  11   10   -54.0
+  12   11   -54.0
+  13   12   -54.0
+  14   13   -54.0
+  15   14   -54.0
+  16   15   -54.0
+  17   16   -54.0
+  18   17   -54.0
+  19   18   -54.0
+Creating noise model for  1
+Creating noise model for  2
+Creating noise model for  3
+Creating noise model for  4
+Creating noise model for  5
+Creating noise model for  6
+Creating noise model for  7
+Creating noise model for  8
+Creating noise model for  9
+Creating noise model for  10
+Creating noise model for  11
+Creating noise model for  12
+Creating noise model for  13
+Creating noise model for  14
+Creating noise model for  15
+Creating noise model for  16
+Creating noise model for  17
+Creating noise model for  18
+Creating noise model for  19
+Adding Channel command
+Adding Channel general
+0:0:0.000000133 DEBUG (1): Booted
+0:0:0.000000143 DEBUG (1): Radio On
+0:0:0.000000266 DEBUG (2): Booted
+0:0:0.000000276 DEBUG (2): Radio On
+0:0:0.000000399 DEBUG (3): Booted
+0:0:0.000000409 DEBUG (3): Radio On
+0:0:0.000000533 DEBUG (4): Booted
+0:0:0.000000543 DEBUG (4): Radio On
+0:0:0.000000666 DEBUG (5): Booted
+0:0:0.000000676 DEBUG (5): Radio On
+0:0:0.000000799 DEBUG (6): Booted
+0:0:0.000000809 DEBUG (6): Radio On
+0:0:0.000000933 DEBUG (7): Booted
+0:0:0.000000943 DEBUG (7): Radio On
+0:0:0.000001066 DEBUG (8): Booted
+0:0:0.000001076 DEBUG (8): Radio On
+0:0:0.000001199 DEBUG (9): Booted
+0:0:0.000001209 DEBUG (9): Radio On
+0:0:0.000001333 DEBUG (10): Booted
+0:0:0.000001343 DEBUG (10): Radio On
+0:0:0.000001466 DEBUG (11): Booted
+0:0:0.000001476 DEBUG (11): Radio On
+0:0:0.000001599 DEBUG (12): Booted
+0:0:0.000001609 DEBUG (12): Radio On
+0:0:0.000001732 DEBUG (13): Booted
+0:0:0.000001742 DEBUG (13): Radio On
+0:0:0.000001866 DEBUG (14): Booted
+0:0:0.000001876 DEBUG (14): Radio On
+0:0:0.000001999 DEBUG (15): Booted
+0:0:0.000002009 DEBUG (15): Radio On
+0:0:0.000002132 DEBUG (16): Booted
+0:0:0.000002142 DEBUG (16): Radio On
+0:0:0.000002266 DEBUG (17): Booted
+0:0:0.000002276 DEBUG (17): Radio On
+0:0:0.000002399 DEBUG (18): Booted
+0:0:0.000002409 DEBUG (18): Radio On
+0:0:0.000002532 DEBUG (19): Booted
+0:0:0.000002542 DEBUG (19): Radio On
+0:1:57.945314110 DEBUG (1): A Command has been Issued.
+0:1:57.945314110 DEBUG (1): Command Type: Ping
+0:1:57.945314110 DEBUG (1): PING EVENT 
+0:1:57.968475439 DEBUG (2): Packet Received
+0:1:57.968475439 DEBUG (2): Package Payload: Hello, World
+0:2:56.992189243 DEBUG (1): A Command has been Issued.
+0:2:56.992189243 DEBUG (1): Command Type: Ping
+0:2:56.992189243 DEBUG (1): PING EVENT 
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160# git pull
+remote: Counting objects: 5, done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 5 (delta 2), reused 5 (delta 2), pack-reused 0
+Unpacking objects: 100% (5/5), done.
+From https://github.com/JoseH1497/CSE160
+   466b36b..d13df0b  master     -> origin/master
+Updating 466b36b..d13df0b
+Fast-forward
+ .vscode/settings.json | 3 +++
+ TestSim.py            | 2 +-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+ create mode 100644 .vscode/settings.json
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160# make micaz sim
+[INFO] placing object files in simbuild/micaz
+[INFO] writing XML schema to app.xml
+[INFO] compiling NodeC to object file sim.o
+nescc -c -shared -fPIC -o simbuild/micaz/sim.o -g -O0 -gcc=gcc -Wnesc-all -fnesc-include=tos -fnesc-scheduler=TinySchedulerC,TinySchedulerC.TaskBasic,TaskBasic,TaskBasic,runTask,postTask -fnesc-cfile=simbuild/micaz/app.c -fnesc-separator=__ -DTOSSIM -fnesc-nido-tosnodes=1000 -fnesc-simulate -fnesc-nido-motenumber=sim_node\(\) -fnesc-gcc=gcc -I/opt/tinyos-main/tos/lib/tossim -I/opt/tinyos-main/tos/platforms/micaz/sim -I/opt/tinyos-main/tos/platforms/micaz -I/opt/tinyos-main/tos/platforms/mica/sim -I/opt/tinyos-main/tos/platforms/mica -I/opt/tinyos-main/tos/platforms/micaz/chips/cc2420/sim -I/opt/tinyos-main/tos/platforms/micaz/chips/cc2420 -I/opt/tinyos-main/tos/chips/cc2420/sim -I/opt/tinyos-main/tos/chips/cc2420 -I/opt/tinyos-main/tos/chips/cc2420/alarm -I/opt/tinyos-main/tos/chips/cc2420/control/sim -I/opt/tinyos-main/tos/chips/cc2420/control -I/opt/tinyos-main/tos/chips/cc2420/csma/sim -I/opt/tinyos-main/tos/chips/cc2420/csma -I/opt/tinyos-main/tos/chips/cc2420/interfaces/sim -I/opt/tinyos-main/tos/chips/cc2420/interfaces -I/opt/tinyos-main/tos/chips/cc2420/link/sim -I/opt/tinyos-main/tos/chips/cc2420/link -I/opt/tinyos-main/tos/chips/cc2420/lowpan/sim -I/opt/tinyos-main/tos/chips/cc2420/lowpan -I/opt/tinyos-main/tos/chips/cc2420/lpl -I/opt/tinyos-main/tos/chips/cc2420/packet/sim -I/opt/tinyos-main/tos/chips/cc2420/packet -I/opt/tinyos-main/tos/chips/cc2420/receive/sim -I/opt/tinyos-main/tos/chips/cc2420/receive -I/opt/tinyos-main/tos/chips/cc2420/spi -I/opt/tinyos-main/tos/chips/cc2420/transmit -I/opt/tinyos-main/tos/chips/cc2420/unique/sim -I/opt/tinyos-main/tos/chips/cc2420/unique -I/opt/tinyos-main/tos/platforms/mica2/chips/at45db -I/opt/tinyos-main/tos/platforms/mica/chips/at45db -I/opt/tinyos-main/tos/chips/at45db -I/opt/tinyos-main/tos/chips/atm128/sim -I/opt/tinyos-main/tos/chips/atm128 -I/opt/tinyos-main/tos/chips/atm128/adc -I/opt/tinyos-main/tos/chips/atm128/pins/sim -I/opt/tinyos-main/tos/chips/atm128/pins -I/opt/tinyos-main/tos/chips/atm128/spi/sim -I/opt/tinyos-main/tos/chips/atm128/spi -I/opt/tinyos-main/tos/chips/atm128/timer/sim -I/opt/tinyos-main/tos/chips/atm128/timer -I/opt/tinyos-main/tos/lib/power -I/opt/tinyos-main/tos/lib/timer -I/opt/tinyos-main/tos/lib/serial -fnesc-no-debug -DPLATFORM_MICAZ -Wall -Wshadow -finline-limit=100000 -I/opt/tinyos-main/tos/system -I/opt/tinyos-main/tos/types -I/opt/tinyos-main/tos/interfaces -DTOSH_DATA_LENGTH=28 -IdataStructures -IdataStructures/interfaces/ -IdataStructures/modules -Ilib/interfaces -Ilib/modules -DIDENT_APPNAME=\"NodeC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"c1f4d7f7d7b4\" -DIDENT_USERHASH=0xd9f18d68L -DIDENT_TIMESTAMP=0x59b9a9f2L -DIDENT_UIDHASH=0xdf431309L -Wno-nesc-data-race NodeC.nc   -fnesc-dump=components -fnesc-dump=variables -fnesc-dump=constants -fnesc-dump=typedefs -fnesc-dump=interfacedefs -fnesc-dump=tags -fnesc-dumpfile=app.xml
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c: In function 'makeNoiseModel':
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c:440:78: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+     dbg("Insert", "Setting history %i to be %i\n", (int)i, (int)noiseData[node_id].key[i]);
+                                                                              ^
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c: In function 'sim_noise_gen':
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c:307:7: warning: variable 'noiseIndex' set but not used [-Wunused-but-set-variable]
+   int noiseIndex = 0;
+       ^
+[INFO] compiling Python support and C libraries into pytossim.o, tossim.o, and c-support.o
+g++ -c  -shared -fPIC -o simbuild/micaz/pytossim.o -g -O0 -DTOSH_DATA_LENGTH=28 -IdataStructures -IdataStructures/interfaces/ -IdataStructures/modules -Ilib/interfaces -Ilib/modules -DIDENT_APPNAME=\"NodeC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"c1f4d7f7d7b4\" -DIDENT_USERHASH=0xd9f18d68L -DIDENT_TIMESTAMP=0x59b9a9f2L -DIDENT_UIDHASH=0xdf431309L  /opt/tinyos-main/tos/lib/tossim/tossim_wrap.cxx -I/usr/include/python2.7 -I/opt/tinyos-main/tos/lib/tossim -DHAVE_CONFIG_H
+g++ -c  -shared -fPIC -o simbuild/micaz/tossim.o -g -O0 -DTOSH_DATA_LENGTH=28 -IdataStructures -IdataStructures/interfaces/ -IdataStructures/modules -Ilib/interfaces -Ilib/modules -DIDENT_APPNAME=\"NodeC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"c1f4d7f7d7b4\" -DIDENT_USERHASH=0xd9f18d68L -DIDENT_TIMESTAMP=0x59b9a9f2L -DIDENT_UIDHASH=0xdf431309L  /opt/tinyos-main/tos/lib/tossim/tossim.c -I/usr/include/python2.7 -I/opt/tinyos-main/tos/lib/tossim
+g++ -c  -shared -fPIC -o simbuild/micaz/c-support.o -g -O0 -DTOSH_DATA_LENGTH=28 -IdataStructures -IdataStructures/interfaces/ -IdataStructures/modules -Ilib/interfaces -Ilib/modules -DIDENT_APPNAME=\"NodeC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"c1f4d7f7d7b4\" -DIDENT_USERHASH=0xd9f18d68L -DIDENT_TIMESTAMP=0x59b9a9f2L -DIDENT_UIDHASH=0xdf431309L  /opt/tinyos-main/tos/lib/tossim/hashtable.c -I/usr/include/python2.7 -I/opt/tinyos-main/tos/lib/tossim
+[INFO] linking into shared object ./_TOSSIMmodule.so
+g++ -shared -fPIC  simbuild/micaz/pytossim.o simbuild/micaz/sim.o simbuild/micaz/tossim.o simbuild/micaz/c-support.o  -lstdc++ -o _TOSSIMmodule.so
+[INFO] copying Python script interface TOSSIM.py from lib/tossim to local directory
+ 
+[INFO] *** Successfully built micaz TOSSIM library.
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160# python TestSim.py
+  File "TestSim.py", line 137
+    s.ping(1, 3x, "Hello, World");
+               ^
+SyntaxError: invalid syntax
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160# git pull
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 3 (delta 2), reused 3 (delta 2), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/JoseH1497/CSE160
+   d13df0b..77b6180  master     -> origin/master
+Updating d13df0b..77b6180
+Fast-forward
+ TestSim.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160# python TestSim.py
+Creating Topo!
+Number of Motes 19
+  1   2   -54.0
+  2   3   -54.0
+  3   4   -54.0
+  4   5   -54.0
+  5   6   -54.0
+  6   7   -54.0
+  7   8   -54.0
+  8   9   -54.0
+  9   10   -54.0
+  10   11   -54.0
+  11   12   -54.0
+  12   13   -54.0
+  13   14   -54.0
+  14   15   -54.0
+  15   16   -54.0
+  16   17   -54.0
+  17   18   -54.0
+  18   19   -54.0
+  2   1   -54.0
+  3   2   -54.0
+  4   3   -54.0
+  5   4   -54.0
+  6   5   -54.0
+  7   6   -54.0
+  8   7   -54.0
+  9   8   -54.0
+  10   9   -54.0
+  11   10   -54.0
+  12   11   -54.0
+  13   12   -54.0
+  14   13   -54.0
+  15   14   -54.0
+  16   15   -54.0
+  17   16   -54.0
+  18   17   -54.0
+  19   18   -54.0
+Creating noise model for  1
+Creating noise model for  2
+Creating noise model for  3
+Creating noise model for  4
+Creating noise model for  5
+Creating noise model for  6
+Creating noise model for  7
+Creating noise model for  8
+Creating noise model for  9
+Creating noise model for  10
+Creating noise model for  11
+Creating noise model for  12
+Creating noise model for  13
+Creating noise model for  14
+Creating noise model for  15
+Creating noise model for  16
+Creating noise model for  17
+Creating noise model for  18
+Creating noise model for  19
+Adding Channel command
+Adding Channel general
+0:0:0.000000133 DEBUG (1): Booted
+0:0:0.000000143 DEBUG (1): Radio On
+0:0:0.000000266 DEBUG (2): Booted
+0:0:0.000000276 DEBUG (2): Radio On
+0:0:0.000000399 DEBUG (3): Booted
+0:0:0.000000409 DEBUG (3): Radio On
+0:0:0.000000533 DEBUG (4): Booted
+0:0:0.000000543 DEBUG (4): Radio On
+0:0:0.000000666 DEBUG (5): Booted
+0:0:0.000000676 DEBUG (5): Radio On
+0:0:0.000000799 DEBUG (6): Booted
+0:0:0.000000809 DEBUG (6): Radio On
+0:0:0.000000933 DEBUG (7): Booted
+0:0:0.000000943 DEBUG (7): Radio On
+0:0:0.000001066 DEBUG (8): Booted
+0:0:0.000001076 DEBUG (8): Radio On
+0:0:0.000001199 DEBUG (9): Booted
+0:0:0.000001209 DEBUG (9): Radio On
+0:0:0.000001333 DEBUG (10): Booted
+0:0:0.000001343 DEBUG (10): Radio On
+0:0:0.000001466 DEBUG (11): Booted
+0:0:0.000001476 DEBUG (11): Radio On
+0:0:0.000001599 DEBUG (12): Booted
+0:0:0.000001609 DEBUG (12): Radio On
+0:0:0.000001732 DEBUG (13): Booted
+0:0:0.000001742 DEBUG (13): Radio On
+0:0:0.000001866 DEBUG (14): Booted
+0:0:0.000001876 DEBUG (14): Radio On
+0:0:0.000001999 DEBUG (15): Booted
+0:0:0.000002009 DEBUG (15): Radio On
+0:0:0.000002132 DEBUG (16): Booted
+0:0:0.000002142 DEBUG (16): Radio On
+0:0:0.000002266 DEBUG (17): Booted
+0:0:0.000002276 DEBUG (17): Radio On
+0:0:0.000002399 DEBUG (18): Booted
+0:0:0.000002409 DEBUG (18): Radio On
+0:0:0.000002532 DEBUG (19): Booted
+0:0:0.000002542 DEBUG (19): Radio On
+0:1:57.945314110 DEBUG (1): A Command has been Issued.
+0:1:57.945314110 DEBUG (1): Command Type: Ping
+0:1:57.945314110 DEBUG (1): PING EVENT 
+0:1:57.963806277 DEBUG (2): Packet Received
+0:1:57.963806277 DEBUG (2): Package Payload: Hello, World
+0:2:56.992189243 DEBUG (1): A Command has been Issued.
+0:2:56.992189243 DEBUG (1): Command Type: Ping
+0:2:56.992189243 DEBUG (1): PING EVENT 
+root@c1f4d7f7d7b4:/opt/tinyos-main/apps/Blink/GitHubFolder/CSE160# 
