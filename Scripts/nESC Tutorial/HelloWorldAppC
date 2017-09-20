@@ -1,0 +1,16 @@
+//configuration file
+
+configuration{
+    //do nothing for now
+
+}
+implementation{
+    components MainC;
+    components LedsC;
+
+    components HelloWorldC as App;
+
+    //wiring
+    App.Boot -> MainC;
+    App.Leds -> LedsC;
+}

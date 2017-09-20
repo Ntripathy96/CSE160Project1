@@ -1,0 +1,433 @@
+Last login: Mon Sep 18 19:00:06 on ttys002
+Joses-MacBook-Pro-5:~ JoseHerrera$ cd Desktop
+Joses-MacBook-Pro-5:Desktop JoseHerrera$ Docker images
+REPOSITORY                       TAG                 IMAGE ID            CREATED             SIZE
+jherrera52/get-started           part1               0ddb342cfc89        2 weeks ago         194MB
+friendlyhello                    latest              0ddb342cfc89        2 weeks ago         194MB
+ucmercedandeslab/tinyos_debian   latest              27ef0e8eadab        2 weeks ago         4GB
+python                           2.7-slim            451c85955bc2        8 weeks ago         182MB
+hello-world                      latest              1815c82652c0        3 months ago        1.84kB
+Joses-MacBook-Pro-5:Desktop JoseHerrera$ docker run -ti ucemercedandeslab/tinyos_debian
+Unable to find image 'ucemercedandeslab/tinyos_debian:latest' locally
+docker: Error response from daemon: repository ucemercedandeslab/tinyos_debian not found: does not exist or no pull access.
+See 'docker run --help'.
+Joses-MacBook-Pro-5:Desktop JoseHerrera$ docker run -ti ucemercedandeslab/tinyos_debian:latest
+Unable to find image 'ucemercedandeslab/tinyos_debian:latest' locally
+docker: Error response from daemon: repository ucemercedandeslab/tinyos_debian not found: does not exist or no pull access.
+See 'docker run --help'.
+Joses-MacBook-Pro-5:Desktop JoseHerrera$ docker run -ti ucmercedandeslab/tinyos_debian
+root@4bfa800857ef:/# ls
+bin   dev  home  lib64	mnt  proc  run	 srv  tmp  var
+boot  etc  lib	 media	opt  root  sbin  sys  usr
+root@4bfa800857ef:/# cd opt
+root@4bfa800857ef:/opt# ls
+Samr21-Tinyos-Port  tinyos-main
+root@4bfa800857ef:/opt# cd tinyos-main
+root@4bfa800857ef:/opt/tinyos-main# ls
+Makefile.include  apps	      licenses		 support
+README.md	  deprecated  packaging		 tools
+README.tinyos	  doc	      release-notes.txt  tos
+root@4bfa800857ef:/opt/tinyos-main# cd apps
+root@4bfa800857ef:/opt/tinyos-main/apps# ls
+AntiTheft	 MViz			  PPPSniffer	    UDPEcho
+BaseStation	 Makefile		  Powerup	    btest1
+BaseStation15.4  MemTest		  PppRouter	    btest2
+Blink		 MultihopOscilloscope	  RadioCountToLeds  tests
+CoapBlip	 MultihopOscilloscopeLqi  RadioSenseToLeds  tutorials
+CoapPpp		 Null			  Sense
+FastSend	 Oscilloscope		  TCPEcho
+root@4bfa800857ef:/opt/tinyos-main/apps# cd Blink 
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink# ls
+BlinkAppC.nc  BlinkC.nc  Makefile  README.txt
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink# make micaz sim
+[INFO] placing object files in simbuild/micaz
+[INFO] writing XML schema to app.xml
+[INFO] compiling BlinkAppC to object file sim.o
+nescc -c -shared -fPIC -o simbuild/micaz/sim.o -g -O0 -gcc=gcc -Wnesc-all -fnesc-include=tos -fnesc-scheduler=TinySchedulerC,TinySchedulerC.TaskBasic,TaskBasic,TaskBasic,runTask,postTask -fnesc-cfile=simbuild/micaz/app.c -fnesc-separator=__ -DTOSSIM -fnesc-nido-tosnodes=1000 -fnesc-simulate -fnesc-nido-motenumber=sim_node\(\) -fnesc-gcc=gcc -I/opt/tinyos-main/tos/lib/tossim -I/opt/tinyos-main/tos/platforms/micaz/sim -I/opt/tinyos-main/tos/platforms/micaz -I/opt/tinyos-main/tos/platforms/mica/sim -I/opt/tinyos-main/tos/platforms/mica -I/opt/tinyos-main/tos/platforms/micaz/chips/cc2420/sim -I/opt/tinyos-main/tos/platforms/micaz/chips/cc2420 -I/opt/tinyos-main/tos/chips/cc2420/sim -I/opt/tinyos-main/tos/chips/cc2420 -I/opt/tinyos-main/tos/chips/cc2420/alarm -I/opt/tinyos-main/tos/chips/cc2420/control/sim -I/opt/tinyos-main/tos/chips/cc2420/control -I/opt/tinyos-main/tos/chips/cc2420/csma/sim -I/opt/tinyos-main/tos/chips/cc2420/csma -I/opt/tinyos-main/tos/chips/cc2420/interfaces/sim -I/opt/tinyos-main/tos/chips/cc2420/interfaces -I/opt/tinyos-main/tos/chips/cc2420/link/sim -I/opt/tinyos-main/tos/chips/cc2420/link -I/opt/tinyos-main/tos/chips/cc2420/lowpan/sim -I/opt/tinyos-main/tos/chips/cc2420/lowpan -I/opt/tinyos-main/tos/chips/cc2420/lpl -I/opt/tinyos-main/tos/chips/cc2420/packet/sim -I/opt/tinyos-main/tos/chips/cc2420/packet -I/opt/tinyos-main/tos/chips/cc2420/receive/sim -I/opt/tinyos-main/tos/chips/cc2420/receive -I/opt/tinyos-main/tos/chips/cc2420/spi -I/opt/tinyos-main/tos/chips/cc2420/transmit -I/opt/tinyos-main/tos/chips/cc2420/unique/sim -I/opt/tinyos-main/tos/chips/cc2420/unique -I/opt/tinyos-main/tos/platforms/mica2/chips/at45db -I/opt/tinyos-main/tos/platforms/mica/chips/at45db -I/opt/tinyos-main/tos/chips/at45db -I/opt/tinyos-main/tos/chips/atm128/sim -I/opt/tinyos-main/tos/chips/atm128 -I/opt/tinyos-main/tos/chips/atm128/adc -I/opt/tinyos-main/tos/chips/atm128/pins/sim -I/opt/tinyos-main/tos/chips/atm128/pins -I/opt/tinyos-main/tos/chips/atm128/spi/sim -I/opt/tinyos-main/tos/chips/atm128/spi -I/opt/tinyos-main/tos/chips/atm128/timer/sim -I/opt/tinyos-main/tos/chips/atm128/timer -I/opt/tinyos-main/tos/lib/power -I/opt/tinyos-main/tos/lib/timer -I/opt/tinyos-main/tos/lib/serial -fnesc-no-debug -DPLATFORM_MICAZ -Wall -Wshadow -finline-limit=100000 -I/opt/tinyos-main/tos/system -I/opt/tinyos-main/tos/types -I/opt/tinyos-main/tos/interfaces -DIDENT_APPNAME=\"BlinkAppC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"4bfa800857ef\" -DIDENT_USERHASH=0x00e2c852L -DIDENT_TIMESTAMP=0x59c07b44L -DIDENT_UIDHASH=0x899b75e1L -Wno-nesc-data-race BlinkAppC.nc   -fnesc-dump=components -fnesc-dump=variables -fnesc-dump=constants -fnesc-dump=typedefs -fnesc-dump=interfacedefs -fnesc-dump=tags -fnesc-dumpfile=app.xml
+l/opt/tinyos-main/tos/lib/tossim/sim_noise.c: In function 'makeNoiseModel':
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c:440:78: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+     dbg("Insert", "Setting history %i to be %i\n", (int)i, (int)noiseData[node_id].key[i]);
+                                                                              ^
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c: In function 'sim_noise_gen':
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c:307:7: warning: variable 'noiseIndex' set but not used [-Wunused-but-set-variable]
+   int noiseIndex = 0;
+       ^
+[INFO] compiling Python support and C libraries into pytossim.o, tossim.o, and c-support.o
+g++ -c  -shared -fPIC -o simbuild/micaz/pytossim.o -g -O0 -DIDENT_APPNAME=\"BlinkAppC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"4bfa800857ef\" -DIDENT_USERHASH=0x00e2c852L -DIDENT_TIMESTAMP=0x59c07b44L -DIDENT_UIDHASH=0x899b75e1L  /opt/tinyos-main/tos/lib/tossim/tossim_wrap.cxx -I/usr/include/python2.7 -I/opt/tinyos-main/tos/lib/tossim -DHAVE_CONFIG_H
+sg++ -c  -shared -fPIC -o simbuild/micaz/tossim.o -g -O0 -DIDENT_APPNAME=\"BlinkAppC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"4bfa800857ef\" -DIDENT_USERHASH=0x00e2c852L -DIDENT_TIMESTAMP=0x59c07b44L -DIDENT_UIDHASH=0x899b75e1L  /opt/tinyos-main/tos/lib/tossim/tossim.c -I/usr/include/python2.7 -I/opt/tinyos-main/tos/lib/tossim
+g++ -c  -shared -fPIC -o simbuild/micaz/c-support.o -g -O0 -DIDENT_APPNAME=\"BlinkAppC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"4bfa800857ef\" -DIDENT_USERHASH=0x00e2c852L -DIDENT_TIMESTAMP=0x59c07b44L -DIDENT_UIDHASH=0x899b75e1L  /opt/tinyos-main/tos/lib/tossim/hashtable.c -I/usr/include/python2.7 -I/opt/tinyos-main/tos/lib/tossim
+[INFO] linking into shared object ./_TOSSIMmodule.so
+g++ -shared -fPIC  simbuild/micaz/pytossim.o simbuild/micaz/sim.o simbuild/micaz/tossim.o simbuild/micaz/c-support.o  -lstdc++ -o _TOSSIMmodule.so
+[INFO] copying Python script interface TOSSIM.py from lib/tossim to local directory
+ 
+[INFO] *** Successfully built micaz TOSSIM library.
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink# lls
+bash: lls: command not found
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink# ls
+BlinkAppC.nc  Makefile	  TOSSIM.py	    app.xml
+BlinkC.nc     README.txt  _TOSSIMmodule.so  simbuild
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink# git clone https://github.com/JoseH1497/CSE160.git
+Cloning into 'CSE160'...
+remote: Counting objects: 223, done.
+remote: Compressing objects: 100% (118/118), done.
+remote: Total 223 (delta 107), reused 218 (delta 102), pack-reused 0
+Receiving objects: 100% (223/223), 51.89 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (107/107), done.
+Checking connectivity... done.
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink# ls
+BlinkAppC.nc  CSE160	README.txt  _TOSSIMmodule.so  simbuild
+BlinkC.nc     Makefile	TOSSIM.py   app.xml
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink# cd CSE160
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink/CSE160# ls
+CommandMsg.py  NodeC.nc   TestSim.py	  lib	     pingTest.py
+Makefile       README.md  dataStructures  noise      topo
+Node.nc        Scripts	  includes	  packet.py
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink/CSE160# python TestSim.py
+Traceback (most recent call last):
+  File "TestSim.py", line 7, in <module>
+    from TOSSIM import *
+ImportError: No module named TOSSIM
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink/CSE160# make micaz sim
+[INFO] placing object files in simbuild/micaz
+[INFO] writing XML schema to app.xml
+[INFO] compiling NodeC to object file sim.o
+nescc -c -shared -fPIC -o simbuild/micaz/sim.o -g -O0 -gcc=gcc -Wnesc-all -fnesc-include=tos -fnesc-scheduler=TinySchedulerC,TinySchedulerC.TaskBasic,TaskBasic,TaskBasic,runTask,postTask -fnesc-cfile=simbuild/micaz/app.c -fnesc-separator=__ -DTOSSIM -fnesc-nido-tosnodes=1000 -fnesc-simulate -fnesc-nido-motenumber=sim_node\(\) -fnesc-gcc=gcc -I/opt/tinyos-main/tos/lib/tossim -I/opt/tinyos-main/tos/platforms/micaz/sim -I/opt/tinyos-main/tos/platforms/micaz -I/opt/tinyos-main/tos/platforms/mica/sim -I/opt/tinyos-main/tos/platforms/mica -I/opt/tinyos-main/tos/platforms/micaz/chips/cc2420/sim -I/opt/tinyos-main/tos/platforms/micaz/chips/cc2420 -I/opt/tinyos-main/tos/chips/cc2420/sim -I/opt/tinyos-main/tos/chips/cc2420 -I/opt/tinyos-main/tos/chips/cc2420/alarm -I/opt/tinyos-main/tos/chips/cc2420/control/sim -I/opt/tinyos-main/tos/chips/cc2420/control -I/opt/tinyos-main/tos/chips/cc2420/csma/sim -I/opt/tinyos-main/tos/chips/cc2420/csma -I/opt/tinyos-main/tos/chips/cc2420/interfaces/sim -I/opt/tinyos-main/tos/chips/cc2420/interfaces -I/opt/tinyos-main/tos/chips/cc2420/link/sim -I/opt/tinyos-main/tos/chips/cc2420/link -I/opt/tinyos-main/tos/chips/cc2420/lowpan/sim -I/opt/tinyos-main/tos/chips/cc2420/lowpan -I/opt/tinyos-main/tos/chips/cc2420/lpl -I/opt/tinyos-main/tos/chips/cc2420/packet/sim -I/opt/tinyos-main/tos/chips/cc2420/packet -I/opt/tinyos-main/tos/chips/cc2420/receive/sim -I/opt/tinyos-main/tos/chips/cc2420/receive -I/opt/tinyos-main/tos/chips/cc2420/spi -I/opt/tinyos-main/tos/chips/cc2420/transmit -I/opt/tinyos-main/tos/chips/cc2420/unique/sim -I/opt/tinyos-main/tos/chips/cc2420/unique -I/opt/tinyos-main/tos/platforms/mica2/chips/at45db -I/opt/tinyos-main/tos/platforms/mica/chips/at45db -I/opt/tinyos-main/tos/chips/at45db -I/opt/tinyos-main/tos/chips/atm128/sim -I/opt/tinyos-main/tos/chips/atm128 -I/opt/tinyos-main/tos/chips/atm128/adc -I/opt/tinyos-main/tos/chips/atm128/pins/sim -I/opt/tinyos-main/tos/chips/atm128/pins -I/opt/tinyos-main/tos/chips/atm128/spi/sim -I/opt/tinyos-main/tos/chips/atm128/spi -I/opt/tinyos-main/tos/chips/atm128/timer/sim -I/opt/tinyos-main/tos/chips/atm128/timer -I/opt/tinyos-main/tos/lib/power -I/opt/tinyos-main/tos/lib/timer -I/opt/tinyos-main/tos/lib/serial -fnesc-no-debug -DPLATFORM_MICAZ -Wall -Wshadow -finline-limit=100000 -I/opt/tinyos-main/tos/system -I/opt/tinyos-main/tos/types -I/opt/tinyos-main/tos/interfaces -DTOSH_DATA_LENGTH=28 -IdataStructures -IdataStructures/interfaces/ -IdataStructures/modules -Ilib/interfaces -Ilib/modules -DIDENT_APPNAME=\"NodeC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"4bfa800857ef\" -DIDENT_USERHASH=0x00e2c852L -DIDENT_TIMESTAMP=0x59c07b65L -DIDENT_UIDHASH=0x62f87b25L -Wno-nesc-data-race NodeC.nc   -fnesc-dump=components -fnesc-dump=variables -fnesc-dump=constants -fnesc-dump=typedefs -fnesc-dump=interfacedefs -fnesc-dump=tags -fnesc-dumpfile=app.xml
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c: In function 'makeNoiseModel':
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c:440:78: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+     dbg("Insert", "Setting history %i to be %i\n", (int)i, (int)noiseData[node_id].key[i]);
+                                                                              ^
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c: In function 'sim_noise_gen':
+/opt/tinyos-main/tos/lib/tossim/sim_noise.c:307:7: warning: variable 'noiseIndex' set but not used [-Wunused-but-set-variable]
+   int noiseIndex = 0;
+       ^
+[INFO] compiling Python support and C libraries into pytossim.o, tossim.o, and c-support.o
+g++ -c  -shared -fPIC -o simbuild/micaz/pytossim.o -g -O0 -DTOSH_DATA_LENGTH=28 -IdataStructures -IdataStructures/interfaces/ -IdataStructures/modules -Ilib/interfaces -Ilib/modules -DIDENT_APPNAME=\"NodeC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"4bfa800857ef\" -DIDENT_USERHASH=0x00e2c852L -DIDENT_TIMESTAMP=0x59c07b65L -DIDENT_UIDHASH=0x62f87b25L  /opt/tinyos-main/tos/lib/tossim/tossim_wrap.cxx -I/usr/include/python2.7 -I/opt/tinyos-main/tos/lib/tossim -DHAVE_CONFIG_H
+g++ -c  -shared -fPIC -o simbuild/micaz/tossim.o -g -O0 -DTOSH_DATA_LENGTH=28 -IdataStructures -IdataStructures/interfaces/ -IdataStructures/modules -Ilib/interfaces -Ilib/modules -DIDENT_APPNAME=\"NodeC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"4bfa800857ef\" -DIDENT_USERHASH=0x00e2c852L -DIDENT_TIMESTAMP=0x59c07b65L -DIDENT_UIDHASH=0x62f87b25L  /opt/tinyos-main/tos/lib/tossim/tossim.c -I/usr/include/python2.7 -I/opt/tinyos-main/tos/lib/tossim
+g++ -c  -shared -fPIC -o simbuild/micaz/c-support.o -g -O0 -DTOSH_DATA_LENGTH=28 -IdataStructures -IdataStructures/interfaces/ -IdataStructures/modules -Ilib/interfaces -Ilib/modules -DIDENT_APPNAME=\"NodeC\" -DIDENT_USERNAME=\"root\" -DIDENT_HOSTNAME=\"4bfa800857ef\" -DIDENT_USERHASH=0x00e2c852L -DIDENT_TIMESTAMP=0x59c07b65L -DIDENT_UIDHASH=0x62f87b25L  /opt/tinyos-main/tos/lib/tossim/hashtable.c -I/usr/include/python2.7 -I/opt/tinyos-main/tos/lib/tossim
+[INFO] linking into shared object ./_TOSSIMmodule.so
+g++ -shared -fPIC  simbuild/micaz/pytossim.o simbuild/micaz/sim.o simbuild/micaz/tossim.o simbuild/micaz/c-support.o  -lstdc++ -o _TOSSIMmodule.so
+[INFO] copying Python script interface TOSSIM.py from lib/tossim to local directory
+ 
+[INFO] *** Successfully built micaz TOSSIM library.
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink/CSE160# python TestSim.py
+Creating Topo!
+Number of Motes 19
+  1   2   -54.0
+  2   3   -54.0
+  3   4   -54.0
+  4   5   -54.0
+  5   6   -54.0
+  6   7   -54.0
+  7   8   -54.0
+  8   9   -54.0
+  9   10   -54.0
+  10   11   -54.0
+  11   12   -54.0
+  12   13   -54.0
+  13   14   -54.0
+  14   15   -54.0
+  15   16   -54.0
+  16   17   -54.0
+  17   18   -54.0
+  18   19   -54.0
+  2   1   -54.0
+  3   2   -54.0
+  4   3   -54.0
+  5   4   -54.0
+  6   5   -54.0
+  7   6   -54.0
+  8   7   -54.0
+  9   8   -54.0
+  10   9   -54.0
+  11   10   -54.0
+  12   11   -54.0
+  13   12   -54.0
+  14   13   -54.0
+  15   14   -54.0
+  16   15   -54.0
+  17   16   -54.0
+  18   17   -54.0
+  19   18   -54.0
+Creating noise model for  1
+Creating noise model for  2
+Creating noise model for  3
+Creating noise model for  4
+Creating noise model for  5
+Creating noise model for  6
+Creating noise model for  7
+Creating noise model for  8
+Creating noise model for  9
+Creating noise model for  10
+Creating noise model for  11
+Creating noise model for  12
+Creating noise model for  13
+Creating noise model for  14
+Creating noise model for  15
+Creating noise model for  16
+Creating noise model for  17
+Creating noise model for  18
+Creating noise model for  19
+Adding Channel command
+Adding Channel general
+0:0:0.000000133 DEBUG (1): Booted
+0:0:0.000000143 DEBUG (1): Radio On
+0:0:0.000000266 DEBUG (2): Booted
+0:0:0.000000276 DEBUG (2): Radio On
+0:0:0.000000399 DEBUG (3): Booted
+0:0:0.000000409 DEBUG (3): Radio On
+0:0:0.000000533 DEBUG (4): Booted
+0:0:0.000000543 DEBUG (4): Radio On
+0:0:0.000000666 DEBUG (5): Booted
+0:0:0.000000676 DEBUG (5): Radio On
+0:0:0.000000799 DEBUG (6): Booted
+0:0:0.000000809 DEBUG (6): Radio On
+0:0:0.000000933 DEBUG (7): Booted
+0:0:0.000000943 DEBUG (7): Radio On
+0:0:0.000001066 DEBUG (8): Booted
+0:0:0.000001076 DEBUG (8): Radio On
+0:0:0.000001199 DEBUG (9): Booted
+0:0:0.000001209 DEBUG (9): Radio On
+0:0:0.000001333 DEBUG (10): Booted
+0:0:0.000001343 DEBUG (10): Radio On
+0:0:0.000001466 DEBUG (11): Booted
+0:0:0.000001476 DEBUG (11): Radio On
+0:0:0.000001599 DEBUG (12): Booted
+0:0:0.000001609 DEBUG (12): Radio On
+0:0:0.000001732 DEBUG (13): Booted
+0:0:0.000001742 DEBUG (13): Radio On
+0:0:0.000001866 DEBUG (14): Booted
+0:0:0.000001876 DEBUG (14): Radio On
+0:0:0.000001999 DEBUG (15): Booted
+0:0:0.000002009 DEBUG (15): Radio On
+0:0:0.000002132 DEBUG (16): Booted
+0:0:0.000002142 DEBUG (16): Radio On
+0:0:0.000002266 DEBUG (17): Booted
+0:0:0.000002276 DEBUG (17): Radio On
+0:0:0.000002399 DEBUG (18): Booted
+0:0:0.000002409 DEBUG (18): Radio On
+0:0:0.000002532 DEBUG (19): Booted
+0:0:0.000002542 DEBUG (19): Radio On
+0:1:57.945314110 DEBUG (1): A Command has been Issued.
+0:1:57.945314110 DEBUG (1): Command Type: Ping
+0:1:57.945314110 DEBUG (1): PING EVENT 
+0:1:57.965454217 DEBUG (2): Packet Received
+0:1:57.965454217 DEBUG (2): Package Payload: Hello, World
+0:2:56.992189243 DEBUG (1): A Command has been Issued.
+0:2:56.992189243 DEBUG (1): Command Type: Ping
+0:2:56.992189243 DEBUG (1): PING EVENT 
+0:2:57.161895843 DEBUG (2): Packet Received
+0:2:57.161895843 DEBUG (2): Package Payload: Hi!
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink/CSE160# ls
+CommandMsg.py	NodeC.nc   TOSSIM.pyc	     dataStructures  packet.py
+CommandMsg.pyc	README.md  TestSim.py	     includes	     pingTest.py
+Makefile	Scripts    _TOSSIMmodule.so  lib	     simbuild
+Node.nc		TOSSIM.py  app.xml	     noise	     topo
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink/CSE160# ls
+CommandMsg.py	NodeC.nc   TOSSIM.pyc	     dataStructures  packet.py
+CommandMsg.pyc	README.md  TestSim.py	     includes	     pingTest.py
+Makefile	Scripts    _TOSSIMmodule.so  lib	     simbuild
+Node.nc		TOSSIM.py  app.xml	     noise	     topo
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink/CSE160# ls
+CommandMsg.py	NodeC.nc   TOSSIM.pyc	     dataStructures  packet.py
+CommandMsg.pyc	README.md  TestSim.py	     includes	     pingTest.py
+Makefile	Scripts    _TOSSIMmodule.so  lib	     simbuild
+Node.nc		TOSSIM.py  app.xml	     noise	     topo
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink/CSE160# cd ..
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink# la
+bash: la: command not found
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink# ls
+BlinkAppC.nc  CSE160	README.txt  _TOSSIMmodule.so  simbuild
+BlinkC.nc     Makefile	TOSSIM.py   app.xml
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink# git clone https://github.com/JoseH1497/tester.git
+Cloning into 'tester'...
+remote: Counting objects: 202, done.
+remote: Compressing objects: 100% (84/84), done.
+remote: Total 202 (delta 102), reused 202 (delta 102), pack-reused 0
+Receiving objects: 100% (202/202), 1.59 MiB | 0 bytes/s, done.
+Resolving deltas: 100% (102/102), done.
+Checking connectivity... done.
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink# ls
+BlinkAppC.nc  CSE160	README.txt  _TOSSIMmodule.so  simbuild
+BlinkC.nc     Makefile	TOSSIM.py   app.xml	      tester
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink# cd tester
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink/tester# ls
+CSE106_Project_1.pdf   SkeletonCode_CSE160	   proj1design.txt
+README.md	       SkeletonCode_CSE160.tar.gz  proj1discussion.txt
+Robert-Wang-proj1.tar  proj1
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink/tester# cd proj1
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink/tester/proj1# ls
+TOSSIM.py		_TOSSIMmodule.so  no_noise.txt	run.py	  topo.txt
+TOSSIM.pyc		app.xml		  packet.py	simbuild  topo.txt~
+TinyOS_Plugin_Makefile	build		  packet.pyc	src	  topo1.txt
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink/tester/proj1# make micaz sim
+make: *** No rule to make target 'micaz'.  Stop.
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink/tester/proj1# make
+make: *** No targets specified and no makefile found.  Stop.
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink/tester/proj1# python run.py
+  1   2   -54.0
+  2   1   -54.0
+  3   2   -54.0
+  2   3   -54.0
+  1   4   -54.0
+  4   1   -54.0
+  3   4   -54.0
+  4   3   -54.0
+  2   5   -54.0
+  5   2   -54.0
+  3   5   -54.0
+  5   3   -54.0
+  4   6   -54.0
+  6   4   -54.0
+  5   7   -54.0
+  7   5   -54.0
+  6   8   -54.0
+  8   6   -54.0
+  7   8   -54.0
+  8   7   -54.0
+  1   9   -54.0
+  9   1   -54.0
+  4   9   -54.0
+  9   4   -54.0
+  3   10   -54.0
+  10   3   -54.0
+  5   11   -54.0
+  11   5   -54.0
+Creating noise model for  1
+Creating noise model for  2
+Creating noise model for  3
+Creating noise model for  4
+Creating noise model for  5
+Creating noise model for  6
+Creating noise model for  7
+Creating noise model for  8
+Creating noise model for  9
+Creating noise model for  10
+Creating noise model for  11
+DEBUG (1): Booted with periodic timer starting at 1614, firing every 13501
+DEBUG (1): Radio On
+DEBUG (2): Booted with periodic timer starting at 421, firing every 17925
+DEBUG (2): Radio On
+DEBUG (3): Booted with periodic timer starting at 1228, firing every 10649
+DEBUG (3): Radio On
+DEBUG (4): Booted with periodic timer starting at 35, firing every 19424
+DEBUG (4): Radio On
+DEBUG (5): Booted with periodic timer starting at 842, firing every 14150
+DEBUG (5): Radio On
+DEBUG (6): Booted with periodic timer starting at 1649, firing every 17276
+DEBUG (6): Radio On
+DEBUG (7): Booted with periodic timer starting at 456, firing every 18702
+DEBUG (7): Radio On
+DEBUG (8): Booted with periodic timer starting at 1263, firing every 11225
+DEBUG (8): Radio On
+DEBUG (9): Booted with periodic timer starting at 70, firing every 15201
+DEBUG (9): Radio On
+DEBUG (10): Booted with periodic timer starting at 877, firing every 13373
+DEBUG (10): Radio On
+DEBUG (11): Booted with periodic timer starting at 1684, firing every 18053
+DEBUG (11): Radio On
+DEBUG (3): Packet from 3 has arrived! Msg: 05Hello 3 to 5
+DEBUG (3): A Command has been Issued.
+DEBUG (3): Command Type: Ping
+DEBUG (10): Received Message from 3, meant for 5. Rebroadcasting
+DEBUG (5): Packet from 3 has arrived! Msg: Hello 3 to 5
+DEBUG (4): Received Message from 3, meant for 5. Rebroadcasting
+DEBUG (2): Received Message from 3, meant for 5. Rebroadcasting
+DEBUG (11): Received Message from 5, meant for 3. Rebroadcasting
+DEBUG (7): Received Message from 5, meant for 3. Rebroadcasting
+DEBUG (3): Packet from 5 has arrived! Msg: Hello 3 to 5
+DEBUG (3): Received a Ping Reply from 5!
+DEBUG (2): Received Message from 5, meant for 3. Rebroadcasting
+DEBUG (9): Received Message from 3, meant for 5. Rebroadcasting
+DEBUG (6): Received Message from 3, meant for 5. Rebroadcasting
+DEBUG (1): Received Message from 3, meant for 5. Rebroadcasting
+DEBUG (8): Received Message from 3, meant for 5. Rebroadcasting
+DEBUG (8): Received Message from 5, meant for 3. Rebroadcasting
+DEBUG (7): Received Message from 3, meant for 5. Rebroadcasting
+DEBUG (1): Received Message from 5, meant for 3. Rebroadcasting
+DEBUG (6): Received Message from 5, meant for 3. Rebroadcasting
+DEBUG (9): Received Message from 5, meant for 3. Rebroadcasting
+DEBUG (4): Received Message from 5, meant for 3. Rebroadcasting
+DEBUG (5): Packet from 5 has arrived! Msg: 03Hello 5 to 3
+DEBUG (5): A Command has been Issued.
+DEBUG (5): Command Type: Ping
+DEBUG (11): Received Message from 5, meant for 3. Rebroadcasting
+DEBUG (7): Received Message from 5, meant for 3. Rebroadcasting
+DEBUG (3): Packet from 5 has arrived! Msg: Hello 5 to 3
+DEBUG (2): Received Message from 5, meant for 3. Rebroadcasting
+DEBUG (1): Received Message from 5, meant for 3. Rebroadcasting
+DEBUG (8): Received Message from 5, meant for 3. Rebroadcasting
+DEBUG (10): Received Message from 3, meant for 5. Rebroadcasting
+DEBUG (5): Packet from 3 has arrived! Msg: Hello 5 to 3
+DEBUG (5): Received a Ping Reply from 3!
+DEBUG (2): Received Message from 3, meant for 5. Rebroadcasting
+DEBUG (4): Received Message from 3, meant for 5. Rebroadcasting
+DEBUG (6): Received Message from 5, meant for 3. Rebroadcasting
+DEBUG (1): Received Message from 3, meant for 5. Rebroadcasting
+DEBUG (9): Received Message from 5, meant for 3. Rebroadcasting
+DEBUG (4): Received Message from 5, meant for 3. Rebroadcasting
+DEBUG (9): Received Message from 3, meant for 5. Rebroadcasting
+DEBUG (6): Received Message from 3, meant for 5. Rebroadcasting
+DEBUG (8): Received Message from 3, meant for 5. Rebroadcasting
+DEBUG (7): Received Message from 3, meant for 5. Rebroadcasting
+DEBUG (3): Packet from 3 has arrived! Msg: 06Hello 3 to 6
+DEBUG (3): A Command has been Issued.
+DEBUG (3): Command Type: Ping
+DEBUG (10): Received Message from 3, meant for 6. Rebroadcasting
+DEBUG (5): Received Message from 3, meant for 6. Rebroadcasting
+DEBUG (4): Received Message from 3, meant for 6. Rebroadcasting
+DEBUG (2): Received Message from 3, meant for 6. Rebroadcasting
+DEBUG (11): Received Message from 3, meant for 6. Rebroadcasting
+DEBUG (7): Received Message from 3, meant for 6. Rebroadcasting
+DEBUG (9): Received Message from 3, meant for 6. Rebroadcasting
+DEBUG (6): Packet from 3 has arrived! Msg: Hello 3 to 6
+DEBUG (1): Received Message from 3, meant for 6. Rebroadcasting
+DEBUG (8): Received Message from 3, meant for 6. Rebroadcasting
+DEBUG (8): Received Message from 6, meant for 3. Rebroadcasting
+DEBUG (4): Received Message from 6, meant for 3. Rebroadcasting
+DEBUG (9): Received Message from 6, meant for 3. Rebroadcasting
+DEBUG (1): Received Message from 6, meant for 3. Rebroadcasting
+DEBUG (3): Packet from 6 has arrived! Msg: Hello 3 to 6
+DEBUG (3): Received a Ping Reply from 6!
+DEBUG (2): Received Message from 6, meant for 3. Rebroadcasting
+DEBUG (7): Received Message from 6, meant for 3. Rebroadcasting
+DEBUG (5): Received Message from 6, meant for 3. Rebroadcasting
+DEBUG (11): Received Message from 6, meant for 3. Rebroadcasting
+DEBUG (6): Packet from 6 has arrived! Msg: 03Hello 6 to 3
+DEBUG (6): A Command has been Issued.
+DEBUG (6): Command Type: Ping
+DEBUG (8): Received Message from 6, meant for 3. Rebroadcasting
+DEBUG (4): Received Message from 6, meant for 3. Rebroadcasting
+DEBUG (7): Received Message from 6, meant for 3. Rebroadcasting
+DEBUG (9): Received Message from 6, meant for 3. Rebroadcasting
+DEBUG (3): Packet from 6 has arrived! Msg: Hello 6 to 3
+DEBUG (1): Received Message from 6, meant for 3. Rebroadcasting
+DEBUG (5): Received Message from 6, meant for 3. Rebroadcasting
+DEBUG (10): Received Message from 3, meant for 6. Rebroadcasting
+DEBUG (5): Received Message from 3, meant for 6. Rebroadcasting
+DEBUG (11): Received Message from 6, meant for 3. Rebroadcasting
+DEBUG (2): Received Message from 6, meant for 3. Rebroadcasting
+DEBUG (11): Received Message from 3, meant for 6. Rebroadcasting
+DEBUG (7): Received Message from 3, meant for 6. Rebroadcasting
+DEBUG (2): Received Message from 3, meant for 6. Rebroadcasting
+DEBUG (1): Received Message from 3, meant for 6. Rebroadcasting
+DEBUG (8): Received Message from 3, meant for 6. Rebroadcasting
+DEBUG (6): Packet from 3 has arrived! Msg: Hello 6 to 3
+DEBUG (6): Received a Ping Reply from 3!
+DEBUG (9): Received Message from 3, meant for 6. Rebroadcasting
+DEBUG (4): Received Message from 3, meant for 6. Rebroadcasting
+DEBUG (3): Packet from 3 has arrived! Msg: 1
+DEBUG (3): A Command has been Issued.
+DEBUG (3): Command Type: Neighbor Dump
+DEBUG (3): Updated Neighbors. Dumping new neighbor list of size 4 for Node 3
+DEBUG (3): Neighbor: 10, Age: 0
+DEBUG (3): Neighbor: 5, Age: 0
+DEBUG (3): Neighbor: 2, Age: 0
+DEBUG (3): Neighbor: 4, Age: 0
+DEBUG (3): Packet from 3 has arrived! Msg: 1
+DEBUG (3): A Command has been Issued.
+DEBUG (3): Command Type: Neighbor Dump
+DEBUG (3): Updated Neighbors. Dumping new neighbor list of size 3 for Node 3
+DEBUG (3): Neighbor: 4, Age: 0
+DEBUG (3): Neighbor: 5, Age: 0
+DEBUG (3): Neighbor: 10, Age: 0
+root@4bfa800857ef:/opt/tinyos-main/apps/Blink/tester/proj1# 

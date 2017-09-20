@@ -1,0 +1,17 @@
+module HelloWorldC{
+
+
+uses interface Boot;
+uses interface Leds;
+}
+
+implementation{
+
+    void TurnOnLed(){
+        call Leds.led0on();
+    }
+
+    event void Boot.booted(){
+        TurnOnLed();
+    }
+}

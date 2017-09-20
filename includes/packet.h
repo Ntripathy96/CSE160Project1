@@ -1,6 +1,5 @@
 //Author: UCM ANDES Lab
-//$Author: abeltran2 $
-//$LastChangedBy: abeltran2 $
+
 
 #ifndef PACKET_H
 #define PACKET_H
