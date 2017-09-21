@@ -158,7 +158,7 @@ class TestSim:
         #self.runTime(2)
  
     def sendCMD1(self, string):
-        print("SENDCMD1")
+        print("SENDCMD10000")
         args = string.split(' ');
         self.msg.set_src(int(args[0]));
         self.msg.set_dest(int(args[1]));
@@ -176,7 +176,7 @@ class TestSim:
         #print "Delivering!"
         self.pkt.deliver(int(args[1]), self.t.time()+5)
         self.runTime(2);
-        print("SENDCMD1")
+        print("SENDCMD122222222")
 
 
     def ping(self, source, dest, msg):
