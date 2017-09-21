@@ -48,7 +48,7 @@ class TestSim:
         self.msg.set_protocol(99)
 
         self.pkt = self.t.newPacket()
-        self.pkt.setData(msg.data)
+        self.pkt.setData(self.msg.data)
         self.pkt.setType(self.msg.get_amType())
 
     # Load a topo file and use it.
