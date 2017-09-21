@@ -9,6 +9,8 @@ from CommandMsg import *
 from packet import *
 
 class TestSim:
+    t = Tossim([])
+    r = t.radio()
     # COMMAND TYPES
     CMD_PING = 0
     CMD_NEIGHBOR_DUMP = 1
