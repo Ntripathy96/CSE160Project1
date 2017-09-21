@@ -158,8 +158,8 @@ class TestSim:
         #self.runTime(2)
         
     def ping(self, source, dest, msg):
-        #self.sendCMD(self.CMD_PING, source, "{0}{1}".format(chr(dest),msg));
-        self.sendCMD(self.CMD_PING, source, dest, msg);
+        self.sendCMD(self.CMD_PING, source, "{0}{1}".format(chr(dest),msg));
+       
 
     def neighborDMP(self, destination):
         self.sendCMD(self.CMD_NEIGHBOR_DUMP, destination, "neighbor command");
