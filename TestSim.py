@@ -181,7 +181,7 @@ class TestSim:
 
     def ping(self, source, dest, msg):
         #self.sendCMD(self.CMD_PING, source, "{0}{1}".format(chr(dest),msg));
-        self.sendCMD(self.CMD_PING, source, dest, msg);
+        self.sendCMD( source, dest, msg);
        
 
     def neighborDMP(self, destination):
