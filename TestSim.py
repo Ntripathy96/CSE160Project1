@@ -121,13 +121,13 @@ class TestSim:
     # Generic Command
     def sendCMD(self, ID, dest, payloadStr):
         print("destination 0:")
-        print(dest[0])
+        print("%s",dest[0])
         print("\n")
         print("destination 1:")
-        print(dest[1])
+        print("%s",dest[1])
         print("\n")
         print("destination 2:")
-        print(dest[2])
+        print("%s",dest[2])
         print("\n")
         self.msg.set_dest(dest);
         self.msg.set_id(ID);
