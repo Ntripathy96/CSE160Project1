@@ -151,7 +151,7 @@ def main():
     s.ping(1, 3, "Hi!");
     s.runTime(20);
     s.ping(15, 16, "FOUUUUND!");
-    s.runTime(20);
+    s.runTime(5);
     s.ping(1, 16, "HEEEEEEY!");
     s.runTime(20);
 if __name__ == '__main__':
