@@ -126,7 +126,7 @@ class TestSim:
         #print("%d",dest[0])
         #print("\n")
         print("destination 1:")
-        print("%d",(int)dest[1])
+        print("%d",int(dest[0])
         #print("\n")
         #print("destination 2:")
         #print("%s",payloadStr[0])
