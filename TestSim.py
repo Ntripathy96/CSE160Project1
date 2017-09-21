@@ -107,26 +107,26 @@ class TestSim:
 
     ##Create a Command Packet
     #msg = pack()
-    #msg.set_seq(0)
-    #msg.set_TTL(18)
-    #msg.set_protocol(99)
+    msg.set_seq(0)
+    msg.set_TTL(15)
+    msg.set_protocol(99)
 
     #pkt = t.newPacket()
     #pkt.setData(msg.data)
     #pkt.setType(msg.get_amType())
     # Generic Command
     def sendCMD(self, ID, dest, payloadStr):
-        self.msg.set_dest(dest);
-        self.msg.set_id(ID);
-        self.msg.setString_payload(payloadStr)
-        self.msg.set_seq(0)
-        self.msg.set_TTL(15)
         self.msg.set_protocol(99)
+        self.msg.set_dest(dest);
+        self.msg.set_src(ID);
+        self.msg.setString_payload(payloadStr)
+        
 
 
         self.pkt.setData(self.msg.data)
         self.pkt.setDestination(dest)
         self.pkt.deliver(dest, self.t.time()+5)
+        runTime(2)
 
     def ping(self, source, dest, msg):
         self.sendCMD(self.CMD_PING, source, "{0}{1}".format(chr(dest),msg));
