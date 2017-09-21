@@ -42,9 +42,10 @@ class TestSim:
         self.r = self.t.radio()
 
         #Create a Command Packet
-        self.msg = pack()
-        self.msg.set_seq(0)
-        self.msg.set_TTL(15)
+        self.msg = CommandMsg()
+        #self.msg = pack()
+        #self.msg.set_seq(0)
+        #self.msg.set_TTL(15)
         self.msg.set_protocol(99)
 
         self.pkt = self.t.newPacket()
@@ -119,19 +120,26 @@ class TestSim:
     #pkt.setType(msg.get_amType())
     # Generic Command
     def sendCMD(self, ID, dest, payloadStr):
-        
-        self.msg.set_dest(dest);
-        self.msg.set_src(ID);
+        Self.msg.set_dest(dest);
+        self.msg.set_id(ID);
         self.msg.setString_payload(payloadStr)
-        self.msg.set_protocol(99)
-        
-
 
         self.pkt.setData(self.msg.data)
         self.pkt.setDestination(dest)
         self.pkt.deliver(dest, self.t.time()+5)
-        self.runTime(2)
+        #/*
+        #self.msg.set_dest(dest);
+        #self.msg.set_src(ID);
+        #self.msg.setString_payload(payloadStr)
+        #self.msg.set_protocol(99)
+        
 
+
+        #self.pkt.setData(self.msg.data)
+        #self.pkt.setDestination(dest)
+        #self.pkt.deliver(dest, self.t.time()+5)
+        #self.runTime(2)
+        
     def ping(self, source, dest, msg):
         self.sendCMD(self.CMD_PING, source, "{0}{1}".format(chr(dest),msg));
 
@@ -161,7 +169,7 @@ def main():
     s.ping(1, 3, "Hi!");
     s.runTime(20);
     s.ping(15, 16, "FOUUUUND!");
-    s.runTime(5);
+    s.runTime(20);
     s.ping(1, 16, "HEEEEEEY!");
     s.runTime(20);
 if __name__ == '__main__':
