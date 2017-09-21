@@ -51,7 +51,7 @@ implementation{
       dbg(GENERAL_CHANNEL, "Packet Received\n");
       if(len==sizeof(pack)){
          pack* myMsg=(pack*) payload;
-         dbg(GENERAL_CHANNEL, "Package Payload: %s\n", myMsg->payload);
+         //dbg(GENERAL_CHANNEL, "Package Payload: %s\n", myMsg->payload);
          
 
          if(myMsg->TTL == 0){ //meaning its TTL has run out and thus we should drop the packet
