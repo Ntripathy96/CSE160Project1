@@ -157,7 +157,7 @@ class TestSim:
         #self.pkt.deliver(dest, self.t.time()+5)
         #self.runTime(2)
  
-    def sendCMD1(string):
+    def sendCMD1(self, string):
         print("SENDCMD1")
         args = string.split(' ');
         self.msg.set_src(int(args[0]));
