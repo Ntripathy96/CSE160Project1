@@ -51,7 +51,7 @@ implementation{
       dbg(GENERAL_CHANNEL, "Packet Received\n");
       if(len==sizeof(pack)){
          pack* myMsg=(pack*) payload;
-         //dbg(GENERAL_CHANNEL, "Package Payload: %s\n", myMsg->payload);
+         dbg(GENERAL_CHANNEL, "Package Payload: %s\n", myMsg->payload);
          
 
          if(myMsg->TTL == 0){ //meaning its TTL has run out and thus we should drop the packet
@@ -64,7 +64,7 @@ implementation{
          }else{ //packet does not belong to current node
 
             //resend same packet with TTL-1
-             makePack(&sendPackage, myMsg->src, myMsg->dest, myMsg->TTL-1,myMsg->protocol, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
+            makePack(&sendPackage, myMsg->src, myMsg->dest, myMsg->TTL-1,myMsg->protocol, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
 
             dbg(FLOODING_CHANNEL, "Recieved Message from %d meant for %d...Rebroadcasting\n", myMsg->src, myMsg->dest); //notify process
             
