@@ -119,16 +119,11 @@ class TestSim:
     #pkt.setData(msg.data)
     #pkt.setType(msg.get_amType())
     # Generic Command
-    def sendCMD(self, ID, dest, payloadStr):
+    def sendCMD(self, ID, source, dest, payloadStr):
         
-        for i in range(1,len(payloadStr)):
-            print("valuestart")
-            print(payloadStr[i])
-            print("valueend")
-
-        print(payloadStr[0])
+        
         self.msg.set_dest(dest);
-        self.msg.set_src(ID);
+        self.msg.set_src(source);
         self.msg.setString_payload(payloadStr)
 
         
@@ -151,8 +146,8 @@ class TestSim:
 
 
     def ping(self, source, dest, msg):
-        self.sendCMD(self.CMD_PING, source, "{0}{1}".format(chr(dest),msg));
-        #self.sendCMD( source, dest, msg);
+        #self.sendCMD(self.CMD_PING, source, "{0}{1}".format(chr(dest),msg));
+        self.sendCMD(self.CMD_PING, source, dest, msg);
        
 
     def neighborDMP(self, destination):
