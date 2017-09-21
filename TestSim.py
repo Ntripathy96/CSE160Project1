@@ -43,7 +43,12 @@ class TestSim:
 
         #Create a Command Packet
         self.msg = pack()
+        self.msg.set_seq(0)
+        self.msg.set_TTL(15)
+        self.msg.set_protocol(99)
+
         self.pkt = self.t.newPacket()
+        self.pkt.setData(msg.data)
         self.pkt.setType(self.msg.get_amType())
 
     # Load a topo file and use it.
@@ -107,19 +112,18 @@ class TestSim:
 
     ##Create a Command Packet
     #msg = pack()
-    self.msg.set_seq(0)
-    self.msg.set_TTL(15)
-    self.msg.set_protocol(99)
+    
 
     #pkt = t.newPacket()
     #pkt.setData(msg.data)
     #pkt.setType(msg.get_amType())
     # Generic Command
     def sendCMD(self, ID, dest, payloadStr):
-        self.msg.set_protocol(99)
+        
         self.msg.set_dest(dest);
         self.msg.set_src(ID);
         self.msg.setString_payload(payloadStr)
+        self.msg.set_protocol(99)
         
 
 
