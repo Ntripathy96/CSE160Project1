@@ -153,6 +153,9 @@ class pack(tinyos.message.Message.Message):
     def get_src(self):
         return self.getUIntElement(self.offsetBits_src(), 16, 1)
     
+    def set_id(self, value):
+        self.setUIntElement(self.offsetBits_id(), 8, value, 1)
+    
     #
     # Set the value of the field 'src'
     #
