@@ -156,7 +156,24 @@ class TestSim:
         #self.pkt.setDestination(dest)
         #self.pkt.deliver(dest, self.t.time()+5)
         #self.runTime(2)
+    def sendCMD1(string):
+    	args = string.split(' ');
+	    msg.set_src(int(args[0]));
+        msg.set_dest(int(args[1]));
+        payload=args[2];
+        for i in range(3, len(args)):
+            payload= payload + ' '+ args[i]
         
+        msg.setString_payload(payload)
+        
+        pkt.setData(msg.data)
+        pkt.setDestination(int(args[1]))
+        
+        #print "Delivering!"
+        pkt.deliver(int(args[1]), t.time()+5)
+        runTime(2);
+
+ 
     def ping(self, source, dest, msg):
         self.sendCMD(self.CMD_PING, source, "{0}{1}".format(chr(dest),msg));
        
@@ -181,6 +198,7 @@ def main():
     s.addChannel(s.GENERAL_CHANNEL);
     s.addChannel(s.FLOODING_CHANNEL);
 
+    s.sendCMD("0 1 cmd server 41")
     s.runTime(20);
     s.ping(1, 2, "Hello, World");
     s.runTime(10);
