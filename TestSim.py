@@ -123,7 +123,7 @@ class TestSim:
         
         
         self.msg.set_dest(dest);
-        self.msg.set_id(source);
+        self.msg.set_id(ID);
         self.msg.setString_payload(payloadStr)
 
         
