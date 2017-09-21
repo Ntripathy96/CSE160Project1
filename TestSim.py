@@ -120,6 +120,15 @@ class TestSim:
     #pkt.setType(msg.get_amType())
     # Generic Command
     def sendCMD(self, ID, dest, payloadStr):
+        print("destination 0:")
+        print(dest[0])
+        print("\n")
+        print("destination 1:")
+        print(dest[1])
+        print("\n")
+        print("destination 2:")
+        print(dest[2])
+        print("\n")
         self.msg.set_dest(dest);
         self.msg.set_id(ID);
         self.msg.setString_payload(payloadStr)
