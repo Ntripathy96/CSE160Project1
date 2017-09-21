@@ -174,7 +174,7 @@ class TestSim:
         self.pkt.setDestination(int(args[1]))
         
         #print "Delivering!"
-        self.pkt.deliver(int(args[1]), t.time()+5)
+        self.pkt.deliver(int(args[1]), self.t.time()+5)
         runTime(2);
         print("SENDCMD1")
 
