@@ -38,7 +38,7 @@ class TestSim:
     #Create a Command Packet
     msg = pack()
     msg.set_seq(0)
-    msg.set_TTL(15)
+    msg.set_TTL(18)
     msg.set_protocol(99)
 
     pkt = t.newPacket()
