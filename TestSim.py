@@ -157,11 +157,11 @@ class TestSim:
         #self.pkt.deliver(dest, self.t.time()+5)
         #self.runTime(2)
     def sendCMD1(string):
-        print("SENDCMD1")
-    	args = string.split(' ');
-	    self.msg.set_src(int(args[0]));
-        self.msg.set_dest(int(args[1]));
-        payload=args[2];
+            print("SENDCMD1")
+    	    args = string.split(' ');
+	        self.msg.set_src(int(args[0]));
+            self.msg.set_dest(int(args[1]));
+            payload=args[2];
         for i in range(3, len(args)):
             payload= payload + ' '+ args[i]
         
