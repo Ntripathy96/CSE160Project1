@@ -42,8 +42,8 @@ class TestSim:
         self.r = self.t.radio()
 
         #Create a Command Packet
-        #self.msg = CommandMsg()
-        self.msg = pack()
+        self.msg = CommandMsg()
+        #self.msg = pack()
         self.msg.set_seq(0)
         self.msg.set_TTL(15)
         self.msg.set_protocol(99)
@@ -123,7 +123,7 @@ class TestSim:
         
         
         self.msg.set_dest(dest);
-        self.msg.set_src(source);
+        self.msg.set_ID(source);
         self.msg.setString_payload(payloadStr)
 
         

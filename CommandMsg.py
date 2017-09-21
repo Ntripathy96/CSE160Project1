@@ -132,8 +132,41 @@ class CommandMsg(tinyos.message.Message.Message):
     #
     # Return the offset (in bits) of the field 'id'
     #
+
+    def offsetBits_seq(self):
+        return 32
+    
+    #
+    # Return the value (as a int) of the field 'seq'
+    #
+    def get_seq(self):
+        return self.getUIntElement(self.offsetBits_seq(), 16, 1)
+    
+    #
+    # Set the value of the field 'seq'
+    #
+    def set_seq(self, value):
+        self.setUIntElement(self.offsetBits_seq(), 16, value, 1)
+    
+    #
     def offsetBits_id(self):
         return 16
+    
+
+    def offsetBits_TTL(self):
+        return 48
+    
+    #
+    # Return the value (as a short) of the field 'TTL'
+    #
+    def get_TTL(self):
+        return self.getUIntElement(self.offsetBits_TTL(), 8, 1)
+    
+    #
+    # Set the value of the field 'TTL'
+    #
+    def set_TTL(self, value):
+        self.setUIntElement(self.offsetBits_TTL(), 8, value, 1)
     
     #
     # Return the value (as a short) of the field 'id'
