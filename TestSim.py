@@ -131,13 +131,14 @@ class TestSim:
         #print("destination 2:")
         #print("%s",payloadStr[0])
         #print("\n")
-        #self.msg.set_dest(dest);
-        #self.msg.set_id(ID);
-        #self.msg.setString_payload(payloadStr)
+        self.msg.set_dest(dest);
+        self.msg.set_id(ID);
+        self.msg.setString_payload(payloadStr)
 
-        #self.pkt.setData(self.msg.data)
-        #self.pkt.setDestination(dest)
-        #self.pkt.deliver(dest, self.t.time()+5)
+        
+        self.pkt.setData(self.msg.data)
+        self.pkt.setDestination(dest)
+        self.pkt.deliver(dest, self.t.time()+5)
         #/*
         #self.msg.set_dest(dest);
         #self.msg.set_src(ID);
