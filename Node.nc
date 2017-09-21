@@ -56,17 +56,17 @@ implementation{
 
          if(myMsg->TTL == 0){ //meaning its TTL has run out and thus we should drop the packet
 
-            dbg("FLOODING_CHANNEL","Dropping packet seq #%d from %d\n", myMsg->seq, myMsg->src); //notify what is happening
+            dbg(FLOODING_CHANNEL,"Dropping packet seq #%d from %d\n", myMsg->seq, myMsg->src); //notify what is happening
 
          }else if(TOS_NODE_ID == myMsg->dest){
-             dbg("FLOODING_CHANNEL","Packet from %d has arrived with Msg: %s\n", myMsg->src, myMsg->payload); //once again, notify what has happened 
+             dbg(FLOODING_CHANNEL,"Packet from %d has arrived with Msg: %s\n", myMsg->src, myMsg->payload); //once again, notify what has happened 
 
          }else{ //packet does not belong to current node
 
             //resend same packet with TTL-1
              makePack(&sendPackage, myMsg->src, myMsg->dest, myMsg->TTL-1,myMsg->protocol, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
 
-            dbg("FLOODING_CHANNEL", "Recieved Message from %d meant for %d...Rebroadcasting\n", myMsg->src, myMsg->dest); //notify process
+            dbg(FLOODING_CHANNEL, "Recieved Message from %d meant for %d...Rebroadcasting\n", myMsg->src, myMsg->dest); //notify process
             
             //resend with broadcast address to move packet forward
             call Sender.send(sendPackage, AM_BROADCAST_ADDR);
@@ -83,7 +83,7 @@ implementation{
       dbg(GENERAL_CHANNEL, "PING EVENT \n");
       makePack(&sendPackage, TOS_NODE_ID, destination, 0, 0, 0, payload, PACKET_MAX_PAYLOAD_SIZE);
       call Sender.send(sendPackage, AM_BROADCAST_ADDR);
-      //call Receive.receive(sendPackage, payload,sizeof(payload));
+      
    }
 
    event void CommandHandler.printNeighbors(){}
