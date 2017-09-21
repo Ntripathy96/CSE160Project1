@@ -46,7 +46,7 @@ class TestSim:
         #self.msg = pack()
         #self.msg.set_seq(0)
         #self.msg.set_TTL(15)
-        self.msg.set_protocol(99)
+        #self.msg.set_protocol(99)
 
         self.pkt = self.t.newPacket()
         self.pkt.setData(self.msg.data)
