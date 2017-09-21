@@ -170,11 +170,11 @@ class TestSim:
         self.msg.setString_payload(payload)
         
         
-        pkt.setData(self.msg.data)
-        pkt.setDestination(int(args[1]))
+        self.pkt.setData(self.msg.data)
+        self.pkt.setDestination(int(args[1]))
         
         #print "Delivering!"
-        pkt.deliver(int(args[1]), t.time()+5)
+        self.pkt.deliver(int(args[1]), t.time()+5)
         runTime(2);
         print("SENDCMD1")
 
