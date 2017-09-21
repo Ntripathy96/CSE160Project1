@@ -157,7 +157,6 @@ class TestSim:
         #self.pkt.deliver(dest, self.t.time()+5)
         #self.runTime(2)
  
-
     def sendCMD1(string):
         print("SENDCMD1")
     	args = string.split(' ');
@@ -203,7 +202,7 @@ def main():
     s.addChannel(s.GENERAL_CHANNEL);
     s.addChannel(s.FLOODING_CHANNEL);
 
-    s.sendCMD("0 1 cmd server 41")
+    s.sendCMD1("0 1 cmd server 41")
     s.runTime(20);
     s.ping(1, 2, "Hello, World");
     s.runTime(10);
