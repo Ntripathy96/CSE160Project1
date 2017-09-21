@@ -159,8 +159,8 @@ class TestSim:
  
     def sendCMD1(string):
         print("SENDCMD1")
-    	args = string.split(' ');
-	    self.msg.set_src(int(args[0]));
+        args = string.split(' ');
+        self.msg.set_src(int(args[0]));
         self.msg.set_dest(int(args[1]));
         payload=args[2];
         for i in range(3, len(args)):
@@ -168,6 +168,7 @@ class TestSim:
         
         
         self.msg.setString_payload(payload)
+        
         
         pkt.setData(self.msg.data)
         pkt.setDestination(int(args[1]))
