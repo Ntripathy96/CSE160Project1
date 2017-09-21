@@ -54,11 +54,11 @@ implementation{
          //dbg(GENERAL_CHANNEL, "Package Payload: %s\n", myMsg->payload);
          
 
-         //if(myMsg->TTL == 0){ //meaning its TTL has run out and thus we should drop the packet
+         if(myMsg->TTL == 0){ //meaning its TTL has run out and thus we should drop the packet
 
-           // dbg(FLOODING_CHANNEL,"Dropping packet seq #%d from %d\n", myMsg->seq, myMsg->src); //notify what is happening
+           dbg(FLOODING_CHANNEL,"Dropping packet seq #%d from %d\n", myMsg->seq, myMsg->src); //notify what is happening
 
-         if(TOS_NODE_ID == myMsg->dest){
+         }else if(TOS_NODE_ID == myMsg->dest){
              dbg(FLOODING_CHANNEL,"Packet from %d has arrived with Msg: %s\n", myMsg->src, myMsg->payload); //once again, notify what has happened 
 
          }else{ //packet does not belong to current node

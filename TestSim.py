@@ -35,15 +35,9 @@ class TestSim:
 
     # Initialize Vars
     numMote=0
-    #Create a Command Packet
-    msg = pack()
-    msg.set_seq(0)
-    msg.set_TTL(18)
-    msg.set_protocol(99)
+    
 
-    pkt = t.newPacket()
-    pkt.setData(msg.data)
-    pkt.setType(msg.get_amType())
+
     def __init__(self):
         self.t = Tossim([])
         self.r = self.t.radio()
@@ -112,11 +106,24 @@ class TestSim:
     def runTime(self, amount):
         self.run(amount*1000)
 
+    ##Create a Command Packet
+    #msg = pack()
+    #msg.set_seq(0)
+    #msg.set_TTL(18)
+    #msg.set_protocol(99)
+
+    #pkt = t.newPacket()
+    #pkt.setData(msg.data)
+    #pkt.setType(msg.get_amType())
     # Generic Command
     def sendCMD(self, ID, dest, payloadStr):
         self.msg.set_dest(dest);
         self.msg.set_id(ID);
         self.msg.setString_payload(payloadStr)
+        self.msg.set_seq(0)
+        self.msg.set_TTL(15)
+        self.msg.set_protocol(99)
+
 
         self.pkt.setData(self.msg.data)
         self.pkt.setDestination(dest)
