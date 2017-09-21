@@ -120,22 +120,7 @@ class TestSim:
     #pkt.setType(msg.get_amType())
     # Generic Command
     def sendCMD(self, ID, dest, payloadStr):
-        print("dest")
-        s = dest
-        print(s)
-        i = ID
-        print("ID")
-        print(i)
-        t = payloadStr
-        print("payload")
-        print(t)
-        #print("%d",dest[0])
-        #print("\n")
-       
-        #print("\n")
-        #print("destination 2:")
-        #print("%s",payloadStr[0])
-        #print("\n")
+        
         self.msg.set_dest(dest);
         self.msg.set_src(ID);
         self.msg.setString_payload(payloadStr)
@@ -157,26 +142,6 @@ class TestSim:
         #self.pkt.deliver(dest, self.t.time()+5)
         #self.runTime(2)
  
-    def sendCMD1(self, string):
-        print("SENDCMD10000")
-        args = string.split(' ');
-        self.msg.set_src(int(args[0]));
-        self.msg.set_dest(int(args[1]));
-        payload=args[2];
-        for i in range(3, len(args)):
-            payload= payload + ' '+ args[i]
-        
-        
-        self.msg.setString_payload(payload)
-        
-        
-        self.pkt.setData(self.msg.data)
-        self.pkt.setDestination(int(args[1]))
-        
-        #print "Delivering!"
-        self.pkt.deliver(int(args[1]), self.t.time()+5)
-        self.runTime(2);
-        print("SENDCMD122222222")
 
 
     def ping(self, source, dest, msg):
@@ -204,7 +169,6 @@ def main():
     s.addChannel(s.GENERAL_CHANNEL);
     s.addChannel(s.FLOODING_CHANNEL);
 
-    s.sendCMD1("1 3 cmd server 41")
     s.runTime(20);
     s.ping(1, 2, "Hello, World");
     s.runTime(10);
