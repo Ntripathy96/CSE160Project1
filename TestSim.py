@@ -140,5 +140,7 @@ def main():
     s.runTime(20);
     s.ping(15, 16, "FOUUUUND!");
     s.runTime(20);
+    s.ping(1, 16, "FOUUUUND!");
+    s.runTime(20);
 if __name__ == '__main__':
     main()
