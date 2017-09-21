@@ -130,7 +130,7 @@ class TestSim:
         self.pkt.setData(self.msg.data)
         self.pkt.setDestination(dest)
         self.pkt.deliver(dest, self.t.time()+5)
-        runTime(2)
+        self.runTime(2)
 
     def ping(self, source, dest, msg):
         self.sendCMD(self.CMD_PING, source, "{0}{1}".format(chr(dest),msg));
