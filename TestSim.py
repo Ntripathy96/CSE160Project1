@@ -6,6 +6,7 @@
 import sys
 from TOSSIM import *
 from CommandMsg import *
+from packet import *
 
 class TestSim:
     # COMMAND TYPES
