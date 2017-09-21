@@ -42,11 +42,11 @@ class TestSim:
         self.r = self.t.radio()
 
         #Create a Command Packet
-        self.msg = CommandMsg()
-        #self.msg = pack()
-        #self.msg.set_seq(0)
-        #self.msg.set_TTL(15)
-        #self.msg.set_protocol(99)
+        #self.msg = CommandMsg()
+        self.msg = pack()
+        self.msg.set_seq(0)
+        self.msg.set_TTL(15)
+        self.msg.set_protocol(99)
 
         self.pkt = self.t.newPacket()
         self.pkt.setData(self.msg.data)
@@ -121,12 +121,14 @@ class TestSim:
     # Generic Command
     def sendCMD(self, ID, dest, payloadStr):
         print("dest")
-        s =  dest[1]
+        s = dest
         print(s)
         i = ID
         print("ID")
         print(i)
-        
+        t = payloadStr
+        print("payload")
+        print(t)
         #print("%d",dest[0])
         #print("\n")
        
@@ -135,7 +137,7 @@ class TestSim:
         #print("%s",payloadStr[0])
         #print("\n")
         self.msg.set_dest(dest);
-        self.msg.set_id(ID);
+        self.msg.set_src(ID);
         self.msg.setString_payload(payloadStr)
 
         
@@ -156,7 +158,8 @@ class TestSim:
         #self.runTime(2)
         
     def ping(self, source, dest, msg):
-        self.sendCMD(self.CMD_PING, source, "{0}{1}".format(chr(dest),msg));
+        #self.sendCMD(self.CMD_PING, source, "{0}{1}".format(chr(dest),msg));
+        self.sendCMD(self.CMD_PING, source, dest, msg);
 
     def neighborDMP(self, destination):
         self.sendCMD(self.CMD_NEIGHBOR_DUMP, destination, "neighbor command");
