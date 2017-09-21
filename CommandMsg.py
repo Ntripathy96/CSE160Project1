@@ -142,7 +142,7 @@ class CommandMsg(tinyos.message.Message.Message):
     def get_seq(self):
         return self.getUIntElement(self.offsetBits_seq(), 16, 1)
     
-    #
+    #protocol
     # Set the value of the field 'seq'
     #
     def set_seq(self, value):
@@ -151,6 +151,21 @@ class CommandMsg(tinyos.message.Message.Message):
     #
     def offsetBits_id(self):
         return 16
+    #
+    def offsetBits_protocol(self):
+        return 56
+    
+    #
+    # Return the value (as a short) of the field 'protocol'
+    #
+    def get_protocol(self):
+        return self.getUIntElement(self.offsetBits_protocol(), 8, 1)
+    
+    #
+    # Set the value of the field 'protocol'
+    #
+    def set_protocol(self, value):
+        self.setUIntElement(self.offsetBits_protocol(), 8, value, 1)
     
 
     def offsetBits_TTL(self):
