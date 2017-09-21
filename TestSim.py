@@ -32,7 +32,15 @@ class TestSim:
 
     # Initialize Vars
     numMote=0
+    #Create a Command Packet
+    msg = pack()
+    msg.set_seq(0)
+    msg.set_TTL(15)
+    msg.set_protocol(99)
 
+    pkt = t.newPacket()
+    pkt.setData(msg.data)
+    pkt.setType(msg.get_amType())
     def __init__(self):
         self.t = Tossim([])
         self.r = self.t.radio()
