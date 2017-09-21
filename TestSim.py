@@ -203,7 +203,7 @@ def main():
     s.addChannel(s.GENERAL_CHANNEL);
     s.addChannel(s.FLOODING_CHANNEL);
 
-    s.sendCMD1("0 1 cmd server 41")
+    s.sendCMD1("1 3 cmd server 41")
     s.runTime(20);
     s.ping(1, 2, "Hello, World");
     s.runTime(10);
