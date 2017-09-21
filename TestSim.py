@@ -156,10 +156,12 @@ class TestSim:
         #self.pkt.setDestination(dest)
         #self.pkt.deliver(dest, self.t.time()+5)
         #self.runTime(2)
+ 
+
     def sendCMD1(string):
-            print("SENDCMD1")
-    	    args = string.split(' ');
-	        self.msg.set_src(int(args[0]));
+        print("SENDCMD1")
+    	args = string.split(' ');
+	    self.msg.set_src(int(args[0]));
             self.msg.set_dest(int(args[1]));
             payload=args[2];
         for i in range(3, len(args)):
@@ -174,7 +176,8 @@ class TestSim:
         pkt.deliver(int(args[1]), t.time()+5)
         runTime(2);
         print("SENDCMD1")
- 
+
+        
     def ping(self, source, dest, msg):
         self.sendCMD(self.CMD_PING, source, "{0}{1}".format(chr(dest),msg));
        
