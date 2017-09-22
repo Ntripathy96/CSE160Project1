@@ -18,6 +18,13 @@ implementation{
 	t container[n];
 	uint16_t size = 0;
 
+	command bool List.isFull() {
+		if (size == MAX_SIZE)
+			return TRUE;
+		else
+			return FALSE;
+	}
+	
 	command void List.pushback(t input){
 		// Check to see if we have room for the input.
 		if(size < MAX_SIZE){

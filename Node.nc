@@ -89,7 +89,7 @@ implementation{
        uint16_t index = 0;
        pack packetMatcher; //use to try to find match
 
-       for(i = 0; index < packetListSize; index++){ //traverse thru SeenPacketList
+       for(index = 0; index < packetListSize; index++){ //traverse thru SeenPacketList
            packetMatcher = call SeenPacketList.get(index);
            if(packetMatcher->src == Package->src && packetMatcher->dest == Package->dest && packetMatcher->seq == Package->seq){
                return TRUE; //packet is found in SeenPacketList
