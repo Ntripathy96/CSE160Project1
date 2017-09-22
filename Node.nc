@@ -67,7 +67,7 @@ implementation{
             makePack(&sendPackage, myMsg->src, myMsg->dest, myMsg->TTL-1,myMsg->protocol, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
 
             dbg(FLOODING_CHANNEL, "Recieved Message from %d meant for %d...Rebroadcasting\n", myMsg->src, myMsg->dest); //notify process
-            dbg(GENERAL_CHANNEL, "Recieved Message from %d meant for %d...Rebroadcasting\n", myMsg->src, myMsg->dest); //notify process
+            
 
             //resend with broadcast address to move packet forward
             call Sender.send(sendPackage, AM_BROADCAST_ADDR);
