@@ -29,8 +29,8 @@ implementation{
 
    // Prototypes
    void makePack(pack *Package, uint16_t src, uint16_t dest, uint16_t TTL, uint16_t Protocol, uint16_t seq, uint8_t *payload, uint8_t length);
-   bool findSeenPacket(pack); //function for finding a packet from a node's seen packet list
-   void pushToPacketList(pack); //push a seen packet onto a node's seen packet list
+   bool findSeenPacket(pack *Package); //function for finding a packet from a node's seen packet list
+   void pushToPacketList(pack Package); //push a seen packet onto a node's seen packet list
 
    event void Boot.booted(){
       call AMControl.start();
@@ -65,7 +65,7 @@ implementation{
 
          }else if(TOS_NODE_ID == myMsg->dest){
              dbg(FLOODING_CHANNEL,"Packet from %d has arrived with Msg: %s\n", myMsg->src, myMsg->payload); //once again, notify what has happened 
-             pushToPacketList(*myMsg); //push to seenpacketlist
+             pushToPacketList(myMsg); //push to seenpacketlist
          }else{ //packet does not belong to current node
 
             //resend same packet with TTL-1
