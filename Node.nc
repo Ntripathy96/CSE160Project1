@@ -26,7 +26,7 @@ module Node{
 
 implementation{
    pack sendPackage;
-
+   uint16_t seqNumb = 0;
    // Prototypes
    void makePack(pack *Package, uint16_t src, uint16_t dest, uint16_t TTL, uint16_t Protocol, uint16_t seq, uint8_t *payload, uint8_t length);
    bool findSeenPacket(pack *Package); //function for finding a packet from a node's seen packet list
@@ -69,7 +69,7 @@ implementation{
          }else{ //packet does not belong to current node
 
             //resend same packet with TTL-1
-            makePack(&sendPackage, myMsg->src, myMsg->dest, myMsg->TTL-1,myMsg->protocol, myMsg->seq+1, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
+            makePack(&sendPackage, myMsg->src, myMsg->dest, myMsg->TTL-1,myMsg->protocol, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
 
             dbg(FLOODING_CHANNEL, "Recieved Message from %d meant for %d...Rebroadcasting\n", myMsg->src, myMsg->dest); //notify process
             pushToPacketList(sendPackage); //packet not meant for this node but we need to push into seenpacketlist
@@ -108,7 +108,8 @@ implementation{
 
    event void CommandHandler.ping(uint16_t destination, uint8_t *payload){
       dbg(GENERAL_CHANNEL, "PING EVENT \n");
-      makePack(&sendPackage, TOS_NODE_ID, destination, 15, 0, 0, payload, PACKET_MAX_PAYLOAD_SIZE);
+      makePack(&sendPackage, TOS_NODE_ID, destination, 15, 0, seqNumb, payload, PACKET_MAX_PAYLOAD_SIZE);
+      seqNumb++;
       call Sender.send(sendPackage, AM_BROADCAST_ADDR);
       
    }
