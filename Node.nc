@@ -52,7 +52,7 @@ implementation{
       if(len==sizeof(pack)){
          pack* myMsg=(pack*) payload;
          //dbg(GENERAL_CHANNEL, "Package Payload: %s\n", myMsg->payload);
-         
+         dbg(FLOODING_CHANNEL, "Recieved Message from %d meant for %d...Rebroadcasting\n", myMsg->src, myMsg->dest); 
 
          if(myMsg->TTL == 0){ //meaning its TTL has run out and thus we should drop the packet
 
