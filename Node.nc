@@ -115,7 +115,7 @@ implementation{
       seqNumb++;
       dbg(FLOODING_CHANNEL, "Sequence number after %d\n", seqNumb);
       makePack(&sendPackage, TOS_NODE_ID, destination, 15, 0, seqNumb, payload, PACKET_MAX_PAYLOAD_SIZE);
-      
+      seqNumb++;
       call Sender.send(sendPackage, AM_BROADCAST_ADDR);
       
    }
