@@ -54,7 +54,7 @@ implementation{
       if(len==sizeof(pack)){
          pack* myMsg=(pack*) payload;
          dbg(GENERAL_CHANNEL, "Package Payload: %s\n", myMsg->payload);
-         dbg(FLOODING_CHANNEL, "Package Sequence#: %d\n", myMsg->seq);
+         dbg(FLOODING_CHANNEL, "Msg_Package Sequence#: %d\n", myMsg->seq);
          
 
          if(myMsg->TTL == 0){ //meaning its TTL has run out and thus we should drop the packet
@@ -66,8 +66,9 @@ implementation{
 
          }else if(TOS_NODE_ID == myMsg->dest){
              dbg(FLOODING_CHANNEL,"Packet from %d has arrived with Msg: %s and SEQ: %d\n", myMsg->src, myMsg->payload, myMsg->seq); //once again, notify what has happened 
-             makePack(&sendPackage, myMsg->src, myMsg->dest, myMsg->TTL-1,myMsg->protocol, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
+             makePack(&sendPackage, myMsg->src, myMsg->dest, myMsg->TTL-1,myMsg->protocol, seqNumb, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
              pushToPacketList(sendPackage); //push to seenpacketlist
+             dbg(FLOODING_CHANNEL, "Sequence number before %d\n", seqNumb);
              seqNumb++;
              dbg(FLOODING_CHANNEL, "Sequence number after found %d\n", seqNumb);
 
@@ -113,9 +114,9 @@ implementation{
 
    event void CommandHandler.ping(uint16_t destination, uint8_t *payload){
       dbg(GENERAL_CHANNEL, "PING EVENT \n");
-      dbg(FLOODING_CHANNEL, "Sequence number before %d\n", seqNumb);
+      dbg(FLOODING_CHANNEL, "PING_Sequence number before %d\n", seqNumb);
       makePack(&sendPackage, TOS_NODE_ID, destination, 15, 0, seqNumb, payload, PACKET_MAX_PAYLOAD_SIZE);
-      seqNumb++;
+      //seqNumb++;
       call Sender.send(sendPackage, AM_BROADCAST_ADDR);
       
    }
