@@ -147,7 +147,7 @@ class TestSim:
 
 
     def ping(self, source, dest, msg):
-        self.sendCMD(self.CMD_PING, dest, "{0}{1}".format(chr(dest),msg));
+        self.sendCMD(self.CMD_PING, source, "{0}{1}".format(chr(dest),msg));
         #self.sendCMD(self.CMD_PING, source, dest, msg);
        
 
