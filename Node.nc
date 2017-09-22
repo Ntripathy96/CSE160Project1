@@ -65,7 +65,7 @@ implementation{
 
          }else if(TOS_NODE_ID == myMsg->dest){
              dbg(FLOODING_CHANNEL,"Packet from %d has arrived with Msg: %s\n", myMsg->src, myMsg->payload); //once again, notify what has happened 
-             pushToPacketList(myMsg); //push to seenpacketlist
+             pushToPacketList(*myMsg); //push to seenpacketlist
          }else{ //packet does not belong to current node
 
             //resend same packet with TTL-1
