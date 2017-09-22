@@ -34,7 +34,7 @@ class TestSim:
 
     # Initialize Vars
     numMote=0
-    seqNum = 0;
+    
 
 
     def __init__(self):
@@ -121,7 +121,7 @@ class TestSim:
     # Generic Command
     def sendCMD(self, ID, dest, payloadStr):
         
-        seqNum = seqNum + 1
+        
         self.msg.set_dest(dest);
         #self.msg.set_src(source);
         self.msg.set_id(ID);
