@@ -34,7 +34,7 @@ class TestSim:
 
     # Initialize Vars
     numMote=0
-    
+
 
 
     def __init__(self):
@@ -126,7 +126,7 @@ class TestSim:
         #self.msg.set_src(source);
         self.msg.set_id(ID);
         self.msg.setString_payload(payloadStr)
-        self.msg.set_seq(seqNum)
+        #self.msg.set_seq(seqNum)
 
         
         self.pkt.setData(self.msg.data)
