@@ -87,11 +87,11 @@ implementation{
    bool findSeenPacket(pack *Package){
        uint16_t packetListSize = call SeenPacketList.size();
        uint16_t i = 0;
-       pack *packetMatcher; //use to try to find match
+       pack packetMatcher; //use to try to find match
 
        for(i = 0; i < packetListSize; i++){ //traverse thru SeenPacketList
            packetMatcher = call SeenPacketList.get(i);
-           if(packetMatcher->src == Package->src && packetMatcher->dest == Package->dest && packetMatcher->seq == Package->seq){
+           if(packetMatcher.src == Package->src && packetMatcher.dest == Package->dest && packetMatcher.seq == Package->seq){
                return TRUE; //packet is found in SeenPacketList
            }
        }
