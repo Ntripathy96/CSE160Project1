@@ -44,8 +44,8 @@ class TestSim:
         #Create a Command Packet
         self.msg = CommandMsg()
         #self.msg = pack()
-        self.msg.set_seq(0)
-        self.msg.set_TTL(15)
+        #self.msg.set_seq(0)
+        #self.msg.set_TTL(15)
         self.msg.set_protocol(99)
 
         self.pkt = self.t.newPacket()
@@ -123,7 +123,8 @@ class TestSim:
         
         
         self.msg.set_dest(dest);
-        self.msg.set_id(source);
+        #self.msg.set_src(source);
+        self.msg.set_id(ID);
         self.msg.setString_payload(payloadStr)
 
         
