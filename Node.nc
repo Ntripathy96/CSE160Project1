@@ -58,10 +58,10 @@ implementation{
 
          if(myMsg->TTL == 0){ //meaning its TTL has run out and thus we should drop the packet
 
-           dbg(FLOODING_CHANNEL,"Dropping packet seq #%d from %d to %d because TTL = 0\n", myMsg->seq, myMsg->src, myMsg->dest); //notify what is happening
+           dbg(FLOODING_CHANNEL,"TTL=0:Dropping packet seq #%d from %d to %d\n", myMsg->seq, myMsg->src, myMsg->dest); //notify what is happening
 
          }else if(findSeenPacket(myMsg)){//packet dropped if seen by node more than once
-           dbg(FLOODING_CHANNEL,"Dropping packet seq #%d from %d to %d because Packet has Already been SEEN\n", myMsg->seq, myMsg->src, myMsg->dest); //notify what is happening
+           dbg(FLOODING_CHANNEL,"ALREADY SEEN: Dropping packet seq #%d from %d to %d\n", myMsg->seq, myMsg->src, myMsg->dest); //notify what is happening
 
          }else if(TOS_NODE_ID == myMsg->dest){
              dbg(FLOODING_CHANNEL,"Packet from %d has arrived with Msg: %s\n", myMsg->src, myMsg->payload); //once again, notify what has happened 
