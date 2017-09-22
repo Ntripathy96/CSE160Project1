@@ -172,7 +172,7 @@ def main():
     s.addChannel(s.FLOODING_CHANNEL);
 
     s.runTime(20);
-    s.ping(1, 8, "Hello, World");
+    s.ping(1, 16, "HELLO, WORLD");
     s.runTime(10);
     #s.ping(2,11, "Hi!");
     #s.runTime(20);
