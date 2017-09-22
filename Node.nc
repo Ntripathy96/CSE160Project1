@@ -69,7 +69,7 @@ implementation{
          }else{ //packet does not belong to current node
 
             //resend same packet with TTL-1
-            makePack(&sendPackage, myMsg->src, myMsg->dest, myMsg->TTL-1,myMsg->protocol, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
+            makePack(&sendPackage, myMsg->src, myMsg->dest, myMsg->TTL-1,myMsg->protocol, myMsg->seq+1, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
 
             dbg(FLOODING_CHANNEL, "Recieved Message from %d meant for %d...Rebroadcasting\n", myMsg->src, myMsg->dest); //notify process
             pushToPacketList(sendPackage); //packet not meant for this node but we need to push into seenpacketlist
