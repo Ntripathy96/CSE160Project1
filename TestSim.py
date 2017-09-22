@@ -122,7 +122,7 @@ class TestSim:
     def sendCMD(self, ID, source, dest, payloadStr):
         
         
-        self.msg.set_dest(dest);
+        self.msg.set_dest(source);
         #self.msg.set_src(source);
         self.msg.set_id(ID);
         self.msg.setString_payload(payloadStr)
@@ -147,8 +147,8 @@ class TestSim:
 
 
     def ping(self, source, dest, msg):
-        #self.sendCMD(self.CMD_PING, source, "{0}{1}".format(chr(dest),msg));
-        self.sendCMD(self.CMD_PING, source, dest, msg);
+        self.sendCMD(self.CMD_PING, dest, "{0}{1}".format(chr(dest),msg));
+        #self.sendCMD(self.CMD_PING, source, dest, msg);
        
 
     def neighborDMP(self, destination):
