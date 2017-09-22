@@ -56,7 +56,7 @@ implementation{
 
          if(myMsg->TTL == 0){ //meaning its TTL has run out and thus we should drop the packet
 
-           dbg(FLOODING_CHANNEL,"Dropping packet seq #%d from %d\n", myMsg->seq, myMsg->src); //notify what is happening
+           dbg(FLOODING_CHANNEL,"Dropping packet seq #%d from %d to %d\n", myMsg->seq, myMsg->src, myMsg->dest); //notify what is happening
 
          }else if(TOS_NODE_ID == myMsg->dest){
              dbg(FLOODING_CHANNEL,"Packet from %d has arrived with Msg: %s\n", myMsg->src, myMsg->payload); //once again, notify what has happened 
@@ -82,7 +82,7 @@ implementation{
 
    event void CommandHandler.ping(uint16_t destination, uint8_t *payload){
       dbg(GENERAL_CHANNEL, "PING EVENT \n");
-      makePack(&sendPackage, TOS_NODE_ID, destination, 15, 0, 0, payload, PACKET_MAX_PAYLOAD_SIZE);
+      makePack(&sendPackage, TOS_NODE_ID, destination, 2, 0, 0, payload, PACKET_MAX_PAYLOAD_SIZE);
       call Sender.send(sendPackage, AM_BROADCAST_ADDR);
       
    }
