@@ -23,5 +23,41 @@ enum{
 enum{
 	CMD_LENGTH = 1,
 };
+bool isPing(uint8_t *array, uint8_t size){
+	if(array[0]==CMD_PING)return TRUE;
+	return FALSE;
+}
+
+bool isNeighborDump(uint8_t *array, uint8_t size) {
+	if(array[0] == CMD_NEIGHBOR_DUMP) return TRUE;
+	return FALSE;
+}
+
+/*
+ * getCmd - processes a string to find out which command is being issued. A Command ID is returned based on the
+ * enum declared. Also debugging information is sent to the cmdDebug channel.
+ * 
+ * @param:
+ * 		uint8_t *array = a string held in a byte array
+ * 		uint8_t size = size of the above string
+ * @return:
+ * 		int = Returns one of the above ID Numbers to indicate the type of command.
+ */
+int getCMD(uint8_t *array, uint8_t size){
+	dbg("cmdDebug", "A Command has been Issued.\n");
+
+	if(isPing(array,size)){
+		dbg("cmdDebug", "Command Type: Ping\n");
+		return CMD_PING;
+	}
+	
+	if(isNeighborDump(array, size)) {
+		dbg("cmdDebug", "Command Type: Neighbor Dump\n");
+		return CMD_NEIGHBOR_DUMP;
+	}
+	
+	dbg("cmdDebug", "CMD_ERROR: \"%s\" does not match any known commands.\n", array);
+	return CMD_ERROR;
+}
 
 #endif /* COMMAND_H */
