@@ -37,7 +37,7 @@ module Node{
 
 implementation{
    pack sendPackage;
-   uint16_t seqNumb = sendPackage.seq + 1;
+   uint16_t seqNumb = 0;
    
    // Prototypes
    void makePack(pack *Package, uint16_t src, uint16_t dest, uint16_t TTL, uint16_t Protocol, uint16_t seq, uint8_t *payload, uint8_t length);
@@ -132,8 +132,9 @@ implementation{
    event void CommandHandler.ping(uint16_t destination, uint8_t *payload){
       dbg(GENERAL_CHANNEL, "PING EVENT \n");
       dbg(FLOODING_CHANNEL, "PING_Sequence number before %d\n", seqNumb);
+      bg(FLOODING_CHANNEL, "sendPackage.seq number before %d\n", sendPackage.seq);
       //sendPackage.seq+1 increases seq# by 1 to give each packet an unique seq#
-      seqNumb = seqNumb + 1;
+      seqNumb = sendPackage.seq + 1;
       dbg(FLOODING_CHANNEL, "PING_Sequence number after %d\n", seqNumb);
       makePack(&sendPackage, TOS_NODE_ID, destination, 15, 0, seqNumb, payload, PACKET_MAX_PAYLOAD_SIZE);
       
