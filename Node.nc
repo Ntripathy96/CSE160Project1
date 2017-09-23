@@ -131,7 +131,7 @@ implementation{
 
    event void CommandHandler.ping(uint16_t destination, uint8_t *payload){
       dbg(GENERAL_CHANNEL, "PING EVENT \n");
-      //dbg(FLOODING_CHANNEL, "PING_Sequence number before %d\n", sendPackage.seq+1);
+      dbg(FLOODING_CHANNEL, "PING_Sequence number before %d\n", sendPackage.seq+1);
       //sendPackage.seq+1 increases seq# by 1 to give each packet an unique seq#
       seqNumb = sendPackage.seq + 1;
       makePack(&sendPackage, TOS_NODE_ID, destination, 15, 0, sendPackage.seq + 1, payload, PACKET_MAX_PAYLOAD_SIZE);
