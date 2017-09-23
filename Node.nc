@@ -70,8 +70,7 @@ implementation{
    
    //fired() event for Timer1
    event void Timer1.fired(){
-       //();
-       //void printNeighbors();();
+       neighborDiscovery();
    }
    event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len){
       dbg(GENERAL_CHANNEL, "Packet Received\n");
@@ -113,8 +112,8 @@ implementation{
                 makePack(&sendPackage, TOS_NODE_ID, AM_BROADCAST_ADDR, myMsg->TTL-1,PROTOCOL_PINGREPLY, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
                 pushToPacketList(sendPackage); //push to our seen list
 
-                call Sender.send(sendPackage, myMsg->src); //send back to sender with PINGREPLY Protocol
                 dbg(NEIGHBOR_CHANNEL, "New PROTOCOL AFTER PINGPROTOCOL = %d", sendPackage.protocol);
+                call Sender.send(sendPackage, myMsg->src); //send back to sender with PINGREPLY Protocol
                 break;
             }
              
