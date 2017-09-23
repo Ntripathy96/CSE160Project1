@@ -123,7 +123,7 @@ implementation{
                     dbg(NEIGHBOR_CHANNEL,"Ping Reply Incoming from %d \n", myMsg->src);
                     break;
                 
-                case PROTOCOL_CMD
+                case PROTOCOL_CMD:
                     switch(getCMD((uint8_t *)&myMsg->payload,sizeof(myMsg->payload))){
 
                         case CMD_NEIGHBOR_DUMP:
