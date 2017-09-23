@@ -163,7 +163,8 @@ implementation{
 
                     //create a package with protocol PINGREPLY FOR myMsg->src from TOS_NODE_ID
                     //PROTOCOL_PINGREPLY = 1
-                    //dbg(NEIGHBOR_CHANNEL,"size = %d\n", sizeof(myMsg->payload));
+                    dbg(NEIGHBOR_CHANNEL,"AMMMS = %d\n", AM_BROADCAST_ADDR);
+                    dbg(NEIGHBOR_CHANNEL,"size = %d\n", sizeof(myMsg->payload));
                     //dbg(NEIGHBOR_CHANNEL,"PAYLOAD = %d\n", myMsg->payload);
                     //dbg(NEIGHBOR_CHANNEL,"TOS_NODE_ID = %d\n", TOS_NODE_ID);
                     //dbg(NEIGHBOR_CHANNEL,"TTL = %d\n", myMsg->TTL-1);
