@@ -36,7 +36,7 @@ module Node{
 }
 
 implementation{
-   pack sendPackage(seq=0);
+   pack sendPackage;
    uint16_t seqNumb = 0;
    
    // Prototypes
