@@ -69,7 +69,7 @@ implementation{
       if(len==sizeof(pack)){
          pack* myMsg=(pack*) payload;
          dbg(GENERAL_CHANNEL, "Package Payload: %s\n", myMsg->payload);
-         //dbg(FLOODING_CHANNEL, "Msg_Package Sequence#: %d\n", myMsg->seq);
+         dbg(FLOODING_CHANNEL, "Msg_Package Sequence#: %d\n", myMsg->seq);
          
 
          if(myMsg->TTL == 0){ //meaning its TTL has run out and thus we should drop the packet
@@ -82,7 +82,7 @@ implementation{
 
          }else if(TOS_NODE_ID == myMsg->dest){
              dbg(FLOODING_CHANNEL,"Packet from %d has arrived with Msg: %s and SEQ: %d\n", myMsg->src, myMsg->payload, myMsg->seq); //once again, notify what has happened 
-             makePack(&sendPackage, myMsg->src, myMsg->dest, myMsg->TTL-1,myMsg->protocol, seqNumb, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
+             makePack(&sendPackage, myMsg->src, myMsg->dest, myMsg->TTL-1,myMsg->protocol, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
              pushToPacketList(sendPackage); //push to seenpacketlist
              //dbg(FLOODING_CHANNEL, "Sequence number before %d\n", seqNumb);
              //seqNumb++;
