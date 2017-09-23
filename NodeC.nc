@@ -40,7 +40,7 @@ implementation {
     Node.ListOfNeighbors -> ListOfNeighborsC;  //connects ListOfNeighbors with component ListOfNeighborsC
 
     //add component for PoolOfNeighbors
-    components new PoolC(neigbor, 64) as PoolOfNeighborsC;
+    components new PoolC(neighbor, 64) as PoolOfNeighborsC;
     Node.PoolOfNeighbors -> PoolOfNeighborsC;
 
     //component for Timer
