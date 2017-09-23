@@ -183,7 +183,7 @@ def main():
     s.runTime(20);
     s.ping(1, 5, "yellow");
     s.runTime(20);
-    s.ping(18, 19, "AYEEEEEEEEE!");
+    s.ping(2, 19, "AYEEEEEEEEE!");
     s.runTime(20);
     s.ping(1, 9, "YOOOOOOOOO!");
     s.runTime(20);
