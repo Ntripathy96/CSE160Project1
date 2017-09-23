@@ -114,7 +114,7 @@ implementation{
 
    event void CommandHandler.ping(uint16_t destination, uint8_t *payload){
       dbg(GENERAL_CHANNEL, "PING EVENT \n");
-      dbg(FLOODING_CHANNEL, "PING_Sequence number before %d\n", seqNumb);
+      dbg(FLOODING_CHANNEL, "PING_Sequence number before %d\n", seqNumb+sendPackage.seq);
       makePack(&sendPackage, TOS_NODE_ID, destination, 15, 0, seqNumb, payload, PACKET_MAX_PAYLOAD_SIZE);
       seqNumb++;
       call Sender.send(sendPackage, AM_BROADCAST_ADDR);
