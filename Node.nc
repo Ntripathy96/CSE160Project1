@@ -14,8 +14,8 @@
 #include "includes/channels.h"
 
 typedef nx_struct neighbor {
-    nx_unit16_t Node;
-    nx_unit8_t Life;
+    nx_uint16_t Node;
+    nx_uint8_t Life;
 }neighbor;
 
 module Node{
