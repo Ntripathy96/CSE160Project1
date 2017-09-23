@@ -157,13 +157,14 @@ implementation{
             switch(myMsg->protocol){
 
                 case PROTOCOL_PING: //PROTOCOL_PING = 0
-                    dbg(GENERAL_CHANNEL, "MYMSG->PROTOCOL\n ", myMsg->protocol);
+                    dbg(GENERAL_CHANNEL, "MYMSG->PROTOCOL %d\n ", myMsg->protocol);
                     //we recieve a protocol ping, we must send packet back to sender so they can discover a neighbor
                     dbg(NEIGHBOR_CHANNEL, "NODE %d Received Protocol Ping from %d\n",TOS_NODE_ID,myMsg->src);
 
                     //create a package with protocol PINGREPLY FOR myMsg->src from TOS_NODE_ID
                     //PROTOCOL_PINGREPLY = 1
                     makePack(&sendPackage, TOS_NODE_ID, AM_BROADCAST_ADDR, myMsg->TTL-1,PROTOCOL_PINGREPLY, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
+                    dbg(NEIGHBOR_CHANNEL, "inbetween = %s\n", sendPackage.protocol);
                     pushToPacketList(sendPackage); //push to our seen list
 
                     dbg(NEIGHBOR_CHANNEL, "New PROTOCOL AFTER PINGPROTOCOL = %s\n", sendPackage.protocol);
