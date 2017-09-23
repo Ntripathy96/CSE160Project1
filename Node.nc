@@ -63,7 +63,7 @@ implementation{
 
          }else if(findSeenPacket(myMsg)){//packet dropped if seen by node more than once
            dbg(FLOODING_CHANNEL,"ALREADY SEEN: Dropping packet seq #%d from %d to %d\n", myMsg->seq, myMsg->src, myMsg->dest); //notify what is happening
-
+            dbg(FLOODING_CHANNEL, "SEQNUM %d, seq: %d. Rebroadcasting\n", seqNumb, myMsg->seq);
          }else if(TOS_NODE_ID == myMsg->dest){
              dbg(FLOODING_CHANNEL,"Packet from %d has arrived with Msg: %s and SEQ: %d\n", myMsg->src, myMsg->payload, myMsg->seq); //once again, notify what has happened 
              makePack(&sendPackage, myMsg->src, myMsg->dest, myMsg->TTL-1,myMsg->protocol, seqNumb, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
