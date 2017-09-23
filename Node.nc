@@ -68,9 +68,9 @@ implementation{
              dbg(FLOODING_CHANNEL,"Packet from %d has arrived with Msg: %s and SEQ: %d\n", myMsg->src, myMsg->payload, myMsg->seq); //once again, notify what has happened 
              makePack(&sendPackage, myMsg->src, myMsg->dest, myMsg->TTL-1,myMsg->protocol, seqNumb, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
              pushToPacketList(sendPackage); //push to seenpacketlist
-             dbg(FLOODING_CHANNEL, "Sequence number before %d\n", seqNumb);
-             seqNumb++;
-             dbg(FLOODING_CHANNEL, "Sequence number after found %d\n", seqNumb);
+             //dbg(FLOODING_CHANNEL, "Sequence number before %d\n", seqNumb);
+             //seqNumb++;
+             //dbg(FLOODING_CHANNEL, "Sequence number after found %d\n", seqNumb);
 
          }else{ //packet does not belong to current node
 
@@ -79,7 +79,7 @@ implementation{
 
             dbg(FLOODING_CHANNEL, "Recieved Message from %d meant for %d...Rebroadcasting\n", myMsg->src, myMsg->dest); //notify process
             pushToPacketList(sendPackage); //packet not meant for this node but we need to push into seenpacketlist
-            dbg(FLOODING_CHANNEL, "SEQNUM %d, seq: %d. Rebroadcasting\n", seqNumb, myMsg->seq);
+            //dbg(FLOODING_CHANNEL, "SEQNUM %d, seq: %d. Rebroadcasting\n", seqNumb, myMsg->seq);
             //resend with broadcast address to move packet forward
             call Sender.send(sendPackage, AM_BROADCAST_ADDR);
          }
@@ -115,7 +115,7 @@ implementation{
    event void CommandHandler.ping(uint16_t destination, uint8_t *payload){
       dbg(GENERAL_CHANNEL, "PING EVENT \n");
       dbg(FLOODING_CHANNEL, "PING_Sequence number before %d\n", sendPackage.seq+1);
-      seqNumb++;
+      //seqNumb++;
       makePack(&sendPackage, TOS_NODE_ID, destination, 15, 0, sendPackage.seq+1, payload, PACKET_MAX_PAYLOAD_SIZE);
       
       call Sender.send(sendPackage, AM_BROADCAST_ADDR);
