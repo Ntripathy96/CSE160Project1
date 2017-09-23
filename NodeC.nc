@@ -21,7 +21,7 @@ implementation {
     Node -> MainC.Boot;
 
     Node.Receive -> GeneralReceive;
-
+    
     components ActiveMessageC;
     Node.AMControl -> ActiveMessageC;
 
@@ -44,8 +44,10 @@ implementation {
     //Node.PoolOfNeighbors -> PoolOfNeighborsC;
 
     //component for Timer
-    components new TimerMilliC() as Timer1C
+    components new TimerMilliC() as Timer1C;
     Node.Timer1-> Timer1C;
+
+    
 
 
 }
