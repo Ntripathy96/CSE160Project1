@@ -43,6 +43,10 @@ implementation{
    void makePack(pack *Package, uint16_t src, uint16_t dest, uint16_t TTL, uint16_t Protocol, uint16_t seq, uint8_t *payload, uint8_t length);
    bool findSeenPacket(pack *Package); //function for finding a packet from a node's seen packet list
    void pushToPacketList(pack Package); //push a seen packet onto a node's seen packet list
+   void neighborDiscovery(); //find a nodes neighbors
+   void printNeighbors(); //print a nodes neighbor list
+
+
 
    event void Boot.booted(){
       call AMControl.start();
@@ -63,7 +67,8 @@ implementation{
    
    //fired() event for Timer1
    event void Timer1.fired(){
-       //discoverNeighborList();
+       //();
+       //void printNeighbors();();
    }
    event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len){
       dbg(GENERAL_CHANNEL, "Packet Received\n");
@@ -128,6 +133,61 @@ implementation{
        //add Package
        call SeenPacketList.pushback(Package);
    }
+
+
+   void neighborDiscovery() {
+		pack Package;
+		char* message;
+		
+		dbg(NEIGHBOR_CHANNEL, "Discovery activated: %d checking list for neighbors\n", TOS_NODE_ID);
+		if(!call ListOfNeighbors.isEmpty()) {
+			uint16_t size = call ListOfNeighbors.size();
+			uint16_t i = 0;
+			uint16_t life = 0;
+			neighbor* neighbor_ptr;
+			neighbor* temp;
+			//Increase Life of the ListOfNeighbors
+			for(i = 0; i < size; i++) {
+				temp = call ListOfNeighbors.get(i);
+				temp->Life++;
+			}
+			//If any are older than 5 neighbor confirmation requests then drop them from our list
+			for(i = 0; i < size; i++) {
+				temp = call ListOfNeighbors.get(i);
+				life = temp->Life;
+				if(life > 5) {
+					neighbor_ptr = call ListOfNeighbors.remove(i);
+					//dbg(NEIGHBOR_CHANNEL, "Node %d is older than 5 pings, dropping from list\n", neighbor_ptr->Node);
+					call NeighborPool.put(neighbor_ptr);
+					i--;
+					size--;
+				}
+			}
+		}
+		//Ready to ping ListOfNeighbors
+		message = "addOn\n";
+		makePack(&Package, TOS_NODE_ID, AM_BROADCAST_ADDR, 2, PROTOCOL_PING, 1, (uint8_t*) message, (uint8_t) sizeof(message));
+
+		pushPack(Package);
+		call Sender.send(Package, AM_BROADCAST_ADDR);
+	}
+
+
+
+   void printNeighbors() {
+		uint16_t i, size;
+		size = call ListOfNeighbors.size();
+		//Print out ListOfNeighbors after updating
+		if(size == 0) {
+			dbg(NEIGHBOR_CHANNEL, "No Neighbors found\n");
+		} else {
+			dbg(NEIGHBOR_CHANNEL, "Updated Neighbors. Dumping new neighbor list of size %d for Node %d\n", size, TOS_NODE_ID);
+			for(i = 0; i < size; i++) {
+				neighbor* neighbor_ptr = call ListOfNeighbors.get(i);
+				dbg(NEIGHBOR_CHANNEL, "Neighbor: %d, Life: %d\n", neighbor_ptr->Node, neighbor_ptr->Life);
+			}
+		}
+	}
 
    event void CommandHandler.ping(uint16_t destination, uint8_t *payload){
       dbg(GENERAL_CHANNEL, "PING EVENT \n");
