@@ -184,5 +184,8 @@ def main():
     s.ping(1, 5, "yellow");
     s.runTime(20);
     s.ping(18, 19, "AYEEEEEEEEE!");
+    s.runTime(20);
+    s.ping(7, 9, "AYEEEEEEEEE!");
+    s.runTime(20);
 if __name__ == '__main__':
     main()
