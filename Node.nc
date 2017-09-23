@@ -13,6 +13,11 @@
 #include "includes/sendInfo.h"
 #include "includes/channels.h"
 
+typedef nx_struct neighbor {
+    nx_unit16_t Node;
+    nx_unit8_t Life;
+}neighbor;
+
 module Node{
    uses interface Boot;
 
@@ -20,8 +25,14 @@ module Node{
    uses interface Receive;
 
    uses interface SimpleSend as Sender;
-   uses interface List<pack> as SeenPacketList; //use interface to create a seen packet list for each node
    uses interface CommandHandler;
+
+   uses interface List<pack> as SeenPacketList; //use interface to create a seen packet list for each node
+   uses interface List<neighbor*> as ListOfNeighbors;
+   uses interface Pool<neighbor> as PoolOfNeighbors;
+   uses interface Timer<TMilli> as Timer1; //uses timer to create periodic firing on neighbordiscovery and to not overload the network
+
+
 }
 
 implementation{
@@ -54,7 +65,7 @@ implementation{
       if(len==sizeof(pack)){
          pack* myMsg=(pack*) payload;
          dbg(GENERAL_CHANNEL, "Package Payload: %s\n", myMsg->payload);
-         dbg(FLOODING_CHANNEL, "Msg_Package Sequence#: %d\n", myMsg->seq);
+         //dbg(FLOODING_CHANNEL, "Msg_Package Sequence#: %d\n", myMsg->seq);
          
 
          if(myMsg->TTL == 0){ //meaning its TTL has run out and thus we should drop the packet
@@ -64,7 +75,7 @@ implementation{
          }else if(findSeenPacket(myMsg)){//packet dropped if seen by node more than once
            dbg(FLOODING_CHANNEL,"ALREADY SEEN: Dropping packet seq #%d from %d to %d\n", myMsg->seq, myMsg->src, myMsg->dest); //notify what is happening
             //dbg(FLOODING_CHANNEL, "SEQNUM %d, seq: %d. Rebroadcasting\n", seqNumb, myMsg->seq);
-            
+
          }else if(TOS_NODE_ID == myMsg->dest){
              dbg(FLOODING_CHANNEL,"Packet from %d has arrived with Msg: %s and SEQ: %d\n", myMsg->src, myMsg->payload, myMsg->seq); //once again, notify what has happened 
              makePack(&sendPackage, myMsg->src, myMsg->dest, myMsg->TTL-1,myMsg->protocol, seqNumb, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
@@ -115,7 +126,8 @@ implementation{
 
    event void CommandHandler.ping(uint16_t destination, uint8_t *payload){
       dbg(GENERAL_CHANNEL, "PING EVENT \n");
-      dbg(FLOODING_CHANNEL, "PING_Sequence number before %d\n", sendPackage.seq+1);
+      //dbg(FLOODING_CHANNEL, "PING_Sequence number before %d\n", sendPackage.seq+1);
+      //sendPackage.seq+1 increases seq# by 1 to give each packet an unique seq#
       //seqNumb++;
       makePack(&sendPackage, TOS_NODE_ID, destination, 15, 0, sendPackage.seq+1, payload, PACKET_MAX_PAYLOAD_SIZE);
       
