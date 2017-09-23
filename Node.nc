@@ -37,7 +37,7 @@ module Node{
 
 implementation{
    pack sendPackage;
-   uint16_t seqNumb;
+   uint16_t seqNumb = 0;
    
    // Prototypes
    void makePack(pack *Package, uint16_t src, uint16_t dest, uint16_t TTL, uint16_t Protocol, uint16_t seq, uint8_t *payload, uint8_t length);
@@ -90,13 +90,64 @@ implementation{
 
          }else if(TOS_NODE_ID == myMsg->dest){
              dbg(FLOODING_CHANNEL,"Packet from %d has arrived with Msg: %s and SEQ: %d\n", myMsg->src, myMsg->payload, myMsg->seq); //once again, notify what has happened 
-             makePack(&sendPackage, myMsg->src, myMsg->dest, myMsg->TTL-1,myMsg->protocol, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
-             pushToPacketList(sendPackage); //push to seenpacketlist
+             
              //dbg(FLOODING_CHANNEL, "Sequence number before %d\n", seqNumb);
              //seqNumb++;
              //dbg(FLOODING_CHANNEL, "Sequence number after found %d\n", seqNumb);
+             //makePack(&sendPackage, myMsg->src, myMsg->dest, myMsg->TTL-1,myMsg->protocol, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
+             //we wouldnt want to push protocol_cmd into the nodes list because this will break multiple pings being able to be sent by same node
+             
+             if(myMsg->protocol != PROTOCOL_CMD){
+                pushToPacketList(*myMsg); //push to seenpacketlist
+             }
 
-         }else if(AM_BROADCAST_ADDR == myMsg->dest){//tell nodes what to do when recieving a packet from broadcast addr
+             switch(myMsg->protocol){
+
+                uint8_t createMsg[PACKET_MAX_PAYLOAD_SIZE];
+                uint16_t destOff;
+
+                case PROTOCOL_PING:
+                    dbg(NEIGHBOR_CHANNEL, "Sending Ping Reply to %d\n", myMsg->src);
+
+                    //make the package with myMsg->src as dest
+                    makePack(&sendPackage, TOS_NODE_ID, myMsg->src, MAX_TTL,PROTOCOL_PINGREPLY,seqNumb,(uint8_t *)myMsg->payload, sizeof(myMsg->payload));
+                    seqNumb++; //increase seqNumb
+                    dbg(NEIGHBOR_CHANNEL,"Increase SeqNum: %d\n", seqNumb);
+
+                    //push packet onto ListOfNeighbors
+                    pushToPacketList(sendPackage);
+                    call Sender.send(sendPackage, AM_BROADCAST_ADDR);
+                    break;
+                
+                case PROTOCOL_PINGREPLY:
+                    dbg(NEIGHBOR_CHANNEL,"Ping Reply Incoming from %d \n", myMsg->src);
+                    break;
+                
+                case PROTOCOL_CMD
+                    switch(getCMD((uint8_t *)&myMsg->payload,sizeof(myMsg->payload))){
+
+                        case CMD_NEIGHBOR_DUMP:
+                            printNeighbors();
+                            break;
+                        
+                        case CMD_PING:
+                            memcpy(&createMsg, (myMsg->payload) + CMD_LENGTH+1, sizeof(myMsg->payload) - CMD_LENGTH+1);
+						    memcpy(&destOff, (myMsg->payload)+ CMD_LENGTH, sizeof(uint8_t));
+						    makePack(&sendPackage, TOS_NODE_ID, (destOff-48)&(0x00FF),MAX_TTL, PROTOCOL_PING, seqNumb, (uint8_t *)createMsg, sizeof(createMsg));	
+						    seqNumb++;
+						    //Push the packet we want to send into our seen/sent list
+						    pushToPacketList(sendPackage);
+						    call Sender.send(sendPackage, AM_BROADCAST_ADDR);
+						    break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
+             
+        }else if(AM_BROADCAST_ADDR == myMsg->dest){//tell nodes what to do when recieving a packet from broadcast addr
 
             bool FOUND;
             uint16_t i =0, size;
@@ -104,19 +155,52 @@ implementation{
 
             //what protocol does this message come with
             switch(myMsg->protocol){
-                case 0: //PROTOCOL_PING
-                dbg(GENERAL_CHANNEL, "MYMSG->PROTOCOL", myMsg->protocol);
-                //we recieve a protocol ping, we must send packet back to sender so they can discover a neighbor
-                dbg(NEIGHBOR_CHANNEL, "NODE %d Received Protocol Ping from %d\n",TOS_NODE_ID,myMsg->src);
 
-                //create a package with protocol PINGREPLY FOR myMsg->src from TOS_NODE_ID
-                //PROTOCOL_PINGREPLY = 1
-                makePack(&sendPackage, TOS_NODE_ID, AM_BROADCAST_ADDR, myMsg->TTL-1,1, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
-                pushToPacketList(sendPackage); //push to our seen list
+                case PROTOCOL_PING: //PROTOCOL_PING = 0
+                    dbg(GENERAL_CHANNEL, "MYMSG->PROTOCOL\n ", myMsg->protocol);
+                    //we recieve a protocol ping, we must send packet back to sender so they can discover a neighbor
+                    dbg(NEIGHBOR_CHANNEL, "NODE %d Received Protocol Ping from %d\n",TOS_NODE_ID,myMsg->src);
 
-                dbg(NEIGHBOR_CHANNEL, "New PROTOCOL AFTER PINGPROTOCOL = %s\n", sendPackage.protocol);
-                call Sender.send(sendPackage, myMsg->src); //send back to sender with PINGREPLY Protocol
-                break;
+                    //create a package with protocol PINGREPLY FOR myMsg->src from TOS_NODE_ID
+                    //PROTOCOL_PINGREPLY = 1
+                    makePack(&sendPackage, TOS_NODE_ID, AM_BROADCAST_ADDR, myMsg->TTL-1,PROTOCOL_PINGREPLY, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
+                    pushToPacketList(sendPackage); //push to our seen list
+
+                    dbg(NEIGHBOR_CHANNEL, "New PROTOCOL AFTER PINGPROTOCOL = %s\n", sendPackage.protocol);
+                    call Sender.send(sendPackage, myMsg->src); //send back to sender with PINGREPLY Protocol
+                    break;
+                
+                case PROTOCOL_PINGREPLY:
+                    //we got a ping reply from a neighbor so we need to update that neighbors life to 0 again because we have seen it again
+                    dbg(NEIGHBOR_CHANNEL, "Recieved PINGREPLY from %d\n", myMsg->src);
+                    FOUND = FALSE; //IF FOUND, we switch to TRUE
+                    size = call ListOfNeighbors.size();
+
+                    for(i = 0; i < size; i++){
+                        neighbor_ptr = call ListOfNeighbors.get(i);
+                        if(neighbor_ptr->Node == myMsg->src){
+                            //found neighbor in list, reset life
+                            dbg(NEIGHBOR_CHANNEL, "Node %d found in neighbor list\n", myMsg->src);
+                            neighbor_ptr->Life = 0;
+                            FOUND = TRUE;
+                            break;
+                        }
+                    }
+
+                    //if the neighbor is not found it means it is a new neighbor to the node and thus we must add it onto the list by calling an allocation pool for memory PoolOfNeighbors
+                    if(!FOUND){
+                        dbg(NEIGHBOR_CHANNEL, "NEW Neighbor: %d added to neighbor list\n", myMsg->src);
+                        Neighbor = call PoolOfNeighbors.get(); //get New Neighbor
+                        Neighbor->Node = myMsg->src; //add node source
+                        Neighbor->Life = 0; //reset life
+                        call ListOfNeighbors.pushback(Neighbor); //put into list 
+
+                    }
+                    break;
+                default;
+                    break;
+
+
 
                 
             }
