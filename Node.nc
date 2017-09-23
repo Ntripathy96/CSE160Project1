@@ -132,7 +132,7 @@ implementation{
    event void CommandHandler.ping(uint16_t destination, uint8_t *payload){
       dbg(GENERAL_CHANNEL, "PING EVENT \n");
       dbg(FLOODING_CHANNEL, "PING_Sequence number before %d\n", seqNumb);
-      bg(FLOODING_CHANNEL, "sendPackage.seq number before %d\n", sendPackage.seq);
+      dbg(FLOODING_CHANNEL, "sendPackage.seq number before %d\n", sendPackage.seq);
       //sendPackage.seq+1 increases seq# by 1 to give each packet an unique seq#
       seqNumb = sendPackage.seq + 1;
       dbg(FLOODING_CHANNEL, "PING_Sequence number after %d\n", seqNumb);
