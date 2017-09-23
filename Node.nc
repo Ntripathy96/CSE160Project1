@@ -105,6 +105,7 @@ implementation{
             //what protocol does this message come with
             switch(myMsg->protocol){
                 case PROTOCOL_PING:
+                dbg(GENERAL_CHANNEL, "MYMSG->PROTOCOL", myMsg->protocol);
                 //we recieve a protocol ping, we must send packet back to sender so they can discover a neighbor
                 dbg(NEIGHBOR_CHANNEL, "NODE %d Received Protocol Ping from %d\n",TOS_NODE_ID,myMsg->src);
 
@@ -115,6 +116,8 @@ implementation{
                 dbg(NEIGHBOR_CHANNEL, "New PROTOCOL AFTER PINGPROTOCOL = %s\n", sendPackage.protocol);
                 call Sender.send(sendPackage, myMsg->src); //send back to sender with PINGREPLY Protocol
                 break;
+
+                
             }
              
              
