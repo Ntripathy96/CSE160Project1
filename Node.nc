@@ -38,6 +38,7 @@ module Node{
 implementation{
    pack sendPackage;
    uint16_t seqNumb = 0;
+   sendPackage.seq = 0;
    // Prototypes
    void makePack(pack *Package, uint16_t src, uint16_t dest, uint16_t TTL, uint16_t Protocol, uint16_t seq, uint8_t *payload, uint8_t length);
    bool findSeenPacket(pack *Package); //function for finding a packet from a node's seen packet list
