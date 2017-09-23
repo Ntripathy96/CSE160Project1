@@ -79,7 +79,7 @@ implementation{
 
             dbg(FLOODING_CHANNEL, "Recieved Message from %d meant for %d...Rebroadcasting\n", myMsg->src, myMsg->dest); //notify process
             pushToPacketList(sendPackage); //packet not meant for this node but we need to push into seenpacketlist
-            dbg("Project1F", "SEQNUM %d, seq: %d. Rebroadcasting\n", seqNumb, myMsg->seq);
+            dbg(FLOODING_CHANNEL, "SEQNUM %d, seq: %d. Rebroadcasting\n", seqNumb, myMsg->seq);
             //resend with broadcast address to move packet forward
             call Sender.send(sendPackage, AM_BROADCAST_ADDR);
          }
