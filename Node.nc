@@ -104,13 +104,14 @@ implementation{
 
             //what protocol does this message come with
             switch(myMsg->protocol){
-                case PROTOCOL_PING:
+                case 0: //PROTOCOL_PING
                 dbg(GENERAL_CHANNEL, "MYMSG->PROTOCOL", myMsg->protocol);
                 //we recieve a protocol ping, we must send packet back to sender so they can discover a neighbor
                 dbg(NEIGHBOR_CHANNEL, "NODE %d Received Protocol Ping from %d\n",TOS_NODE_ID,myMsg->src);
 
                 //create a package with protocol PINGREPLY FOR myMsg->src from TOS_NODE_ID
-                makePack(&sendPackage, TOS_NODE_ID, AM_BROADCAST_ADDR, myMsg->TTL-1,PROTOCOL_PINGREPLY, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
+                //PROTOCOL_PINGREPLY = 1
+                makePack(&sendPackage, TOS_NODE_ID, AM_BROADCAST_ADDR, myMsg->TTL-1,1, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
                 pushToPacketList(sendPackage); //push to our seen list
 
                 dbg(NEIGHBOR_CHANNEL, "New PROTOCOL AFTER PINGPROTOCOL = %s\n", sendPackage.protocol);
