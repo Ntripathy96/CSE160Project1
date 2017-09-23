@@ -179,7 +179,7 @@ def main():
     s.runTime(20);
     s.ping(2, 5, "FOUUUUND!");
     s.runTime(20);
-    s.ping(1, 2, "WOOOOOOOOOOW");
+    s.ping(1, 6, "WOOOOOOOOOOW");
     s.runTime(20);
     s.ping(5, 2, "yellow");
     s.runTime(20);
