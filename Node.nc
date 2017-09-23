@@ -133,7 +133,7 @@ implementation{
       dbg(GENERAL_CHANNEL, "PING EVENT \n");
       dbg(FLOODING_CHANNEL, "PING_Sequence number before %d\n", seqNumb);
       //sendPackage.seq+1 increases seq# by 1 to give each packet an unique seq#
-      seqNumb = sendPackage.seq + 1;
+      seqNumb = seqNumb + 1;
       dbg(FLOODING_CHANNEL, "PING_Sequence number after %d\n", seqNumb);
       makePack(&sendPackage, TOS_NODE_ID, destination, 15, 0, sendPackage.seq + 1, payload, PACKET_MAX_PAYLOAD_SIZE);
       
