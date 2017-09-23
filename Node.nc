@@ -132,8 +132,8 @@ implementation{
       dbg(GENERAL_CHANNEL, "PING EVENT \n");
       //dbg(FLOODING_CHANNEL, "PING_Sequence number before %d\n", sendPackage.seq+1);
       //sendPackage.seq+1 increases seq# by 1 to give each packet an unique seq#
-      //seqNumb++;
-      makePack(&sendPackage, TOS_NODE_ID, destination, 15, 0, sendPackage.seq+1, payload, PACKET_MAX_PAYLOAD_SIZE);
+      seqNumb = sendPackage.seq + 1;
+      makePack(&sendPackage, TOS_NODE_ID, destination, 15, 0, seqNumb, payload, PACKET_MAX_PAYLOAD_SIZE);
       
       call Sender.send(sendPackage, AM_BROADCAST_ADDR);
       
