@@ -52,6 +52,9 @@ implementation{
       call AMControl.start();
 
       dbg(GENERAL_CHANNEL, "Booted\n");
+
+      call Timer1.startPeriodicAt(1,1500);
+      dbg(NEIGHBOR_CHANNEL,"Timer started");
    }
 
    event void AMControl.startDone(error_t err){
@@ -94,6 +97,29 @@ implementation{
              //seqNumb++;
              //dbg(FLOODING_CHANNEL, "Sequence number after found %d\n", seqNumb);
 
+         }else if(AM_BROADCAST_ADDR == myMsg->dest){//tell nodes what to do when recieving a packet from broadcast addr
+
+            bool FOUND;
+            uint16_t i =0, size;
+            neighbor * Neighbor, *neighbor_ptr;
+
+            //what protocol does this message come with
+            switch(myMsg->protocol){
+                case PROTOCOL_PING:
+                //we recieve a protocol ping, we must send packet back to sender so they can discover a neighbor
+                dbg(NEIGHBOR_CHANNEL, "NODE %d Received Protocol Ping from %d\n",TOS_NODE_ID,myMsg->src);
+
+                //create a package with protocol PINGREPLY FOR myMsg->src from TOS_NODE_ID
+                makePack(&sendPackage, TOS_NODE_ID, AM_BROADCAST_ADDR, myMsg->TTL-1,PROTOCOL_PINGREPLY, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
+                pushToPacketList(sendPackage); //push to our seen list
+
+                call Sender.send(sendPackage, myMsg->src); //send back to sender with PINGREPLY Protocol
+                dbg(NEIGHBOR_CHANNEL, "New PROTOCOL AFTER PINGPROTOCOL = %d", sendPackage.protocol);
+                break;
+            }
+             
+             
+             
          }else{ //packet does not belong to current node
 
             //resend same packet with TTL-1
@@ -139,32 +165,33 @@ implementation{
 		pack Package;
 		char* message;
 		
-		dbg(NEIGHBOR_CHANNEL, "Discovery activated: %d checking list for neighbors\n", TOS_NODE_ID);
+		dbg(NEIGHBOR_CHANNEL, "Neighbor Discovery: checking node %d list for its neighbors\n", TOS_NODE_ID);
 		if(!call ListOfNeighbors.isEmpty()) {
 			uint16_t size = call ListOfNeighbors.size();
 			uint16_t i = 0;
 			uint16_t life = 0;
-			neighbor* neighbor_ptr;
-			neighbor* temp;
-			//Increase Life of the ListOfNeighbors
+			neighbor* myNeighbor;
+			neighbor* tempNeighbor;
+			//Increase Life of the ListOfNeighbors if not seen, every 5 pings a neighbor isnt seen, we are going to remove it
 			for(i = 0; i < size; i++) {
-				temp = call ListOfNeighbors.get(i);
-				temp->Life++;
+				tempNeighbor = call ListOfNeighbors.get(i);
+				tempNeighbor->Life++;
 			}
-			//If any are older than 5 neighbor confirmation requests then drop them from our list
+			//Check if neighbors havent been called or seen in a while, if 5 pings occur and neighbor is not hear from, we drop it
 			for(i = 0; i < size; i++) {
-				temp = call ListOfNeighbors.get(i);
-				life = temp->Life;
+				tempNeighbor = call ListOfNeighbors.get(i);
+				life = tempNeighbor->Life;
 				if(life > 5) {
-					neighbor_ptr = call ListOfNeighbors.remove(i);
-					//dbg(NEIGHBOR_CHANNEL, "Node %d is older than 5 pings, dropping from list\n", neighbor_ptr->Node);
-					call PoolOfNeighbors.put(neighbor_ptr);
+					myNeighbor = call ListOfNeighbors.remove(i);
+					dbg(NEIGHBOR_CHANNEL, "Node %d life has expired dropping from NODE %d list\n", myNeighbor->Node, TOS_NODE_ID);
+					call PoolOfNeighbors.put(myNeighbor);
 					i--;
 					size--;
 				}
 			}
 		}
-		//Ready to ping ListOfNeighbors
+        //after increasing neighbors life and dropping any neighbor with expiring life, we can now ping ListOfNeighbors
+		//using an arbitrary message, we are just trying to find the neighbors, not send real messages
 		message = "addOn\n";
 		makePack(&Package, TOS_NODE_ID, AM_BROADCAST_ADDR, 2, PROTOCOL_PING, 1, (uint8_t*) message, (uint8_t) sizeof(message));
 
@@ -179,12 +206,12 @@ implementation{
 		size = call ListOfNeighbors.size();
 		//Print out ListOfNeighbors after updating
 		if(size == 0) {
-			dbg(NEIGHBOR_CHANNEL, "No Neighbors found\n");
+			dbg(NEIGHBOR_CHANNEL, "No Neighbors found for %d\n", TOS_NODE_ID);
 		} else {
 			dbg(NEIGHBOR_CHANNEL, "Updated Neighbors. Dumping new neighbor list of size %d for Node %d\n", size, TOS_NODE_ID);
 			for(i = 0; i < size; i++) {
-				neighbor* neighbor_ptr = call ListOfNeighbors.get(i);
-				dbg(NEIGHBOR_CHANNEL, "Neighbor: %d, Life: %d\n", neighbor_ptr->Node, neighbor_ptr->Life);
+				neighbor* myNeighbor = call ListOfNeighbors.get(i);
+				dbg(NEIGHBOR_CHANNEL, "FOUND: Neighbor: %d, Life: %d\n", myNeighbor->Node, myNeighbor->Life);
 			}
 		}
 	}
