@@ -59,7 +59,11 @@ implementation{
    }
 
    event void AMControl.stopDone(error_t err){}
-
+   
+   //fired() event for Timer1
+   event void Timer1.fired(){
+       //discoverNeighborList();
+   }
    event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len){
       dbg(GENERAL_CHANNEL, "Packet Received\n");
       if(len==sizeof(pack)){

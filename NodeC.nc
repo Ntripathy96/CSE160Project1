@@ -36,7 +36,7 @@ implementation {
     Node.SeenPacketList -> PacketListC; //connects seenPacketList with component ListC
 
     //add component for ListOfNeighbors
-    components new ListC(neighbor, 64) as ListOfNeighborsC;
+    components new ListC(neighbor*, 64) as ListOfNeighborsC;
     Node.ListOfNeighbors -> ListOfNeighborsC;  //connects ListOfNeighbors with component ListOfNeighborsC
 
     //add component for PoolOfNeighbors
