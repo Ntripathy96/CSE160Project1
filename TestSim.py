@@ -174,7 +174,7 @@ def main():
     s.addChannel(s.NEIGHBOR_CHANNEL);
 
     s.runTime(20);
-    s.ping(1, 5, "HELLO, WORLD");
+    s.ping(1, 19, "HELLO, WORLD");
     s.runTime(10);
     s.ping(2,4, "Hi!");
     s.runTime(20);
