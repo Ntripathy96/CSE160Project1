@@ -158,7 +158,7 @@ implementation{
 				if(life > 5) {
 					neighbor_ptr = call ListOfNeighbors.remove(i);
 					//dbg(NEIGHBOR_CHANNEL, "Node %d is older than 5 pings, dropping from list\n", neighbor_ptr->Node);
-					call NeighborPool.put(neighbor_ptr);
+					call PoolOfNeighbors.put(neighbor_ptr);
 					i--;
 					size--;
 				}
@@ -168,7 +168,7 @@ implementation{
 		message = "addOn\n";
 		makePack(&Package, TOS_NODE_ID, AM_BROADCAST_ADDR, 2, PROTOCOL_PING, 1, (uint8_t*) message, (uint8_t) sizeof(message));
 
-		pushPack(Package);
+		pushToPacketList(Package);
 		call Sender.send(Package, AM_BROADCAST_ADDR);
 	}
 
