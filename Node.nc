@@ -70,7 +70,7 @@ implementation{
    
    //fired() event for Timer1
    event void Timer1.fired(){
-       neighborDiscovery();
+       //neighborDiscovery();
    }
    event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len){
       dbg(GENERAL_CHANNEL, "Packet Received\n");
@@ -347,20 +347,20 @@ implementation{
 
    void makePack(pack *Package, uint16_t src, uint16_t dest, uint16_t TTL, uint16_t protocol, uint16_t seq, uint8_t* payload, uint8_t length){
       Package->src = src;
-      dbg(NEIGHBOR_CHANNEL,"TOS_NODE_ID = %d\n", Package->src);
+      //dbg(NEIGHBOR_CHANNEL,"TOS_NODE_ID = %d\n", Package->src);
       Package->dest = dest;
-      dbg(NEIGHBOR_CHANNEL,"AMMMS = %d\n", Package->dest);
+      //dbg(NEIGHBOR_CHANNEL,"AMMMS = %d\n", Package->dest);
       Package->TTL = TTL;
-      dbg(NEIGHBOR_CHANNEL,"TTL = %d\n", Package->TTL);
+      //dbg(NEIGHBOR_CHANNEL,"TTL = %d\n", Package->TTL);
       Package->seq = seq;
-      dbg(NEIGHBOR_CHANNEL,"SEQ = %d\n", Package->seq);
+      //dbg(NEIGHBOR_CHANNEL,"SEQ = %d\n", Package->seq);
       Package->protocol = protocol;
-      dbg(NEIGHBOR_CHANNEL,"PROTOCOL = %d\n", Package->protocol);
+      //dbg(NEIGHBOR_CHANNEL,"PROTOCOL = %d\n", Package->protocol);
 
-      dbg(NEIGHBOR_CHANNEL,"PAYLOAD = %d\n", Package->payload);
+      //dbg(NEIGHBOR_CHANNEL,"PAYLOAD = %d\n", Package->payload);
       memcpy(Package->payload, payload, length);
       
-      dbg(NEIGHBOR_CHANNEL,"size = %d\n", sizeof(Package->payload));
+      //dbg(NEIGHBOR_CHANNEL,"size = %d\n", sizeof(Package->payload));
      
       //dbg(NEIGHBOR_CHANNEL,"AMMMS = %d\n", AM_BROADCAST_ADDR);
                     //dbg(NEIGHBOR_CHANNEL,"size = %d\n", sizeof(myMsg->payload));
