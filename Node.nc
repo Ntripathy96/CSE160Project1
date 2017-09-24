@@ -163,19 +163,19 @@ implementation{
 
                     //create a package with protocol PINGREPLY FOR myMsg->src from TOS_NODE_ID
                     //PROTOCOL_PINGREPLY = 1
-                    dbg(NEIGHBOR_CHANNEL,"AMMMS = %d\n", AM_BROADCAST_ADDR);
-                    dbg(NEIGHBOR_CHANNEL,"size = %d\n", sizeof(myMsg->payload));
+                    //dbg(NEIGHBOR_CHANNEL,"AMMMS = %d\n", AM_BROADCAST_ADDR);
+                    //dbg(NEIGHBOR_CHANNEL,"size = %d\n", sizeof(myMsg->payload));
                     //dbg(NEIGHBOR_CHANNEL,"PAYLOAD = %d\n", myMsg->payload);
                     //dbg(NEIGHBOR_CHANNEL,"TOS_NODE_ID = %d\n", TOS_NODE_ID);
                     //dbg(NEIGHBOR_CHANNEL,"TTL = %d\n", myMsg->TTL-1);
                     //dbg(NEIGHBOR_CHANNEL,"PROTOCOL = %d\n", PROTOCOL_PINGREPLY);
                     //dbg(NEIGHBOR_CHANNEL,"SEQ = %d\n", myMsg->seq);
-                    dbg(NEIGHBOR_CHANNEL,"AMMMS = %d\n", AM_BROADCAST_ADDR);
+                    //dbg(NEIGHBOR_CHANNEL,"AMMMS = %d\n", AM_BROADCAST_ADDR);
                     
                     
 
 
-                    makePack(&sendPackage, TOS_NODE_ID, AM_BROADCAST_ADDR, myMsg->TTL-1,PROTOCOL_PINGREPLY, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
+                    //makePack(&sendPackage, TOS_NODE_ID, AM_BROADCAST_ADDR, myMsg->TTL-1,PROTOCOL_PINGREPLY, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
                     dbg(NEIGHBOR_CHANNEL, "inbetween = %s\n", sendPackage.protocol);
                     pushToPacketList(sendPackage); //push to our seen list
 
