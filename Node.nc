@@ -269,12 +269,12 @@ implementation{
 		
 		//dbg(NEIGHBOR_CHANNEL, "Neighbor Discovery: checking node %d list for its neighbors\n", TOS_NODE_ID);
 		if(!call ListOfNeighbors.isEmpty()) {
-            dbg(NEIGHBOR_CHANNEL, "Neighbor Discovery: checking node %d list for its neighbors\n", TOS_NODE_ID);
 			uint16_t size = call ListOfNeighbors.size();
 			uint16_t i = 0;
 			uint16_t life = 0;
 			neighbor* myNeighbor;
 			neighbor* tempNeighbor;
+            dbg(NEIGHBOR_CHANNEL, "Neighbor Discovery: checking node %d list for its neighbors\n", TOS_NODE_ID);
 			//Increase Life of the ListOfNeighbors if not seen, every 5 pings a neighbor isnt seen, we are going to remove it
 			for(i = 0; i < size; i++) {
 				tempNeighbor = call ListOfNeighbors.get(i);
