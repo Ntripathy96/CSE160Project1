@@ -175,7 +175,7 @@ implementation{
                     
 
 
-                    //makePack(&sendPackage, TOS_NODE_ID, AM_BROADCAST_ADDR, myMsg->TTL-1,PROTOCOL_PINGREPLY, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
+                    makePack(&sendPackage, TOS_NODE_ID, AM_BROADCAST_ADDR, myMsg->TTL-1,PROTOCOL_PINGREPLY, myMsg->seq, (uint8_t *)myMsg->payload, sizeof(myMsg->payload));
                     dbg(NEIGHBOR_CHANNEL, "inbetween = %s\n", sendPackage.protocol);
                     pushToPacketList(sendPackage); //push to our seen list
 
