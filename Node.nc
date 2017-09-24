@@ -110,10 +110,10 @@ implementation{
                     dbg(NEIGHBOR_CHANNEL, "Sending Ping Reply to %d\n", myMsg->src);
 
                     //make the package with myMsg->src as dest
-                    makePack(&sendPackage, TOS_NODE_ID, myMsg->src, MAX_TTL,PROTOCOL_PINGREPLY,sendPackage.seq + 1,(uint8_t *)myMsg->payload, sizeof(myMsg->payload));
-                    seqNumb++; //increase seqNumb
+                    makePack(&sendPackage, TOS_NODE_ID, myMsg->src, MAX_TTL,PROTOCOL_PINGREPLY,sendPackage.seq,(uint8_t *)myMsg->payload, sizeof(myMsg->payload));
+                    //seqNumb++; //increase seqNumb
                     dbg(NEIGHBOR_CHANNEL,"Package SeqNum: %d\n", sendPackage.seq);
-                    dbg(NEIGHBOR_CHANNEL,"MAX_TTL: %d\n", MAX_TTL);
+                    //dbg(NEIGHBOR_CHANNEL,"MAX_TTL: %d\n", MAX_TTL);
 
                     //push packet onto ListOfNeighbors
                     pushToPacketList(sendPackage);
@@ -134,9 +134,9 @@ implementation{
                         case CMD_PING:
                             memcpy(&createMsg, (myMsg->payload) + CMD_LENGTH+1, sizeof(myMsg->payload) - CMD_LENGTH+1);
 						    memcpy(&destOff, (myMsg->payload)+ CMD_LENGTH, sizeof(uint8_t));
-						    makePack(&sendPackage, TOS_NODE_ID, (destOff-48)&(0x00FF),MAX_TTL, PROTOCOL_PING, seqNumb, (uint8_t *)createMsg, sizeof(createMsg));	
-						    seqNumb++;
-                            dbg(NEIGHBOR_CHANNEL,"Increase SeqNum: %d\n", seqNumb);
+						    makePack(&sendPackage, TOS_NODE_ID, (destOff-48)&(0x00FF),MAX_TTL, PROTOCOL_PING, sendPackage.seq, (uint8_t *)createMsg, sizeof(createMsg));	
+						    //seqNumb++;
+                            dbg(NEIGHBOR_CHANNEL,"CDM__PING Seq: %d\n", sendPackage.seq);
 						    //Push the packet we want to send into our seen/sent list
 						    pushToPacketList(sendPackage);
 						    call Sender.send(sendPackage, AM_BROADCAST_ADDR);
@@ -326,8 +326,8 @@ implementation{
       //seqNumb = sendPackage.seq + 1;
       //dbg(FLOODING_CHANNEL, "PING_Sequence number after %d\n", seqNumb);
       
-      makePack(&sendPackage, TOS_NODE_ID, destination, 15, 0, seqNumb, payload, PACKET_MAX_PAYLOAD_SIZE);
-      seqNumb++;
+      makePack(&sendPackage, TOS_NODE_ID, destination, 15, 0, sendPackage.seq + 1, payload, PACKET_MAX_PAYLOAD_SIZE);
+      //seqNumb++;
       call Sender.send(sendPackage, AM_BROADCAST_ADDR);
       
    }
