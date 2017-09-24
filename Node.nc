@@ -347,10 +347,28 @@ implementation{
 
    void makePack(pack *Package, uint16_t src, uint16_t dest, uint16_t TTL, uint16_t protocol, uint16_t seq, uint8_t* payload, uint8_t length){
       Package->src = src;
+      dbg(NEIGHBOR_CHANNEL,"TOS_NODE_ID = %d\n", Package->src);
       Package->dest = dest;
+      dbg(NEIGHBOR_CHANNEL,"AMMMS = %d\n", Package->dest);
       Package->TTL = TTL;
+      dbg(NEIGHBOR_CHANNEL,"TTL = %d\n", Package->TTL);
       Package->seq = seq;
+      dbg(NEIGHBOR_CHANNEL,"SEQ = %d\n", Package->seq);
       Package->protocol = protocol;
+      dbg(NEIGHBOR_CHANNEL,"PROTOCOL = %d\n", Package->protocol);
+
+      dbg(NEIGHBOR_CHANNEL,"PAYLOAD = %d\n", Package->payload);
       memcpy(Package->payload, payload, length);
+      
+      dbg(NEIGHBOR_CHANNEL,"size = %d\n", sizeof(Package->payload));
+     
+      //dbg(NEIGHBOR_CHANNEL,"AMMMS = %d\n", AM_BROADCAST_ADDR);
+                    //dbg(NEIGHBOR_CHANNEL,"size = %d\n", sizeof(myMsg->payload));
+                    //dbg(NEIGHBOR_CHANNEL,"PAYLOAD = %d\n", myMsg->payload);
+    
+                    //dbg(NEIGHBOR_CHANNEL,"TTL = %d\n", myMsg->TTL-1);
+                    //dbg(NEIGHBOR_CHANNEL,"PROTOCOL = %d\n", PROTOCOL_PINGREPLY);
+                    //dbg(NEIGHBOR_CHANNEL,"SEQ = %d\n", myMsg->seq);
+                    //dbg(NEIGHBOR_CHANNEL,"AMMMS = %d\n", AM_BROADCAST_ADDR);
    }
 }
