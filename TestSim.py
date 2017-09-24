@@ -176,19 +176,19 @@ def main():
     s.runTime(20);
     s.ping(1, 5, "HELLO, WORLD");
     s.runTime(10);
-    s.ping(2,4, "Hi!");
+    s.ping(5,1, "Hi!");
     s.runTime(20);
     s.ping(2, 5, "FOUUUUND!");
     s.runTime(20);
     s.ping(1, 2, "WOOOOOOOOOOW");
     s.runTime(20);
-    s.ping(1, 6, "yellow");
+    s.ping(5, 2, "yellow");
     s.runTime(20);
     s.ping(3, 19, "AYEEEEEEEEE!");
-    #s.runTime(20);
-    #s.ping(1, 9, "YOOOOOOOOO!");
-    #s.runTime(20);
-    #s.ping(1,7 , "WAAAAAAAAY!");
-    #s.runTime(20);
+    s.runTime(20);
+    s.ping(1, 9, "YOOOOOOOOO!");
+    s.runTime(20);
+    s.ping(1,7 , "WAAAAAAAAY!");
+    s.runTime(20);
 if __name__ == '__main__':
     main()

@@ -134,7 +134,7 @@ implementation{
                         case CMD_PING:
                             memcpy(&createMsg, (myMsg->payload) + CMD_LENGTH+1, sizeof(myMsg->payload) - CMD_LENGTH+1);
 						    memcpy(&destOff, (myMsg->payload)+ CMD_LENGTH, sizeof(uint8_t));
-						    makePack(&sendPackage, TOS_NODE_ID, (destOff-48)&(0x00FF),MAX_TTL, PROTOCOL_PING, sendPackage.seq+1, (uint8_t *)createMsg, sizeof(createMsg));	
+						    makePack(&sendPackage, TOS_NODE_ID, (destOff-48)&(0x00FF),MAX_TTL, PROTOCOL_PING, sendPackage.seq, (uint8_t *)createMsg, sizeof(createMsg));	
 						    //seqNumb++;
                             dbg(NEIGHBOR_CHANNEL,"CDM__PING Seq: %d\n", sendPackage.seq);
 						    //Push the packet we want to send into our seen/sent list
