@@ -322,7 +322,7 @@ implementation{
       dbg(GENERAL_CHANNEL, "PING EVENT \n");
       //dbg(FLOODING_CHANNEL, "PING_Sequence number before %d\n", seqNumb);
       //dbg(FLOODING_CHANNEL, "sendPackage.seq number before %d\n", sendPackage.seq);
-      sendPackage.seq = sendPackage.seq+1 //increases seq# by 1 to give each packet an unique seq#
+      sendPackage.seq = sendPackage.seq+1; //increases seq# by 1 to give each packet an unique seq#
       //seqNumb = sendPackage.seq + 1;
       //dbg(FLOODING_CHANNEL, "PING_Sequence number after %d\n", seqNumb);
       
