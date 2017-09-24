@@ -70,7 +70,7 @@ implementation{
    
    //fired() event for Timer1
    event void Timer1.fired(){
-       //neighborDiscovery();
+       neighborDiscovery();
    }
    event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len){
       dbg(GENERAL_CHANNEL, "Packet Received\n");
