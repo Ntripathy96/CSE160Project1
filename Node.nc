@@ -112,7 +112,7 @@ implementation{
                     //make the package with myMsg->src as dest
                     makePack(&sendPackage, TOS_NODE_ID, myMsg->src, MAX_TTL,PROTOCOL_PINGREPLY,sendPackage.seq + 1,(uint8_t *)myMsg->payload, sizeof(myMsg->payload));
                     seqNumb++; //increase seqNumb
-                    dbg(NEIGHBOR_CHANNEL,"Package SeqNum: %d\n", sendPackage->seq);
+                    dbg(NEIGHBOR_CHANNEL,"Package SeqNum: %d\n", sendPackage.seq);
                     dbg(NEIGHBOR_CHANNEL,"MAX_TTL: %d\n", MAX_TTL);
 
                     //push packet onto ListOfNeighbors
