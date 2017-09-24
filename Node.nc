@@ -135,6 +135,7 @@ implementation{
 						    memcpy(&destOff, (myMsg->payload)+ CMD_LENGTH, sizeof(uint8_t));
 						    makePack(&sendPackage, TOS_NODE_ID, (destOff-48)&(0x00FF),MAX_TTL, PROTOCOL_PING, seqNumb, (uint8_t *)createMsg, sizeof(createMsg));	
 						    seqNumb++;
+                            dbg(NEIGHBOR_CHANNEL,"Increase SeqNum: %d\n", seqNumb);
 						    //Push the packet we want to send into our seen/sent list
 						    pushToPacketList(sendPackage);
 						    call Sender.send(sendPackage, AM_BROADCAST_ADDR);
@@ -323,8 +324,9 @@ implementation{
       //sendPackage.seq+1 increases seq# by 1 to give each packet an unique seq#
       //seqNumb = sendPackage.seq + 1;
       //dbg(FLOODING_CHANNEL, "PING_Sequence number after %d\n", seqNumb);
-      makePack(&sendPackage, TOS_NODE_ID, destination, 15, 0, seqNumb, payload, PACKET_MAX_PAYLOAD_SIZE);
       
+      makePack(&sendPackage, TOS_NODE_ID, destination, 15, 0, seqNumb, payload, PACKET_MAX_PAYLOAD_SIZE);
+      seqNumb++;
       call Sender.send(sendPackage, AM_BROADCAST_ADDR);
       
    }
